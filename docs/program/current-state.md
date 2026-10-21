@@ -15,12 +15,12 @@
 
 ## Current work and limits
 - W0 method foundation and copyable kit implemented on the Draft branch.
-- The second authoring batch improves Chinese and web-only onboarding, steering and research design. Its commit SHA and validation must be confirmed from Git before reporting completion.
+- Second authoring batch implemented Chinese and web-only onboarding, steering and a research protocol at `de3a0f427a4169182ce800402b8836a5cc347258`. At this SHA, the GitHub branch tree lists **27 files**; the PR diff check confirmed **49/49 relative links present**. These were author-side automated consistency checks only, not an independent reviewer or real product/empirical proof.
 - The actual execution channel is **ChatGPT web + GitHub**. No mandatory local Codex process.
 - No automatic merge, repository visibility change, license selection or public release is authorized.
 
 ## Next
-1. Re-verify all changed-file links after the current batch and the exact PR HEAD.
+1. Keep the PR open/Draft while advancing W1/W2. Re-run lightweight checks on meaningful future content batches.
 2. Use quickstart materials in a small bounded scenario; revise based on genuine confusion.
 3. Continue W1 conceptual simplification and W2 working templates/question prompts without heavyweight review loops.
 4. Design and perform fair real-product comparisons before claiming R2R improves throughput.
