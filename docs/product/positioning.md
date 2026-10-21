@@ -6,7 +6,7 @@
 
 **Objective:** Increase *verified end-product delivery* for complex systems without sacrificing the final stability requirement.
 
-**Approach:** strong whole-product direction; long but steerable runs; review and integration effort proportional to risk; acceptable imperfect intermediate shapes; repeated structural convergence and final real-product verification.
+**Approach:** strong whole-product direction; long but steerable runs; **synchronous lightweight Review after meaningful batches**, depth proportional to risk (no automatic full deep gate); acceptable imperfect intermediate shapes; repeated structural convergence and final real-product verification.
 
 ## The distinction
 - **Spec-driven development:** clarifies expected behavior and tasks. R2R consumes those inputs; it governs pace, validation timing and final convergence. Compatible, not a replacement.

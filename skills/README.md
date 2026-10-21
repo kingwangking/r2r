@@ -12,4 +12,6 @@
 
 The file structure and required metadata are based on the [Agent Skills specification](https://agentskills.io/specification). We checked the text format and basic metadata, **but have not executed an external skills validator or installed it in a host**. That compatibility work remains `NOT_RUN`.
 
+**Current workflow:** after each meaningful execution batch, perform a **synchronous lightweight self-review** in the same agent context. No local multi-agent runtime or async reviewer dispatch is needed. A separate reviewer can be sought sequentially for consequential questions if actually available.
+
 Do not imply the skill creates parallel agents, schedules work or performs independent reviews itself. Those are capabilities of whichever authorized host and tools are actually available.

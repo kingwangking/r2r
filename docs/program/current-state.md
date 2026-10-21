@@ -12,6 +12,7 @@
 - W1 conceptual methods/research: `db32ddef21eaf352d9043fb1fb45937266118df4`.
 - W2 one-card, ten-minute manual trial, example campaigns, review economics and field-test worksheet: `2c7e08ef081701b54a9354af4c331b4a9f6306c5`.
 - Optional portable Agent Skill + R2R self-application card: `7fc1e392a8f1443e962537cd41c9fd70fc3c1554`.
+- **Owner-directed Review policy correction:** `d071f1685bccc7f5526a730b8e36f51009fa4b51` updates method/AGENTS/Skill/quickstart to **synchronous lightweight Review**, because no convenient local multi-agent reviewer infrastructure is currently available.
 
 ## W0–W2 delivery / verification
 - W0 foundation: usable method, prompt, roadmap and first draft PR **delivered**; no outside beginner test yet.
@@ -26,13 +27,14 @@
 - No real software runtime, local CLI requirement, deployment, automated code tests, measurable throughput advantage, external review or field-quality proof.
 - No license selection, repository public visibility change, product launch or Owner-authorized merge.
 - No guarantee of uninterrupted autonomous execution across ChatGPT conversations.
+- No local multi-agent/async reviewer infrastructure; **synchronous author-side quick Review** is the current default. Real independent reviews require an actually distinct context/reviewer.
 
 ## Next prioritized actions
 1. Verify the final current-state-only edit and exact PR HEAD; avoid repeating heavyweight Review over already checked methodology text.
-2. W3: write and **use** one realistic multi-session recovery and async-review scenario, with exact dependency-based holds and simulated interruptions clearly labeled.
+2. W3: write and **use** a realistic multi-session recovery and **synchronous fast-Review** scenario (RUN batch → immediate same-session self-check → continue), with exact dependency-based holds and simulated interruptions clearly labeled.
 3. W4: clarify when structural hardening must begin and when deferring integration becomes dangerous, using an example and negative cases.
 4. W5: recruit/observe actual novice users and compare a real product task against a serial-review baseline, preserving quality parity.
 5. W6: audit naming/IP/license and obtain Owner authorization before changing repo visibility or marketing as public OSS.
 
 ## Execution boundary
-The user selected **ChatGPT Web + GitHub** as this project's primary implementation channel; no local tools or execution daemon are prerequisites. Developer STEER is continuous, long RUN is first class but limited by actual session/tools. Deep external Review of each tiny doc batch is not a default gate. Keep this PR Draft/unmerged unless Owner directs otherwise.
+The user selected **ChatGPT Web + GitHub** as this project's primary implementation channel; no local tools or execution daemon are prerequisites. Developer STEER is continuous, long RUN is first class but limited by actual session/tools. At meaningful batch boundaries, carry out a short **synchronous self-review** immediately and then continue (unless critical dependent-path risk is identified); no async-review dispatch is assumed. Deep external Review of each tiny doc batch is not a default gate. Keep this PR Draft/unmerged unless Owner directs otherwise.

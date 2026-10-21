@@ -10,7 +10,7 @@
 - Authorized repo/ref and scope:
 - Current horizon (can change anytime):
 - Intermediate quality allowed:
-- Cheap review or probe; high-risk holds:
+- Synchronous quick Review after this meaningful batch; high-risk holds:
 - Actual outcome, evidence SHA and next step:
 
 **STEER ANYTIME**

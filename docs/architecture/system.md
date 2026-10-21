@@ -7,7 +7,7 @@ PLAN: full scope + architecture + acceptance
         ↓
 RUN: coding/authoring agent ↔ STEER: developer direction & questions
         ↓
-Evidence / risk-directed review / resumable checkpoint
+Synchronous quick Review / resumable checkpoint
         ↓
 Early integration & restructuring when necessary
         ↓
@@ -24,6 +24,8 @@ The first release should include:
 - templates and a minimal evidence/status contract;
 - demonstrative cases and empirical evaluation;
 - no compulsory platform or tool.
+
+**Current default: one executing agent (or web workflow) performs a short synchronous review after meaningful batches; no mandatory local multi-agent platform or asynchronous reviewer queue.** A self-review is not an independent reviewer. A genuinely distinct reviewer may be invoked sequentially if specifically needed.
 
 **Later option, not present:** an adapter dispatching builder/reviewer/checkpoints using existing agent tool APIs. First prove that coordination overhead warrants it. No arbitrary remote shell and no assumption that a disconnected session will resume itself.
 

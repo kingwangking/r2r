@@ -16,8 +16,10 @@ Product: local-first writing workbench. Four domains: project/library, manuscrip
 | --- | --- | --- | --- |
 | C1: usable author shell | L01 project create/open; L02 chapter editor; L03 save UI | App can present and edit a chapter | Targeted persistence contract; UI may be rough |
 | C2: persistent editing | L04 durable save; L05 revision identity; L06 undo/redo | Text edits survive ordinary workflow | T1 cross-module probe; review dangerous data ownership |
-| C3: AI as proposal | L07 selection context; L08 local offline candidate; L09 author-approved apply | User can explicitly choose AI edits | Focused independent review of revision/authority seam |
+| C3: AI as proposal | L07 selection context; L08 local offline candidate; L09 author-approved apply | User can explicitly choose AI edits | Synchronous focused contract review of revision/authority seam; distinct sequential reviewer only if available and needed |
 | C4: author usability | L10 search; L11 history timeline; L12 recovery/reporting | Whole author workflow is connected | T2 actual GUI and process-restart trial |
+
+**Current execution convention:** after each meaningful campaign/batch, the implementing agent performs a **short synchronous self-review**, records high-risk holds and moves to the next authorized batch. A deeper review may be requested for L05/L09; a second agent or parallel reviewer is **not required**. No fixed reviews per slice and no simulated async Review.
 
 The overall route is much longer than any one agent context. The developer can authorize all four campaigns, or shorten after L02/L05/L08. No rigid “review every 3 slices” rule.
 

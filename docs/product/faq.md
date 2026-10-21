@@ -3,6 +3,9 @@
 ### Is R2R just “skip code review”?
 No. R2R avoids treating **every intermediate change as a release candidate**. Deep review stays necessary for important structural risks and final delivery, and relevant tests must be honestly recorded.
 
+### Does R2R require multiple agents or asynchronous reviewers?
+No. Its current default is **RUN a meaningful batch → synchronous lightweight self-review → continue**. Only material risks trigger deeper source-grounded verification. A separate independent reviewer can be used sequentially when genuinely available; a same-agent self-check must never be advertised as independent.
+
 ### Does R2R replace Spec-driven development?
 No. Specs clarify what to build. R2R governs the long production/feedback/quality-convergence process after and alongside a spec.
 

@@ -22,6 +22,8 @@ RUN within this exact branch and allowed scope. Continue implementation while
 the session is active, with cheap relevant checks, until the selected campaign
 is done or a specific high-risk dependency blocks it. Preserve a precise
 checkpoint with outcomes, tests actually run and the next action.
+After the meaningful RUN batch, do a short SYNCHRONOUS self-review of the change,
+record serious affected-path risks and proceed only when the path is safe.
 ```
 
 For a **read-only trial**, ask for the same plan without writing. If no coding tool is available, practice on documents or a fictional bounded example instead; do not pretend code executed.

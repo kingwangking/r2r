@@ -5,7 +5,7 @@
 ## Required comparison
 - Define an identical high-level real user goal, representative subfeatures and complete **final acceptance suite** for each arm.
 - Workflow **A:** deeply review/gate each small increment before continuing.
-- Workflow **B:** PLAN/RUN/HARDEN with risk-directed checks, developer STEER and no universal intermediate release-quality requirement.
+- Workflow **B:** PLAN/RUN/HARDEN with **synchronous, brief, risk-directed self-review after meaningful batches** (rather than per-slice deep gates), developer STEER and no universal intermediate release-quality requirement. Keep review time in B fully counted, not hidden.
 - Preserve equivalent code/model budgets, developer experience and environment as far as practical. Record actual departures.
 - Evaluate at least two different project/technology types. An existing proprietary project can contribute aggregated, rights-cleared metrics without exposing private code.
 
