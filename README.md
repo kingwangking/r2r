@@ -2,6 +2,8 @@
 
 **Plan big. Run long. Harden deep. Steer anytime.**
 
+**[简体中文说明 / 中文快速上手](docs/zh/README.md)** · [Web + GitHub 实践指南](quickstart/web-github.md)
+
 R2R is a lightweight, developer-steered engineering method for building **complex software with AI agents at high throughput while ensuring final product readiness**.
 
 AI generates implementation faster than developers can fully review every intermediate change. At the same time, AI makes larger projects viable. R2R responds by organizing **when to implement, when to validate, when to restructure, and when a product is truly ready**.
