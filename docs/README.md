@@ -1,15 +1,22 @@
-# Project Documentation
+# Documentation index
 
-This is the documentation entrypoint for `r2r`.
+**Current truth:** [program/current-state.md](program/current-state.md)
 
-## Current state
+**Start**
+- [Purpose and audience](product/positioning.md)
+- [R2R in one page](method/r2r.md)
+- [Developer steering](method/steering.md)
+- [Risk, review and final convergence](method/quality.md)
+- [Quickstart](../quickstart/README.md)
 
-- **Phase:** Repository bootstrap.
-- **Purpose and boundary:** To be defined.
-- **Technology stack and build workflow:** To be selected.
-- **Implementation:** Not started.
-- **Next step:** Define the project purpose, scope, and runtime before adding implementation-specific structure.
+**Engineering program**
+- [Whole-program roadmap](program/roadmap.md)
+- [Method architecture and implementation restraint](architecture/system.md)
+- [Problem, hypotheses and experiment](research/problem-and-hypotheses.md)
 
-## Documentation map
+**Use and improve**
+- [Templates](../templates/README.md)
+- [Illustrative example](../examples/README.md)
+- [Contribution guidance](../CONTRIBUTING.md)
 
-Project-specific architecture, development instructions, decisions, and status records will be linked here as they are established.
+Method claims are working hypotheses until supported by actual field evidence. The repo currently has no mandatory build or tool runtime.
