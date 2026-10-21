@@ -9,7 +9,7 @@
 Establish a whole-product capability map, actual user journeys, architectural/data ownership, mature implementations to reuse, high-impact unknowns, long-horizon roadmap and final acceptance. Plans may be extremely long and are revisable. Prioritize overall direction, not exhaustive low-level design.
 
 ## RUN
-Let an authorized agent implement and continue producing useful changes. Make cheap relevant checks, independent fast reviews or delayed deep reviews when justified. A failing noncritical smoke test is a fact to record, not necessarily a stop-the-world event. A P0/P1 risk blocks its **affected dependency**, while unrelated work may continue safely. Preserve the actual work state for restart; do not require developer approval after every small task.
+Let an authorized agent implement and continue producing useful changes. After each meaningful execution batch, perform a **synchronous, lightweight, risk-focused review** in the current workflow, resolve critical affected-path issues, log noncritical findings and continue. Deep reviews remain developer- or risk-triggered, not obligatory after every edit. A failing noncritical smoke test is a fact to record, not necessarily a stop-the-world event. A P0/P1 risk blocks its **affected dependency**, while unrelated work may continue safely. Preserve the actual work state for restart; do not require developer approval after every small task.
 
 ## STEER ANYTIME
 The developer sets the current horizon and may ask product/architecture questions, inspect evidence, shorten/extend execution, change review intensity, stop for a key uncertainty or trigger re-design. Agent explanations are not proof; demand source-grounded evidence for important claims.
@@ -30,6 +30,8 @@ Evidence-backed READY
 ```
 
 Stages are **dominant objectives, not rigid gates**. RUN may require early restructuring or deep checks; HARDEN may reveal missing capabilities and send work back to RUN.
+
+**Current execution mode:** one agent/active web workflow is sufficient: **implement → synchronous quick Review → continue**. Without a separate reviewer, this is an **author self-check**, not an independent audit. Async/multi-agent review is not required or assumed.
 
 **Truth rules:** NOT_RUN is not PASS. One SHA's review does not approve later SHAs. An author self-check is not an independent reviewer. A dormant CLI/chat session is not background autonomous progress.
 

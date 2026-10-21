@@ -13,13 +13,15 @@ AI generates implementation faster than developers can fully review every interm
 ## The four moves
 
 1. **PLAN** — Set whole-product outcomes, a capable architecture, a long-horizon plan and final acceptance.
-2. **RUN** — Keep delivering valuable work. Lightweight, independent and asynchronous review when useful; no automatic deep-review gate after every change.
+2. **RUN** — Keep delivering valuable work. Synchronous lightweight review after meaningful batches; deepen only when risk demands it, rather than gating every small edit on an exhaustive review.
 3. **HARDEN** — Integrate real user journeys, restructure where needed, fix defects, test and repeat until final quality is evidenced.
 4. **STEER ANYTIME** — The developer can ask targeted questions, adjust how long agents run, increase/decrease review effort or redirect architecture.
 
 **Long runs are a core capability, not a compulsory fixed interval.** Intermediate product builds may be incomplete or unstable. Security, rights, irreversible data protection, source authority and truthful reporting remain non-negotiable.
 
 ## One-file agent skill (optional)
+
+**Current Review mode:** synchronous, short, risk-scoped review in the active execution sequence: implement → review immediately → record findings → continue. It does **not** require a local multi-agent system or a separate reviewer. A self-check must be labeled self-check; a genuine independent Review is optional and must be performed separately if claimed. See [Review economics](docs/method/review-economics.md).
 
 The [R2R Agent Skill](skills/r2r/SKILL.md) packages these instructions in the portable **Agent Skills** format. Copy the core prompt below if your agent does not support skills—**no installation or local process is required**.
 
@@ -31,7 +33,7 @@ Use this with your existing AI coding assistant; no R2R app, local runner or ins
 Use R2R for this project:
 PLAN the complete product, architectural boundaries, long-term roadmap and final acceptance.
 RUN meaningful feature work continuously within my authorized scope; make cheap targeted checks,
-review according to risk, and do not stop unrelated work for routine deep reviews or an
+review synchronously and briefly after each meaningful batch, and do not stop productive work for routine deep re-reviews or an
 imperfect intermediate version. Leave a recoverable account of actual changes and next work.
 I may STEER ANYTIME by questioning direction, requesting evidence, changing run length or review depth.
 Once the product paths exist, HARDEN repeatedly through integration, restructuring, real-use

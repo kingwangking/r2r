@@ -13,8 +13,8 @@ make a long run wasteful. Distinguish facts from assumptions.
 ## 2. RUN (copy)
 ```text
 Follow the R2R plan in my authorized scope. Keep implementing valuable user-facing
-capabilities, favor cheap relevant checks, and review as deeply as actual risk
-demands. Do not wait for full serial review or perfect intermediate smoke tests
+capabilities. After each meaningful batch, perform a short SYNCHRONOUS self-review;
+deepen only for material risks. Do not demand exhaustive review or perfect intermediate smoke tests
 before unrelated work. Keep actual commits/evidence/known risks and a resume pointer.
 Stop affected unsafe operations, permission conflicts and irreversible risks.
 Do not claim execution outside this active session.

@@ -30,7 +30,7 @@ The roadmap is deliberately complete and long; execution horizons remain dynamic
 ## W3 — long-run operations and recovery (next major research/practice focus)
 - W3.1 worked tens-of-slices program with clear task lineage.
 - W3.2 exact-Git and session recovery practices (without inventing auto-resume).
-- W3.3 async reviewer timing and dependent vs independent continuation.
+- W3.3 **synchronous lightweight Review** after meaningful batches: short same-agent check, optional genuinely separate sequential independent Review, dependency-scoped holds; no local multi-agent requirement.
 - W3.4 verification debt log and risk-scoped stop rules.
 - W3.5 failure injection / interrupted work examples.
 **Exit:** a practical long horizon without mandatory micro-approval.
@@ -62,7 +62,7 @@ The roadmap is deliberately complete and long; execution horizons remain dynamic
 ## W7 — optional automation (only if justified)
 - W7.1 measure repeated manual friction.
 - W7.2 try smallest adapter using existing agent/Git APIs.
-- W7.3 evaluate isolated reviewer and trustworthy resume.
+- W7.3 evaluate optional separate **sequential** reviewer and trustworthy resume; async/parallel infrastructure is out of the baseline and needs independent justification.
 - W7.4 compare tool/no-tool outcomes.
 - W7.5 accept or decline automation as core dependency.
 **Exit:** R2R remains usable even if W7 is never built.

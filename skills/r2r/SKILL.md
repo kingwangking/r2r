@@ -21,7 +21,7 @@ Use this method when the developer explicitly asks for R2R or a long-horizon, hi
 
 1. With the **developer's authorization**, choose a short, medium or very long execution horizon based on current confidence and risk.
 2. Implement valuable product slices and do cheap **relevant** checks. Aim for user-observable outcomes, not just PRs, lines or document count.
-3. When helpful and actually possible, use a **distinct independent reviewer** on a pinned change. It may run in parallel with work not depending on the reviewed risk. Never call self-review independent; never claim a reviewer ran if it did not.
+3. **Immediately after each meaningful batch**, perform a short **synchronous risk-scoped Review** in this same authorized execution sequence: inspect direction, changed source and cheap real evidence; repair critical affected-path findings, record minor issues and move on. This is a **self-review**, not an independent review. A separate reviewer is optional when actually available and should be explicitly invoked **sequentially**, not assumed to run asynchronously or in parallel.
 4. Keep ordinary intermediate imperfections visible. A non-release-ready intermediate build is not automatically a campaign-wide stop.
 5. Identify critical affected dependencies: rights, secrets, real/irreversible data and unauthorized operations cannot be deferred for speed; P0/P1 stops affected paths. Continue safe independent work where possible.
 6. On any interruption, leave a concise source-grounded checkpoint of delivered outcomes, evidence, unverified claims and the next action. Do not claim hidden autonomous work after the actual session ends.
@@ -48,11 +48,13 @@ As real product journeys exist (or systemic failures recur):
 
 ## Review decision — no automatic fixed cadence
 
-- **High confidence, reversible work:** continue long RUN with focused checks.
+- **High confidence, reversible work:** continue long RUN; at chosen meaningful batch boundaries, perform a short synchronous self-review and resume.
 - **A consequential unverified dependency:** investigate before building more dependent work.
-- **Costly review, safe independent work exists:** defer scoped deep review, continue unaffected work.
+- **Costly full review, safe independent work exists:** perform synchronous *quick* Review now, record a clearly scoped deferred deep check and continue safely.
 - **Risk of real-data loss, permission/rights breach or irreversible effect:** stop the unsafe operation and get the necessary protection/approval.
 - **Structural rework repeats:** shorten RUN and redesign the shared seam now.
+
+**No automatic async Review:** do not launch or depend on local multi-agent reviewer infrastructure; synchronous quick review is the current R2R default. Never mislabel the same agent's self-check as independent.
 
 Do not require a multi-document governance stack for small improvements. Use a concise conversation, one card or existing repo docs.
 

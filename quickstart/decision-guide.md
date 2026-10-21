@@ -1,6 +1,6 @@
 # Choosing run length and review depth — a steering guide
 
-R2R supports **very long runs by default when justified**. There is no imposed schedule such as “always review after five changes.” Developer confidence is dynamic and should be informed by reality.
+R2R uses a short **synchronous quick Review after meaningful work batches** in the current agent session; no asynchronous/multi-agent review runner is required. This review is not a deep universal gate. R2R supports **very long runs by default when justified**. There is no imposed schedule such as “always review after five changes.” Developer confidence is dynamic and should be informed by reality.
 
 ## Ask these four questions
 
@@ -13,7 +13,7 @@ R2R supports **very long runs by default when justified**. There is no imposed s
 | --- | --- |
 | High direction confidence; changes reversible and independent | Allow a long program/campaign; concise checkpoints and cheap review |
 | Important subsystem contract is unverified | Run a focused probe before implementing dependent components |
-| Reviewer cannot finish quickly, but next tasks are independent | Continue safe work and record the deferred review |
+| Full deep Review would delay a reversible batch | Perform quick synchronous scoped Review, record a deferred deep check, then continue the next safe batch |
 | A product journey fails mid-development | Observe and record; fix now if it blocks dependencies, otherwise prioritize by current goal |
 | Many changes require rework because of the same seam | Shorten RUN, review architecture, restructure before proceeding |
 | Risk touches secrets, customer data, irreversible state or rights | Protect/stop the affected operation regardless of speed goals |

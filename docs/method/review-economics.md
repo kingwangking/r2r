@@ -1,42 +1,59 @@
-# Review economics — choosing the cheapest *sufficient* feedback
+# Review economics — synchronous by default, lightweight by design
 
-R2R's key question is **not “How can we avoid review?”** It is “Which verification now would change what we safely do next, and which verification provides better value at integration or release time?”
+**R2R current default:** **RUN → synchronous quick Review → RUN** within the same active execution process. This is an intentional engineering choice because a convenient local multi-agent execution/reviewer architecture is not presently available. It must not become the old *full deep review after every tiny change* loop.
 
-## Why the choice matters
-When AI can produce many changes quickly, **review can be a serial dependency**. But deferring it carelessly can cause more rework and risk than it saves. Both costs must be considered. No precise savings ratio is claimed.
+## The distinction that matters
 
-## Three kinds of feedback
+| | R2R default | Traditional costly bottleneck |
+| --- | --- | --- |
+| Frequency | After a **meaningful work batch**, which may include many small tasks | Every small increment |
+| Timing | Immediately after the batch, **synchronously** | Serial gate with potentially lengthy queue/re-review |
+| Depth | Fast, relevant, risk-scaled | Broad, often release-level by default |
+| Reviewer | Current agent's clearly labeled **self-check**; ask another reviewer only if really available/needed | Formal independent review routinely demanded |
+| Handling | Fix P0/P1 affected paths; note P2/P3 and continue approved scope | All findings repeatedly halt all work |
+| Finality | Only checks this batch and what was actually observed | Risk of over-interpreting approval as product-ready |
 
-| Feedback | Example | Useful when | Evidence limit |
-| --- | --- | --- | --- |
-| **Targeted developer question** | “Does this feature use the existing state authority?” | Testing an architectural assumption cheaply | An agent answer is a lead, not an independent audit |
-| **Fast source/contract check** | Examine frozen diff and affected callers; focused test | Common regressions or local seam risk | Does not prove whole-product usability |
-| **Integrated/deep review** | Real GUI/API path, data restart, negative authorization, cross-module audit | Shared state, unsafe effects, major architectural uncertainty, READY claim | Scope and actual source/build must still be pinned |
+**Synchronous does not mean deep.** A 60-second focused source/contract check and an hour-long system-wide audit are both synchronous activities but have very different costs.
 
-**No blanket rule:** a low-risk presentation change may go without separate deep review; a one-line authorization change may demand a focused independent audit.
-
-## Async review without false safety
+## Minimum synchronous loop
 
 ```text
-Builder commits S → independent reviewer inspects S
-                        ↓
-Builder may proceed on a truly nondependent task
-                        ↓
-Review returns finding and affected path
-                        ↓
-Risky/dependent paths repaired and rechecked before further reliance
+PLAN: whole product and current authorized campaign
+     ↓
+RUN: implement a meaningful batch (size chosen by developer)
+     ↓
+REVIEW: quick synchronous source/evidence check of that batch
+     ├─ Critical risk or wrong direction → stop/fix affected work, rerun relevant check
+     ├─ Ordinary issue / deferred evidence → record and continue
+     └─ No material finding → continue
+     ↓
+RUN: next meaningful batch, while authorization/session exists
+     ↓
+HARDEN when integration/restructuring or final READY requires it
 ```
 
-This pattern requires real agent/workspace isolation if implemented automatically. A prompt saying “read-only” is not a security boundary. **Web-only authoring** may use a later separate ChatGPT review or code inspection instead; it must not claim a reviewer was launched if none was.
+The **developer may intervene any time**; meaningful batch size and review depth are dynamically chosen. There is no “review every N commits” law, and there is no assumption that another agent is running concurrently.
 
-## Severity isn't enough: include *dependencies*
+## What quick Review should inspect
 
-- P0/P1 → identify **which** future work becomes unsafe or invalid; hold it and fix with evidence.
-- P2/P3 → owner assigns deferred proof/fix and a due stage; safe independent progress may continue.
-- Failure without known impact → ask the smallest question/experiment that distinguishes local inconvenience from systemic risk.
+1. Does the change serve the agreed user/product target, or has the implementation drifted?
+2. Has it broken a known architecture, data authority, permissions or irreversible-data boundary?
+3. Are changed files and any PASS/FAIL/NOT_RUN statements real and source-grounded?
+4. Is there a single high-information architecture/product question that must be answered before dependent work?
+5. If a finding is nonblocking, what is its owner, affected path and eventual validation stage?
 
-## Review cost signals
+Keep the summary compact: **scope/commit → up to three actionable findings → decision → next work**. The limit of three is a reporting convenience **only for quick review**, never a cap on reporting real P0/P1 problems.
 
-Track, when possible: review waiting time, repeated re-review cycles, false-positive fixes, defect severity discovered later, integration rework, human attention and time-to-accepted-product. Cheap checks are only a win if final quality and total rework remain credible.
+## When deeper synchronous review is justified
 
-See [decision guide](../../quickstart/decision-guide.md), [quality](quality.md), [evaluation protocol](../research/evaluation-protocol.md).
+Shared persistent state, auth or credentials, data migrations, architectural pivots, recurring cross-module failures or claims that a real user journey/release is ready can merit source- or runtime-backed deeper review. Ask the developer for any consequential missing authorization. A distinct independent reviewer, if available, can perform **sequential independent review**, but do not invent its participation or label a self-check independent.
+
+## Handling verification debt
+
+Ordinary P2/P3 findings and tests intentionally deferred can be documented and revisited. Do not accumulate unowned missing evidence or proceed through an unsafe dependency. Periodic real integration and final HARDEN remain necessary. This is *review-effort allocation*, not deleting verification.
+
+## Future options
+
+Parallel/async reviewer dispatch would require real suitable agent/workspace infrastructure and a separate reason to implement it. It is **not part of this baseline workflow or an R2R requirement**.
+
+See [quality](quality.md), [steering](steering.md), [decision guide](../../quickstart/decision-guide.md) and [evaluation protocol](../research/evaluation-protocol.md).

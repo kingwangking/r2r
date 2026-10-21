@@ -15,7 +15,7 @@ This playbook is for projects **without a mandatory local CLI, agent daemon, ter
 ## 3. RUN in coherent batches
 - Work in a dedicated Git branch; one meaningful PR can contain several compatible iterations.
 - Directly write actual reusable assets/implementation; don't spin on pre-review before any content exists.
-- After a batch, verify relevant content cheaply: broken links, contradictory gates, wrong owner facts, evidence claims.
+- After each meaningful batch, run a **synchronous lightweight self-review immediately** in the active web execution sequence: check broken links, contradictory gates, owner facts and evidence claims; fix critical findings and continue. Do not wait for a separate local reviewer or call this check independent.
 - Continue further work **within the current user-authorized interaction**, or leave a truthful next-step pointer when no further active execution is possible.
 - GitHub draft PRs are workspaces, not automatic publication/merge instructions.
 

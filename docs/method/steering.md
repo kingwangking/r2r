@@ -7,7 +7,7 @@
 | Clear architecture and reversible implementation | Very long continuous campaign |
 | Significant shared dependency uncertainty | Medium run and targeted integration probe |
 | Unknown data authority or viability assumption | Short run, architecture question, source inspection or spike |
-| Reviewer needs deep investigation but next work is independent | Defer review, continue unaffected work |
+| The full deep review would be costly but routine changes are reversible | Perform a short **synchronous** batch review now; defer a clearly scoped deep audit while continuing safe work |
 | Rights, secrets, auth or destructive real-data effects | Explicit hard protection; deeper verification or approval before the affected operation |
 | Structural design appears wrong | Redirect now, reshape plan, resume after correction |
 
@@ -19,6 +19,8 @@ Questions can be a cheaper form of review:
 - “What is the lowest-cost test that could prove this claim wrong?”
 
 **Question ≠ proof.** For material uncertainty, ask for exact files, logic, running evidence or a focused experiment.
+
+**Default Review cadence:** after an appropriately sized meaningful RUN batch, conduct a short synchronous review immediately in the current execution session. Developers decide the batch length and may demand deeper verification at any time; there is no multi-agent async queue in the baseline.
 
 A **checkpoint** records reality and next action. A **gate** blocks a particular risky action. A **review** reduces uncertainty. Do not make every checkpoint a gate or every review a multi-hour ritual.
 

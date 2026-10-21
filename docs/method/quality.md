@@ -22,7 +22,7 @@ Skipping T1/T2 during a particular development slice is acceptable when risk all
 - **P2:** important but deferrable — record the evidence gap and due stage.
 - **P3:** minor — batch or accept deliberately.
 
-An independent reviewer reads the exact frozen version when possible; a fast review is not a formal release sign-off.
+**Synchronous by default:** immediately after a meaningful RUN batch, the executing agent performs a short risk-scoped self-review, records its actual scope and continues when safe. This is NOT independent review. A separate reviewer can later be requested and run sequentially when genuinely available. A quick review is never final release sign-off.
 
 ## Verification debt
 A deferred claim needs at least: **claim, affected dependency, evidence available, evidence missing, risk, due-by stage, owner**. Example: in-process save works, separate-process restart NOT_RUN, must be checked before playable candidate. No silent promotion of NOT_RUN to PASS.
