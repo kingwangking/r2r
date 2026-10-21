@@ -19,6 +19,10 @@ AI generates implementation faster than developers can fully review every interm
 
 **Long runs are a core capability, not a compulsory fixed interval.** Intermediate product builds may be incomplete or unstable. Security, rights, irreversible data protection, source authority and truthful reporting remain non-negotiable.
 
+## One-file agent skill (optional)
+
+The [R2R Agent Skill](skills/r2r/SKILL.md) packages these instructions in the portable **Agent Skills** format. Copy the core prompt below if your agent does not support skills—**no installation or local process is required**.
+
 ## Start in two minutes
 
 Use this with your existing AI coding assistant; no R2R app, local runner or installation needed:

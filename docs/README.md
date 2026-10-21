@@ -34,6 +34,11 @@
 - [Method architecture and implementation restraint](architecture/system.md)
 - [Problem, hypotheses and experiment](research/problem-and-hypotheses.md)
 
+**One-file instruction asset**
+- [R2R Agent Skill](../skills/r2r/SKILL.md)
+- [How to use the optional skill](../skills/README.md)
+- [R2R one-card on this real repository](../examples/r2r-one-card.md)
+
 **Use and improve**
 - [R2R self-application record](../examples/r2r-self-application.md)
 - [Templates](../templates/README.md)
