@@ -39,6 +39,14 @@ HARDEN：核心能力形成后多轮整合、结构优化、真实使用测试�
 2. **R2R 不是固定的超长循环：** 允许覆盖数百项任务的完整规划，持续长时间执行，也允许一个关键问题就暂停重定向。
 3. **R2R 不是只能本地运行：** 使用 ChatGPT 网页端和 GitHub 就可以实践；仓库保持规划、执行事实与下一步。关闭会话后不会假装继续在后台执行。
 
+## 从示例开始
+
+- [一页式最简卡片（英文）](../../quickstart/one-card.md)
+- [十分钟手动体验指南](../../quickstart/10-minute-trial.md)
+- [三种执行长度和验证策略](../../examples/three-modes.md)
+- [12 个任务的长周期示例（虚构教学案例）](../../examples/long-campaign.md)
+- [方法与现有 Spec Kit / CI 的区别](../research/landscape-and-differences.md)
+
 ## 详细资料
 
 - [英文单页方法](../method/r2r.md)

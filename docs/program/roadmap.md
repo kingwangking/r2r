@@ -4,14 +4,14 @@
 
 The roadmap is deliberately complete and long; execution horizons remain dynamic and developer-controlled. Completing an item means delivering evidence or an artifact, not just writing a plan.
 
-## W0 — foundation (current)
+## W0 — foundation (candidate delivered)
 - W0.1 clarify problem, product, audience and non-goals.
 - W0.2 publish one-page method and simple quickstart.
 - W0.3 offer PLAN/RUN/Review/HARDEN/Resume templates and clear current-state.
 - W0.4 fast consistency check; draft PR; no claim of empirical validation.
 **Exit:** a stranger can understand and try the method without installing a runtime.
 
-## W1 — conceptual rigor
+## W1 — conceptual rigor (working artifacts; branding visual/peer usability remains)
 - W1.1 define throughput vs code output, complexity and final stability.
 - W1.2 compare spec-driven, CI, incremental delivery, automated review and agent loops.
 - W1.3 clarify interim quality vs protected invariants and verification debt.
@@ -19,7 +19,7 @@ The roadmap is deliberately complete and long; execution horizons remain dynamic
 - W1.5 Chinese/English glossary, naming and short visual.
 **Exit:** a coherent set of principles rather than an obligatory bureaucratic process.
 
-## W2 — adoptable field kit
+## W2 — adoptable field kit (templates and scenarios delivered; outsider trials remain)
 - W2.1 quickstart prompts for web-first and coding-agent projects.
 - W2.2 sample whole-product capability map and long but revisable program.
 - W2.3 developer question bank and risk-selective review notes.
@@ -27,7 +27,7 @@ The roadmap is deliberately complete and long; execution horizons remain dynamic
 - W2.5 novice onboarding trials with short and long run examples.
 **Exit:** end-to-end “PLAN → RUN → HARDEN” with “STEER ANYTIME” reproducible.
 
-## W3 — long-run operations and recovery
+## W3 — long-run operations and recovery (next major research/practice focus)
 - W3.1 worked tens-of-slices program with clear task lineage.
 - W3.2 exact-Git and session recovery practices (without inventing auto-resume).
 - W3.3 async reviewer timing and dependent vs independent continuation.

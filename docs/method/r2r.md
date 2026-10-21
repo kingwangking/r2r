@@ -32,3 +32,5 @@ Evidence-backed READY
 Stages are **dominant objectives, not rigid gates**. RUN may require early restructuring or deep checks; HARDEN may reveal missing capabilities and send work back to RUN.
 
 **Truth rules:** NOT_RUN is not PASS. One SHA's review does not approve later SHAs. An author self-check is not an independent reviewer. A dormant CLI/chat session is not background autonomous progress.
+
+**Go deeper only when needed:** [principles](principles.md) · [glossary](glossary.md) · [architecture confidence](architecture-confidence.md) · [review economics](review-economics.md) · [convergence](convergence.md).
