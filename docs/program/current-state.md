@@ -13,6 +13,7 @@
 - W2 one-card, ten-minute manual trial, example campaigns, review economics and field-test worksheet: `2c7e08ef081701b54a9354af4c331b4a9f6306c5`.
 - Optional portable Agent Skill + R2R self-application card: `7fc1e392a8f1443e962537cd41c9fd70fc3c1554`.
 - **Owner-directed Review policy correction:** `d071f1685bccc7f5526a730b8e36f51009fa4b51` updates method/AGENTS/Skill/quickstart to **synchronous lightweight Review**, because no convenient local multi-agent reviewer infrastructure is currently available.
+- Follow-up alignment of templates, W3 next work, cases and evaluation: `a7059f7125ec545b3fdebb288a79874a0293615a`.
 
 ## W0–W2 delivery / verification
 - W0 foundation: usable method, prompt, roadmap and first draft PR **delivered**; no outside beginner test yet.
@@ -26,6 +27,7 @@
 ## Not done; do not promote to PASS
 - No real software runtime, local CLI requirement, deployment, automated code tests, measurable throughput advantage, external review or field-quality proof.
 - No license selection, repository public visibility change, product launch or Owner-authorized merge.
+- At alignment HEAD `a7059f71`, GitHub PR diff + branch tree listed **42 tracked files**, with **117/117 relative Markdown links resolving**; lightweight author-side check found no remaining instruction to *run* an asynchronous reviewer queue. Contextual mentions of async remain only to state that it is **not required**.
 - No guarantee of uninterrupted autonomous execution across ChatGPT conversations.
 - No local multi-agent/async reviewer infrastructure; **synchronous author-side quick Review** is the current default. Real independent reviews require an actually distinct context/reviewer.
 
