@@ -35,6 +35,8 @@ run negative/restart/regression tests and repeat. Report NOT_RUN honestly.
 Do not declare ready because the task list is complete or a shallow review passed.
 ```
 
+**After a new session starts:** [one-message resume](resume-in-one-message.md). **When feature breadth exists but the product is not usable:** [HARDEN playbook](../docs/method/hardening-playbook.md).
+
 **Smallest possible adoption:** [one-card quickstart](one-card.md). **Manual exercise:** [10-minute trial](10-minute-trial.md). **Long-run example:** [12 planned slices](../examples/long-campaign.md). **Different risk cases:** [three modes](../examples/three-modes.md).
 
 Optional copyable files: [program](../templates/program.md), [run](../templates/run.md), [review](../templates/review.md), [harden](../templates/harden.md), [resume](../templates/resume.md).

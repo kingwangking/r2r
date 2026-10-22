@@ -9,6 +9,10 @@ description: Apply Run to Ready (R2R) to AI-assisted software development when b
 
 Use this method when the developer explicitly asks for R2R or a long-horizon, high-throughput AI engineering workflow. Respect the repository's actual instructions, the developer's scope, available tools and safety boundaries.
 
+## RESUME BEFORE PLANNING AGAIN
+
+When asked to “continue,” inspect **live** repository/PR/branch HEAD and the current program/checkpoint first. Reconcile stale checkpoints with Git reality, preserve developer authority and **RUN the next valuable authorized batch** rather than restarting PLAN. Use [one-message resume](../../quickstart/resume-in-one-message.md) for a copyable procedure. No conversation implies hidden work outside its active session.
+
 ## PLAN — understand the whole product before scaling implementation
 
 1. Inspect **actual** repository facts, current branch/commit, existing specs, docs and known incomplete work.
@@ -69,5 +73,7 @@ Next: <highest-value continuation and resume point>
 ```
 
 **Never:** auto-merge/release/publish without authorization, overwrite unknown local work, expose secrets, or claim an independent review, an unattended background run or product readiness without real evidence.
+
+If core product breadth exists but end-to-end behavior remains unreliable, use the [HARDEN operating playbook](../../docs/method/hardening-playbook.md): structural diagnosis → real path proof → resilience / negative cases → repeated regression → explicit acceptance. There is no hard-coded number of repair rounds.
 
 **Optional reading:** [R2R core method](../../docs/method/r2r.md), [review economics](../../docs/method/review-economics.md), [quality](../../docs/method/quality.md), [one-card](../../quickstart/one-card.md).

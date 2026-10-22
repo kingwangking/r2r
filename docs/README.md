@@ -19,6 +19,14 @@
 - [Worked 12-slice long-horizon example](../examples/long-campaign.md)
 - [Real evaluation worksheet (blank)](../examples/field-test-sheet.md)
 
+**W3–W4: long RUN and repeatable HARDEN**
+- [Resume in one new message](../quickstart/resume-in-one-message.md)
+- [Long-run / synchronous Review protocol](method/long-run-protocol.md)
+- [40-slice long-horizon planning example](../examples/forty-slice-plan.md)
+- [Actual GitHub recovery exercise](../examples/r2r-recovery-actual.md)
+- [HARDEN operating playbook](method/hardening-playbook.md)
+- [Structural failure and convergence examples](../examples/hardening-scenarios.md)
+
 **W1 research and methods**
 - [Core principles](method/principles.md)
 - [Definitions and glossary](method/glossary.md)

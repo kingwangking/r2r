@@ -11,4 +11,6 @@
 - **Repeat triggers:** <material change or failure reopens relevant cycles>
 - **Final judgment:** <PASS/FAIL/NOT_RUN by actual evidence, authorized GO only>
 
-Repeat as needed. Early hardening often entails system redesign, not merely isolated bug fixes.
+**Use the observed system, not only this table.** If a core ownership seam is wrong, reorganize it before polishing symptoms. Each PASS should refer to the actual pinned product/fixture; a missing GUI, restart, negative or packaged run is NOT_RUN. Reopen affected checks after architectural rewrites.
+
+Repeat as needed. Early hardening often entails system redesign, not merely isolated bug fixes. [HARDEN playbook](../docs/method/hardening-playbook.md).

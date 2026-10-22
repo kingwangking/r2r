@@ -53,6 +53,13 @@ HARDEN：核心能力形成后多轮整合、结构优化、真实使用测试�
 - [12 个任务的长周期示例（虚构教学案例）](../../examples/long-campaign.md)
 - [方法与现有 Spec Kit / CI 的区别](../research/landscape-and-differences.md)
 
+## 长周期恢复与质量收敛
+
+- [新的网页端会话一句话恢复执行](../../quickstart/resume-in-one-message.md)
+- [长程 RUN 与同步轻量复核协议](../method/long-run-protocol.md)
+- [覆盖 40 个任务的长程完整规划示例](../../examples/forty-slice-plan.md)
+- [从架构整合到最终质量收敛的操作手册](../method/hardening-playbook.md)
+
 ## 详细资料
 
 - [英文单页方法](../method/r2r.md)

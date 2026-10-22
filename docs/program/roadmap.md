@@ -27,7 +27,7 @@ The roadmap is deliberately complete and long; execution horizons remain dynamic
 - W2.5 novice onboarding trials with short and long run examples.
 **Exit:** end-to-end “PLAN → RUN → HARDEN” with “STEER ANYTIME” reproducible.
 
-## W3 — long-run operations and recovery (next major research/practice focus)
+## W3 — long-run operations and recovery (core instructions and first real retrieval demonstrated; risk-injection work remains)
 - W3.1 worked tens-of-slices program with clear task lineage.
 - W3.2 exact-Git and session recovery practices (without inventing auto-resume).
 - W3.3 **synchronous lightweight Review** after meaningful batches: short same-agent check, optional genuinely separate sequential independent Review, dependency-scoped holds; no local multi-agent requirement.
@@ -35,7 +35,7 @@ The roadmap is deliberately complete and long; execution horizons remain dynamic
 - W3.5 failure injection / interrupted work examples.
 **Exit:** a practical long horizon without mandatory micro-approval.
 
-## W4 — convergence and high-stability delivery
+## W4 — convergence and high-stability delivery (method/illustrations in progress; real software evidence remains outstanding)
 - W4.1 architecture and product interaction restructuring playbook.
 - W4.2 actual GUI/API/end-to-end and cross-process evidence.
 - W4.3 security, permissions, real-data, rights and replay safeguards.
