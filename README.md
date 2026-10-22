@@ -64,6 +64,10 @@ Three closely connected capabilities need to work **as one system**:
 
 [Read the architectural fit →](docs/product/compatibility.md) · [Read the Finding/review policy →](docs/method/review-economics.md)
 
+### For large projects: nested parallelism, not merely more top-level agents
+
+When actual agent tools and independent Campaign ownership are available, R2R now prefers **multiple Campaign Lead Agents running concurrently, with each Lead delegating its own focused implementation, test or review subagents**. A single Integrator retains ownership of shared contracts. Each Agent may choose a suitable **available model and reasoning effort** by complexity, risk and cost rather than a global preset. This is a supported *method pattern*, not a claim of automatically spawned subagents, a bundled scheduler or measured speedups. [Implementation guidance](skills/r2r/references/hierarchical-agents.md).
+
 ## The difference is what happens after the first implementation
 
 **Common stall (illustrative)**
