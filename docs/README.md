@@ -42,6 +42,8 @@
 - [Current adjacent approaches](research/landscape-and-differences.md)
 
 **Release and distribution**
+- [v0.1.0 candidate evidence and release checklist](product/release-candidate-v0.1.0.md)
+- [Unreleased change log](../CHANGELOG.md)
 - [How R2R becomes a tagged GitHub Release and installable Skill](product/distribution.md)
 
 **Engineering program**

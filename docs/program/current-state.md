@@ -1,50 +1,38 @@
-# R2R current state — productized usage candidate
+# R2R — current state (pre-release)
 
-**Updated:** 2026-10-22. **Truth source:** live GitHub branch and PR, not this checkpoint. This note references the **last observed content commit before the checkpoint commit**; re-read actual HEAD on resume.
+**Snapshot:** 2026-10-22. **Authority:** actual GitHub branch, PR, Actions and Releases; this file is a checkpoint, not a replacement for live inspection.
 
-## Project / permission facts
+## Confirmed source and status
 
-- Repository: `kingwangking/r2r`, last observed **Private**. Default `main` based on bootstrap `b5265fc52a71b94aed5cb9771d925054168eafd6`.
-- Work branch: `feat/r2r-method-foundation-v0`, [PR #1](https://github.com/kingwangking/r2r/pull/1) open/draft/unmerged.
-- Source preceding this state update: `425b6a5d824964fb841f9f1b299df0118aff863b`.
-- Current authorized authorship: ChatGPT web + GitHub; synchronous lightweight **same-agent self-review** after meaningful batches. No mandatory local multi-Agent architecture.
-- Owner instruction changed priority: **deliver a complete usable R2R package and explain real final user experience before investing in expensive comparative validation**.
+- `kingwangking/r2r` is **Public**. The most recently observed `main` is the bootstrap `b5265fc52a71b94aed5cb9771d925054168eafd6`.
+- [PR #1](https://github.com/kingwangking/r2r/pull/1) on `feat/r2r-method-foundation-v0`: **Draft/Open/Unmerged** at the last check.
+- Current source reviewed for candidate checks:
+  - `7fecbed11aa037d594d755e457f225664653c192` — added standard-library release checker, positive/negative tests, deterministic ZIP + SHA-256 and read-only candidate GitHub Actions.
+  - `972cbd536b3fd5cd3659f11ab2882e43badcfeb6` — added official `gh skill publish --dry-run` in the same workflow.
+- [Run #39734487738](https://github.com/kingwangking/r2r/actions/runs/39734487738): **SUCCESS**, source/unit checks, ZIP/checksum generation and uploaded `r2r-skill-candidate` artifact.
+- [Run #39734623413](https://github.com/kingwangking/r2r/actions/runs/39734623413): **SUCCESS**, including official `gh skill publish --dry-run`, unit/source checks and candidate ZIP/checksum artifact.
+- No GitHub Release existed at last inspection. **No open-source LICENSE was found in the repository tree**, despite Public visibility.
 
-## Delivered — end-user experience
+## Actually usable candidate product
 
-A user can use **Start → Continue → Harden**, steering anytime:
-- [Product README](../../README.md): the three user actions and copy/paste prompt, no installation.
-- [Full Chinese use guide](../../quickstart/use.md): step-by-step end-user onboarding.
-- [Codex / Claude Code / generic install guide](../../quickstart/install.md): copy the full skill folder, not only SKILL.md.
-- [Portable complete Skill](../../skills/r2r/SKILL.md) with its **internal** [state template](../../skills/r2r/assets/R2R.md) and [reference](../../skills/r2r/references/operating-guide.md), no reference outside copied folder.
-- [Fictional complete user journey](../../examples/complete-usage.md), explicitly not an executed product test.
-- R2R project itself retains W0–W4 methodology, architecture, research and development record. These are optional reading for the end user, not a prerequisite to using the Skill.
+- Source package `skills/r2r/SKILL.md`, `assets/R2R.md`, `references/operating-guide.md`.
+- User flow: **Start R2R → Continue R2R → Harden with R2R**, with developer steering and synchronous lightweight self-review.
+- Portable method requiring no R2R-specific server, background task or extra agent platform.
+- [Release source validator and deterministic package](../../scripts/skill_release.py) and [candidate workflow](../../.github/workflows/skill-candidate.yml) exist and have executed successfully for specific SHAs.
+- Detailed installation, release, and limitation docs exist; they are being aligned with current Public/unreleased state in this doc-only update.
 
-**Important distinction:** The R2R user's own repository keeps **one root `R2R.md`** with whole-product plan, state and next run. It is not this method project's `docs/program/current-state.md`. Existing specs are referenced, not duplicated.
+## Still unresolved
 
-## Actual light synchronous Review
+- Owner selection/approval of LICENSE, trademark/rights implications and final version/tag.
+- Owner instruction to merge PR #1 and create a tagged GitHub Release. None performed.
+- Actual Skill installation and activation in an external coding agent: **NOT_RUN**.
+- External usability and throughput claims: **NOT_RUN**, intentionally not gating candidate authoring.
 
-At `425b6a5d`:
-- GitHub PR diff and branch tree reported **53 tracked/changed files**.
-- **182/182 relative Markdown links** in added PR content resolved to GitHub tracked paths; no unpaired added-line code fences observed.
-- Portable `skills/r2r/SKILL.md` has `name: r2r` and a descriptive frontmatter; the package includes the required assets and references.
-- Prior narrower check of eight new/replaced user-facing files: **34/34** relative refs existed and Skill-internal relative refs did not reach outside `skills/r2r/`.
+## Next best actions
 
-These are **author-side documentation consistency checks only**. They are not host execution, real software testing, independent review or evidence of higher throughput.
+1. Keep the candidate source, packaging script, Actions workflow and documentation consistent; monitor a new workflow result if source/tooling changes.
+2. Obtain owner choices for legal/license/release authorization **before** changing distribution state.
+3. After authorization, merge approved source, rerun official publish dry-run on final ref and publish a named Release; attach a Skill-only ZIP/checksum if appropriate.
+4. Follow with a real host installation smoke test and later W5 effectiveness studies.
 
-## Unfinished / intentionally deferred
-
-- Actual Codex/Claude Code Skill installation and host execution: **NOT_RUN**.
-- External beginner onboarding, rigorous empirical throughput comparison, real software GUI/end-to-end/restart/security verification: **NOT_RUN**.
-- Rights/licensing/name audit for open source, publication, public visibility and official release: **NOT_AUTHORIZED / NOT_DONE**.
-- GitHub releases inventory inspected on 2026-10-22: **0 releases found**. Official distribution target defined as `gh skill publish --dry-run` → (Owner approves license/rights/visibility/version) → `gh skill publish --tag vX.Y.Z` → `gh skill install`; no publish was performed. See [distribution plan](../product/distribution.md).
-- No dedicated R2R CLI, daemon, background scheduler, hosted platform or installer exists, and none is required for this portable initial product.
-
-## Next practical priorities (not a new research bureaucracy)
-
-1. Refine end-user usability and correct any real instruction/host-path issues surfaced when the owner tries the Skill in an existing coding agent.
-2. Ensure `skills/r2r/` stays portable and `R2R.md` stays minimal as the method evolves.
-3. When explicitly chosen, run field studies and W5/W8 deeper verification; **do not let complex tests displace shipping a usable package now**.
-4. For public open-source release, request owner's explicit decisions on license, rights, visibility, final tag and scope; do not auto-merge or publish. Run the existing `gh skill publish --dry-run` validation before any authorized Release and pin install to actual published tag.
-
-**Resume:** read current branch/PR HEAD first, then this file and AGENTS.md. Start the next valuable authorized work; no work is presumed to have occurred while the web conversation was inactive.
+Do not confuse Public repo visibility, Actions test artifacts, PR Draft, or a successful publish dry-run with an actual versioned Release.

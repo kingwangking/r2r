@@ -12,7 +12,7 @@
 gh skill install kingwangking/r2r r2r --agent codex --scope user
 ```
 
-**当前仓库仍为 Private，且还没有 Release；以上为正式发布后的使用方式，尚未实测安装成功。** 已获授权访问仓库的开发者仍可复制整个 Skill 目录或直接使用 Prompt。详见 [发行说明](../docs/product/distribution.md)。
+**当前仓库虽为 Public，但 Skill 仍只在未合并 Draft PR 分支上，且没有 Release；以上为正式发布后的安装方式，尚未实测安装成功。** 已获授权访问仓库的开发者仍可复制整个 Skill 目录或直接使用 Prompt。详见 [发行说明](../docs/product/distribution.md)。
 
 ## 1. 选择入口
 

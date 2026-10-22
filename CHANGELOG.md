@@ -1,6 +1,6 @@
 # Changelog
 
-R2R is **pre-release**. No GitHub Release has been published as of the last source inspection.
+R2R is **pre-release**. Source/package tests and official GitHub CLI publish dry-run succeeded on the candidate branch, but no immutable tagged release or host installation is claimed. No GitHub Release has been published as of the last source inspection.
 
 ## Unreleased — candidate v0.1.0 (proposed, not tagged)
 

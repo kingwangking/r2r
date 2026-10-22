@@ -2,7 +2,7 @@
 
 R2R is a **versioned Agent Skill**, not a separate process or executable server. The standard distribution target is **GitHub Releases with a semver tag** and direct installation from the GitHub repository. The portable source lives at [`skills/r2r/`](../skills/r2r/SKILL.md).
 
-**Current status:** R2R is **Private, Draft, unreleased**. The commands below show **how users will install after authorized publication**. They have NOT been executed against a public R2R release.
+**Current status:** R2R is **Public but not released**; the Skill is only on the **unmerged Draft PR branch**, not on default `main`. These are the **intended post-release installation commands**, not evidence of an installation. Public repository visibility does not supply an open-source license.
 
 ## Recommended: one-command install (after release)
 
@@ -63,4 +63,4 @@ These are natural-language triggers, not native CLI commands implemented by the 
 
 ## Publisher's release workflow
 
-See [distribution plan](../docs/product/distribution.md). GitHub CLI provides `gh skill publish --dry-run` to validate and `gh skill publish --tag vX.Y.Z` to create a release **after authorization**. The public/tagged version, licensing and full installation proof have not been completed yet.
+See [distribution plan](../docs/product/distribution.md). GitHub CLI provides `gh skill publish --dry-run` to validate and `gh skill publish --tag vX.Y.Z` to create a release **after authorization**. The official `gh skill publish --dry-run` and candidate ZIP/sha256 packaging **passed in GitHub Actions** at [run #39734623413](https://github.com/kingwangking/r2r/actions/runs/39734623413), along with Python source/unit checks. This did **not** publish a Release or install the Skill in Codex/Claude Code. The release tag, license and actual host installation remain outstanding.

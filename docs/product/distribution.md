@@ -2,7 +2,7 @@
 
 **Decision:** Use GitHub-native Skill publishing/installing instead of developing a custom installer or requiring users to browse a GitHub directory. Source repository is the development/workspace; a **tagged GitHub Release** is the supported versioned distribution artifact.
 
-**Status 2026-10-22:** 0 GitHub Releases observed for the **Private** `kingwangking/r2r` repository. No tag/public visibility/license decision is claimed. Draft PR #1 is not a shipped release.
+**Status 2026-10-22:** GitHub reports `kingwangking/r2r` as **Public** with **0 GitHub Releases**. Draft PR #1 is unmerged and default `main` lacks this Skill. No LICENSE has been approved; public visibility is not the same as open-source permission.
 
 ## Three distinct concepts
 
@@ -30,9 +30,9 @@
 
 ## Proposed release procedure (not executed)
 
-1. Owner approves release scope, rights of all source assets, license and whether to make repository public. Do not publish private project details without permission.
+1. Owner approves release scope, rights of all source assets, an explicit **license**, final version tag and permission to publish. The repository is already Public; do not change its visibility. Do not publish private project details without permission.
 2. Commit final `skills/r2r` assets and human-facing install/usage docs on an authorized release ref. Resolve PR merge by owner instruction.
-3. Use a locally supported GitHub CLI with `gh skill` **preview** commands, and run `gh skill publish --dry-run` to check names, folder convention and frontmatter. Fix actual problems; don't claim this ran in a web-only session.
+3. The project's read-only [candidate workflow](../../.github/workflows/skill-candidate.yml) has already run both package tests and the official `gh skill publish --dry-run` at [run #39734623413](https://github.com/kingwangking/r2r/actions/runs/39734623413): SUCCESS. Repeat on the **final approved release commit** if its sources changed. A successful dry-run is not a Release.
 4. After authorization, use `gh skill publish --tag vX.Y.Z` to validate and create a tagged GitHub Release. The public release version must point to the intended source, not a Draft PR-only branch.
 5. GitHub includes source zip/tar archives for a Release. Optionally attach a dedicated `r2r-skill-vX.Y.Z.zip` containing only the standalone folder for manual users, with checksum if useful. **This extra ZIP does not replace the Git source used by installers.**
 6. Confirm `gh skill preview`, `gh skill install`, prompt activation, user-scope/project-scope install and update path **in a real host**. If not executed, label NOT_RUN and clearly mark the release's limitations; do not claim an untested installation is proven.

@@ -26,8 +26,8 @@ No R2R native CLI, IDE, multi-Agent backend, scheduler, hosted API, unattended c
 
 - [x] `skills/r2r/` includes Skill + internal template and reference (observed in Git source).
 - [x] Installation and end-user Start/Continue/Harden docs exist (observed in Git).
-- [ ] Automated source tests / candidate artifact — wait for actual Actions result.
-- [ ] GitHub CLI `gh skill publish --dry-run` — NOT_RUN.
+- [x] Python source checks, five unit tests and candidate ZIP + SHA-256: [Actions run #39734487738](https://github.com/kingwangking/r2r/actions/runs/39734487738), SUCCESS on `7fecbed11aa037d594d755e457f225664653c192`.
+- [x] Official GitHub CLI `gh skill publish --dry-run`: [Actions run #39734623413](https://github.com/kingwangking/r2r/actions/runs/39734623413), SUCCESS on `972cbd536b3fd5cd3659f11ab2882e43badcfeb6`.
 - [ ] License, naming and third-party rights approved — OWNER DECISION.
 - [ ] Approved ref/merge and immutable version tag — NOT_DONE.
 - [ ] Installation in at least one real host — NOT_RUN.
