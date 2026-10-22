@@ -14,7 +14,7 @@
 
 - [Release workflow run #39737475626](https://github.com/kingwangking/r2r/actions/runs/39737475626) created the tag, Release and downloadable files successfully.
 - **One final CI assertion FAIL:** `gh skill install ... --pin v0.1.0` itself reported successful installation, but test compared installed `SKILL.md` bytes to source. Installer adds provenance/install metadata, so byte equality was a mistaken requirement.
-- Follow-up code corrects comparison to check installed Skill semantics/name and byte equality of unmodified assets/LICENSE. A separate post-release workflow verifies actual pinned-version installation and asset checksum; its result must be checked before claiming post-release smoke PASS.
+- Follow-up code corrects comparison to check installed Skill semantics/name and byte equality of unmodified assets/LICENSE. [Post-release smoke run #39737882456](https://github.com/kingwangking/r2r/actions/runs/39737882456) **PASS**: immutable tag, GitHub Release, downloaded ZIP/SHA-256 and pinned `v0.1.0` CLI installation checks succeeded. The follow-up did not modify the release tag or published files.
 - Candidate pipeline had earlier run successful source/unit/dry-run/local/remote SHA-pinned checks.
 
 ## Scope / remaining verification
@@ -25,7 +25,7 @@
 
 ## Next
 
-1. Obtain post-release smoke CI outcome, and correct any legitimate installation mismatch.
+1. The post-release smoke is PASS; seek practical host usage feedback and address actual behavioral issues.
 2. Improve installation onboarding if a real host reveals friction.
 3. Evaluate R2R in a practical project when useful; do not use exhaustive comparative trials as a prerequisite to the already published Skill.
 

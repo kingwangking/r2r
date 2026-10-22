@@ -2,7 +2,7 @@
 
 **Decision:** Use GitHub-native Skill publishing/installing instead of developing a custom installer or requiring users to browse a GitHub directory. Source repository is the development/workspace; a **tagged GitHub Release** is the supported versioned distribution artifact.
 
-**First release:** the owner approved MIT licensing, merging and `v0.1.0` publication. [GitHub Release v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) is live, with tag pinned to `1f7bdd09e2f304d4dd03f6575114ebc73a5e413a` and Skill-only ZIP/SHA-256 assets. The publish job succeeded through release/asset creation; its last exact-byte installer assertion failed because the installer adds metadata. A separate post-release smoke check addresses this, without moving the immutable tag.
+**First release:** the owner approved MIT licensing, merging and `v0.1.0` publication. [GitHub Release v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) is live, with tag pinned to `1f7bdd09e2f304d4dd03f6575114ebc73a5e413a` and Skill-only ZIP/SHA-256 assets. The publish job succeeded through release/asset creation; its last exact-byte installer assertion failed because the installer adds metadata. [Post-release smoke run #39737882456](https://github.com/kingwangking/r2r/actions/runs/39737882456) **PASS** accounts for installer metadata. The immutable tag has not moved.
 
 ## Three distinct concepts
 
