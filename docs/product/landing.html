@@ -140,7 +140,7 @@
     .bottom { padding: 40px 0; color: #8799b0; font-size: 13px; }
     .bottom-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; border-top: 1px solid #263749; padding-top: 26px; }
     .bottom a { color: #b9d3e9; text-decoration-color: #4f7899; }
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal { opacity: 1; transform: none; } /* Content is readable even without JS or scroll events. */
     .reveal.visible { opacity: 1; transform: none; }
     @media (max-width: 900px) {
       .pain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -442,6 +442,15 @@
         const observer = new IntersectionObserver(entries => {
           for (const entry of entries) if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+            // Progressive enhancement: don't hide marketing content until JS runs.
+            // Animate only elements observed entering view; screenshots/no-JS stay readable.
+            if (entry.target.animate) {
+              entry.target.animate(
+                [{ opacity: .72, transform: "translateY(14px)" },
+                 { opacity: 1, transform: "translateY(0)" }],
+                { duration: 500, easing: "ease-out" }
+              );
+            }
             observer.unobserve(entry.target);
           }
         }, { threshold: .09, rootMargin: "0px 0px 40px 0px" });

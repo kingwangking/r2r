@@ -21,6 +21,16 @@ class LandingTests(unittest.TestCase):
             p.write_text(src.replace('href="#demo"', 'href="#missing-page-section"'), encoding="utf-8")
             self.assertTrue(any("missing anchor target" in s for s in mod.check(p, syntax_check=False)))
 
+    def test_invisible_by_default_sections_are_rejected(self):
+        src = (ROOT / "docs/product/landing.html").read_text(encoding="utf-8")
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "invisible.html"
+            p.write_text(src.replace(
+                ".reveal { opacity: 1; transform: none;",
+                ".reveal { opacity: 0; transform: none;"
+            ), encoding="utf-8")
+            self.assertTrue(any("remain readable" in s for s in mod.check(p, syntax_check=False)))
+
     def test_external_script_is_detected(self):
         src = (ROOT / "docs/product/landing.html").read_text(encoding="utf-8")
         with tempfile.TemporaryDirectory() as d:

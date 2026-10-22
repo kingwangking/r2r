@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 from html.parser import HTMLParser
 from pathlib import Path
 import subprocess
@@ -92,6 +93,10 @@ def check(path: Path, *, syntax_check: bool = True) -> list[str]:
     for element in REQUIRED_IDS:
         if element not in audit.ids:
             issues.append("missing interactive DOM element: " + element)
+    # A hidden-by-default reveal can make entire below-fold sections invisible in
+    # browser screenshots, disabled-JS situations or delayed observer callbacks.
+    if re.search(r"\.reveal\s*\{[^}]*\bopacity\s*:\s*0(?:[;\s}]|$)", text, re.S):
+        issues.append("landing sections must remain readable without scroll animation")
     for expected in ("prefers-reduced-motion", "aria-live", "not a timed benchmark",
                      "Spec", "Multi-Agent", "HARDEN", "READY"):
         if expected.lower() not in text.lower():
