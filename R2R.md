@@ -16,7 +16,7 @@
 
 - **正式已发布：** `v0.1.0`，Tag 固定在 `1f7bdd09e2f304d4dd03f6575114ebc73a5e413a`。MIT。
 - **真实检查：** [发布后安装/校验 PASS](https://github.com/kingwangking/r2r/actions/runs/39737882456)；真实 Codex / Claude Code 交互执行 **NOT_RUN**。
-- **当前阶段：** 发布后 HARDEN。已改造用户 README 与发布说明，更新整体 Run-to-Ready 定义；[Draft PR #2](https://github.com/kingwangking/r2r/pull/2) 新增以痛点共鸣开场的 README 和可交互的单文件 HTML 动画介绍页；v0.1.0 Tag 保持不变。
+- **当前阶段：** 发布后 HARDEN。已改造用户 README 与发布说明，更新整体 Run-to-Ready 定义；[PR #2](https://github.com/kingwangking/r2r/pull/2) 包含以痛点共鸣开场的 README 和交互式 HTML 动画、CI 与 Pages 托管准备；PR 实际状态请查 GitHub。v0.1.0 Tag 保持不变。
 - **当前工作分支：** `hardening/post-v0.1.0-usability`（历史名称；恢复时请重新读取 Git）。
 - **Review：** 每个有意义的批次同步轻量自检；重大风险需深入验证；不把自检称为独立 Review。
 - **真实验证：** [CI Run #39739514168](https://github.com/kingwangking/r2r/actions/runs/39739514168) **SUCCESS**：12 个源码/负例测试、文档一致性检查、官方 Skill 发布前检查、本地/远程指定 SHA 安装、ZIP/校验文件构建。仅证明这批检查范围。
@@ -30,7 +30,8 @@
 - **站点工程：** [GitHub Pages 指南](docs/product/pages.md)和 [Pages Actions 工作流](.github/workflows/pages.yml)已在 PR 中准备，只允许 main 触发部署；PR CI 只生成静态预览包，不部署。
 - **真实新验证：** [Actions #39774330194](https://github.com/kingwangking/r2r/actions/runs/39774330194) PASS：16 项测试，官方 Skill 格式、源码链接、CLI 本地/远程安装、Chrome 演示自动抵达 READY、桌面/手机整页截图以及 Pages 静态预览包。
 - **未完成：** GitHub Pages 的仓库 Source 设置、真实公开网站部署、GitHub About/Topics、实际 Codex/Claude 创作项目完整实践，均保持 NOT_RUN。
-- **下一批：** 保持 Draft PR；维护者确认 Pages 设置并批准合并后可部署，拿到真实公开 URL 再替换 README 的第三方预览链接；之后针对真实用户反馈迭代。
+- **Pages 当前事实：** 合并准备时 GitHub 仓库 `has_pages=false`；现有代码连接没有启用 Pages 的管理操作，远程桌面通道本月额度已用尽，未进行管理设置。Pages 工作流会在未启用时明确提示并跳过部署。
+- **下一批：** 以真实 PR/merge 状态为准；到仓库 Settings → Pages 将 Source 设置为 GitHub Actions，然后从 Actions 手动启动 Pages 工作流。仅在真实部署/HTTP 访问成功后将 README 第三方预览替换为正式网址；继续进行开发者实际宿主试用。
 
 ## HARDEN：本阶段验收
 

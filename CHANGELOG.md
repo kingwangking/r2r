@@ -2,7 +2,7 @@
 
 R2R publishes versioned Agent Skills using GitHub Releases. Consult [the actual Releases page](https://github.com/kingwangking/r2r/releases) to determine which versions have been published.
 
-## Unreleased — post-v0.1.0 HARDEN (in Draft PR #2)
+## Unreleased — post-v0.1.0 HARDEN
 
 - Rewrite README around the AI software delivery pain, a relatable illustrative review stall, and a plausible Spec + parallelism + rapid-iteration solution.
 - Add self-contained animated HTML explainer with interactive stalled/R2R paths, keyboard-accessible controls, reduced-motion support and an install CTA; add HTML/JS checks and actual headless Chrome desktop/mobile screenshots to CI.

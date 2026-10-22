@@ -7,12 +7,12 @@
 - **Single source of truth:** [`docs/product/landing.html`](landing.html), a self-contained HTML file with inline CSS/JS; no hosted build system, backend or external script needed.
 - **GitHub Pages entry:** the [Pages Actions workflow](../../.github/workflows/pages.yml) copies that file to `_site/index.html` and deploys only from `main`.
 - **PR preview:** the existing [candidate workflow](../../.github/workflows/skill-candidate.yml) uses Chrome to render desktop/mobile screenshots, checks JavaScript and exports a static site preview artifact. It **does not publish PR code** as a live site.
-- **Production security:** `contents: read` for build; Pages deploy receives `pages: write` and `id-token: write`, with the `github-pages` environment and a single serialized deployment group.
+- **Production security:** build has `contents: read` and `pages: read` for Pages configuration; deploy has `pages: write` and `id-token: write`, with the `github-pages` environment and a single serialized deployment group. The build is gated on `repository.has_pages`, so unconfigured deployments do not fail spuriously.
 
 ## How to enable the real site
 
-1. In [repository Settings → Pages](https://github.com/kingwangking/r2r/settings/pages), set **Build and deployment → Source → GitHub Actions**. The current connector does not expose this administrative setting.
-2. Review and merge PR #2 into `main` when approved. The Pages workflow is added by that PR and will run on the first matching `main` push. If Pages settings are enabled only after the merge, manually run **R2R visual site (GitHub Pages)** once under GitHub Actions.
+1. In [repository Settings → Pages](https://github.com/kingwangking/r2r/settings/pages), set **Build and deployment → Source → GitHub Actions**. The connected code API does not expose this administrative setting. The repository was inspected before merge with `has_pages: false`.
+2. After approved PR #2 is merged into `main`, the workflow checks the `has_pages` flag. If Pages has not been enabled, it emits an activation notice and **skips build/deployment without creating a misleading red CI failure**. Once Pages is enabled, manually run **R2R visual site (GitHub Pages)** from the Actions tab; if Pages was enabled before merge, the main push can deploy automatically.
 3. Open the workflow run and verify its **Deploy approved standalone site** step shows success.
 4. Only then use the hosted site at the URL reported by the deployment. Expected standard GitHub Pages project URL: `https://kingwangking.github.io/r2r/` (do **not** claim this URL is live before verification).
 5. Replace the [temporary HTMLPreview link in README](../../README.md) with the verified first-party Pages URL; update GitHub About homepage if desired.

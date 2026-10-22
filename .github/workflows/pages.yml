@@ -17,8 +17,29 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  pages-state:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Explain Pages activation status
+        env:
+          HAS_PAGES: ${{ github.event.repository.has_pages }}
+        run: |
+          if [ "$HAS_PAGES" = "true" ]; then
+            echo "PAGES_ENABLED: first-party deployment can proceed"
+          else
+            echo "::notice::GitHub Pages is not enabled. In Settings → Pages select Source: GitHub Actions; rerun this workflow from Actions."
+            echo "PAGES_NOT_ENABLED: do not claim the public site is live"
+          fi
+
+  build:
+    needs: pages-state
+    if: ${{ github.event.repository.has_pages == true }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
     steps:
       - name: Check out approved main
         uses: actions/checkout@v4
