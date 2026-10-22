@@ -1,17 +1,24 @@
-# The optional R2R Agent Skill
+# R2R Agent Skill — portable product package
 
-[**r2r/SKILL.md**](r2r/SKILL.md) is one standalone instruction file with YAML frontmatter matching the basic **Agent Skills** format. It contains no code, scripts, binaries, network actions, model keys or mandatory local runtime.
+The distributable artifact is the **entire** [`skills/r2r/`](r2r/SKILL.md) folder:
 
-## How to use
+```text
+r2r/
+  SKILL.md                       ← agent entry and three natural-language modes
+  assets/R2R.md                  ← optional root project-state template
+  references/operating-guide.md ← additional detail only when needed
+```
 
-- **Agent with Skill support:** make the `skills/r2r` directory available through the agent's documented Skill-loading mechanism, then ask it to “Use R2R” on the actual project. The exact installation/loading steps depend on the host product; **this repository does not auto-install or run anything**.
-- **ChatGPT web / other chat agents:** open the file and copy its instructions into an authorized project discussion, or use the shorter [one-card prompt](../quickstart/one-card.md). An external Skill mechanism is not required.
-- **Existing Spec workflow:** keep your current spec and planning tooling. R2R guides the execution horizon, validation allocation, steering and quality convergence around that workflow.
+Everything linked from the Skill stays **inside the same copied folder**, so it does not depend on the original source repository being checked out.
 
-## Packaging honesty
+[Installation guide](../quickstart/install.md) covers Codex project-local `.agents/skills/r2r`, Claude Code project-local `.claude/skills/r2r`, and global/prompt-only alternatives.
 
-The file structure and required metadata are based on the [Agent Skills specification](https://agentskills.io/specification). We checked the text format and basic metadata, **but have not executed an external skills validator or installed it in a host**. That compatibility work remains `NOT_RUN`.
+## User-facing behavior
 
-**Current workflow:** after each meaningful execution batch, perform a **synchronous lightweight self-review** in the same agent context. No local multi-agent runtime or async reviewer dispatch is needed. A separate reviewer can be sought sequentially for consequential questions if actually available.
+- **Start R2R** → inspect real project and specs, create/update root `R2R.md`, immediately start the first safe authorized campaign.
+- **Continue R2R** → inspect Git and R2R.md, reconcile stale facts and continue.
+- **Harden with R2R** → focus on real integrated product quality and explicit readiness.
 
-Do not imply the skill creates parallel agents, schedules work or performs independent reviews itself. Those are capabilities of whichever authorized host and tools are actually available.
+Review defaults to synchronous lightweight **self-review**, not a fictional second agent. R2R does not include an execution scheduler or extra local runtime.
+
+**Current distribution status:** candidate in a **private** repository. The file structure follows the published Agent Skills pattern, but Skill-host installation, validation and real end-user evaluation remain `NOT_RUN`; public distribution awaits license/rights and maintainer approval.

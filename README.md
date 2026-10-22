@@ -2,49 +2,72 @@
 
 **Plan big. Run long. Harden deep. Steer anytime.**
 
-**[简体中文说明 / 中文快速上手](docs/zh/README.md)** · [Web + GitHub 实践指南](quickstart/web-github.md)
+**[中文：R2R 如何真正使用](quickstart/use.md)** · [Installation](quickstart/install.md) · [One-page method](docs/method/r2r.md) · [Research](docs/README.md)
 
-R2R is a lightweight, developer-steered engineering method for building **complex software with AI agents at high throughput while ensuring final product readiness**.
+R2R is a **portable, developer-steered workflow for AI coding agents**. It helps build complex software through a whole-product plan, sustained implementation, synchronous lightweight review, recoverable progress and repeated product-level hardening.
 
-AI generates implementation faster than developers can fully review every intermediate change. At the same time, AI makes larger projects viable. R2R responds by organizing **when to implement, when to validate, when to restructure, and when a product is truly ready**.
+It is **not** a new coding model, daemon, task scheduler, orchestration server or requirement to keep every intermediate revision release-ready.
 
-> Spec describes what to build. R2R helps keep building it and reach a reliable product.
+## Use R2R in an existing project
 
-## The four moves
+There are two ways:
 
-1. **PLAN** — Set whole-product outcomes, a capable architecture, a long-horizon plan and final acceptance.
-2. **RUN** — Keep delivering valuable work. Synchronous lightweight review after meaningful batches; deepen only when risk demands it, rather than gating every small edit on an exhaustive review.
-3. **HARDEN** — Integrate real user journeys, restructure where needed, fix defects, test and repeat until final quality is evidenced.
-4. **STEER ANYTIME** — The developer can ask targeted questions, adjust how long agents run, increase/decrease review effort or redirect architecture.
-
-**Long runs are a core capability, not a compulsory fixed interval.** Intermediate product builds may be incomplete or unstable. Security, rights, irreversible data protection, source authority and truthful reporting remain non-negotiable.
-
-## One-file agent skill (optional)
-
-**Current Review mode:** synchronous, short, risk-scoped review in the active execution sequence: implement → review immediately → record findings → continue. It does **not** require a local multi-agent system or a separate reviewer. A self-check must be labeled self-check; a genuine independent Review is optional and must be performed separately if claimed. See [Review economics](docs/method/review-economics.md).
-
-The [R2R Agent Skill](skills/r2r/SKILL.md) packages these instructions in the portable **Agent Skills** format. Copy the core prompt below if your agent does not support skills—**no installation or local process is required**.
-
-## Start in two minutes
-
-Use this with your existing AI coding assistant; no R2R app, local runner or installation needed:
+**Without installing anything:** paste this into an AI assistant that has access to your repository:
 
 ```text
-Use R2R for this project:
-PLAN the complete product, architectural boundaries, long-term roadmap and final acceptance.
-RUN meaningful feature work continuously within my authorized scope; make cheap targeted checks,
-review synchronously and briefly after each meaningful batch, and do not stop productive work for routine deep re-reviews or an
-imperfect intermediate version. Leave a recoverable account of actual changes and next work.
-I may STEER ANYTIME by questioning direction, requesting evidence, changing run length or review depth.
-Once the product paths exist, HARDEN repeatedly through integration, restructuring, real-use
-checks and comprehensive repair until the agreed release bar is actually demonstrated.
-Never bypass security/rights/irreversible-data boundaries or claim tests ran when they did not.
+Use R2R for this project. Read the actual repository and existing specs.
+Create or update R2R.md as one durable program + execution checkpoint:
+whole-product goals, architecture boundaries, long-horizon roadmap, final READY,
+current evidence, risks and the next meaningful campaign.
+Then, within my authorized scope, start implementing the first safe campaign.
+After each meaningful batch, synchronously do a short self-review and continue.
+I may steer at any time. Never claim unrun tests passed, bypass security/rights
+boundaries or publish/merge without permission. Save actual state before stopping.
 ```
 
-Continue with [quickstart](quickstart/README.md), [one-page method](docs/method/r2r.md), [long program](docs/program/roadmap.md) and [templates](templates/README.md).
+**With an Agent Skill:** copy the self-contained [`skills/r2r/`](skills/r2r/SKILL.md) folder into your agent's skill location. See [Codex/Claude Code installation paths](quickstart/install.md).
 
-## Scope and honesty
+## Then use three natural-language actions
 
-Current deliverable: a **usable method, instruction kit, templates and evolving real-world study plan**. R2R is not yet a validated standard, an autonomous execution runtime or a promise of unattended execution outside an active authorized agent session. The repository is currently private; public licensing and visibility require separate approval.
+| Say | What the agent should do |
+| --- | --- |
+| **“Start R2R on this project”** | Read actual code/specs; create or update the single project-level `R2R.md` program; start the first authorized RUN. |
+| **“Continue R2R”** | Compare `R2R.md` to live Git, resume the next safe campaign, synchronous quick review after each meaningful batch, update state. |
+| **“Harden this product with R2R”** | Integrate and actually exercise end-to-end paths; restructure, fix, rerun meaningful quality checks and report what remains before READY. |
 
-See [documentation map](docs/README.md).
+**Steer anytime:** “Pause and inspect the persistence architecture”, “Run longer”, “What is working end to end?”, “Change the roadmap”, or “Review this security boundary deeply.”
+
+These are **natural-language triggers**, not claimed native slash commands or self-running background jobs.
+
+## What is persisted?
+
+The agent uses **one `R2R.md` in the user's project** as a small durable control file; it links to existing specifications rather than duplicating them:
+
+```text
+my-product/
+  existing code and docs...
+  R2R.md                     ← goal, long program, current truth, next RUN
+  .agents/skills/r2r/        ← optional Codex project-local Skill (copy folder)
+```
+
+[Copyable starter template](skills/r2r/assets/R2R.md). It is optional for a trivial one-off task, but highly recommended for long-horizon and multi-session work.
+
+## Core policy
+
+- **PLAN:** whole-product direction, important architecture and readiness criteria; long roadmap but revisable detail.
+- **RUN:** sustained meaningful work in authorized sessions. Intermediate builds may remain incomplete or imperfect.
+- **REVIEW synchronously:** quick self-review after meaningful batches, not full deep review after each small edit; deep checks when important risk demands it.
+- **HARDEN:** repeated integration, structural improvement, real-path and negative testing until the agreed product is genuinely READY.
+- **STEER ANYTIME:** developer controls run length, scope and review intensity.
+- **Always protect:** rights, credentials, permissions, real or irreversible data, and truthful PASS/FAIL/NOT_RUN reporting.
+
+## Choose the shortest reading path
+
+1. [Use it from start to finish (Chinese)](quickstart/use.md)
+2. [Install or copy the Skill](quickstart/install.md)
+3. [Illustrative first-to-final conversation](examples/complete-usage.md)
+4. [Portable Skill](skills/r2r/SKILL.md) and [single project-state template](skills/r2r/assets/R2R.md)
+
+Deep methodology, research, comparisons, examples and the [internal R2R development program](docs/program/roadmap.md) are optional reading, not installation requirements.
+
+**Project status:** this repository is **Private** and its method/Skill package is an *unreleased candidate*; no open-source license, public distribution approval, verified throughput benefit, background execution service or external host installation is claimed.

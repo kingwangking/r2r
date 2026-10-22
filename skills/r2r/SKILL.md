@@ -1,79 +1,71 @@
 ---
 name: r2r
-description: Apply Run to Ready (R2R) to AI-assisted software development when building a complex product through long, steerable implementation campaigns and risk-directed review, then repeated integration, restructuring and final product acceptance. Works with existing specs and Git; no special execution runtime required.
+description: Use R2R (Run to Ready) when the user wants to plan and continuously build a complex software product with AI agents, resume long-horizon work, steer architecture and review, or harden an integrated product for release. Developer-led; synchronous lightweight review, evidence-backed readiness, no extra runtime.
 ---
 
 # R2R — Run to Ready
 
-**Plan big. Run long. Harden deep. Steer anytime.**
+**Plan big · Run long · Harden deep · Steer anytime.**
 
-Use this method when the developer explicitly asks for R2R or a long-horizon, high-throughput AI engineering workflow. Respect the repository's actual instructions, the developer's scope, available tools and safety boundaries.
+A portable workflow for **existing** AI coding agents. R2R changes how work is planned, continued, reviewed and ultimately accepted; it does not supply tool access or run a background daemon.
 
-## RESUME BEFORE PLANNING AGAIN
+## Recognize three user intents
 
-When asked to “continue,” inspect **live** repository/PR/branch HEAD and the current program/checkpoint first. Reconcile stale checkpoints with Git reality, preserve developer authority and **RUN the next valuable authorized batch** rather than restarting PLAN. Use [one-message resume](../../quickstart/resume-in-one-message.md) for a copyable procedure. No conversation implies hidden work outside its active session.
+1. **Start / initialize** — “Use R2R on this project”, “开始 R2R”, “用 R2R 开发它”.
+2. **Continue / resume** — “Continue R2R”, “继续 R2R”, “接着执行之前的长期规划”.
+3. **Harden / finish** — “Harden with R2R”, “R2R 收敛”, “把产品修到可交付”.
 
-## PLAN — understand the whole product before scaling implementation
+**Steer anytime** in any mode: ask architecture questions, change run horizon, inspect evidence, stop risky dependencies, adjust plan or Review depth. These are natural-language intents, **not** native slash commands implemented by this Skill.
 
-1. Inspect **actual** repository facts, current branch/commit, existing specs, docs and known incomplete work.
-2. Capture the real end-to-end user promises, a whole-product capability map, and final READY criteria.
-3. Identify architectural ownership (especially persistent state and authority), reuse candidates, material unknowns and irreversible/high-risk boundaries.
-4. Establish an ordered but **revisable long-horizon program**; do not require exhaustive microtask design or a perfect architecture prediction.
-5. Distinguish verified facts, assumptions, planned features and work actually implemented.
+## Always read the real project first
 
-## RUN — keep making meaningful progress
+- Inspect actual repository root, branch/HEAD (and working-tree changes if available), existing specs/AGENTS/project docs and user authorization.
+- In **START**, create or update one root `R2R.md` from [assets/R2R.md](assets/R2R.md) when a long-lived project needs durable state. Reuse existing specs, ADRs, issue lists and CI; link them rather than duplicate. Do not overwrite an existing R2R.md blindly.
+- In **CONTINUE**, read `R2R.md` **and** current Git facts; Git reality supersedes stale status. Do not re-plan from scratch or overwrite unexpected concurrent changes.
+- In **HARDEN**, read promised end-to-end journeys and READY requirements. Decide what can actually be exercised with available tools. If critical environment/test access is unavailable, say so.
 
-1. With the **developer's authorization**, choose a short, medium or very long execution horizon based on current confidence and risk.
-2. Implement valuable product slices and do cheap **relevant** checks. Aim for user-observable outcomes, not just PRs, lines or document count.
-3. **Immediately after each meaningful batch**, perform a short **synchronous risk-scoped Review** in this same authorized execution sequence: inspect direction, changed source and cheap real evidence; repair critical affected-path findings, record minor issues and move on. This is a **self-review**, not an independent review. A separate reviewer is optional when actually available and should be explicitly invoked **sequentially**, not assumed to run asynchronously or in parallel.
-4. Keep ordinary intermediate imperfections visible. A non-release-ready intermediate build is not automatically a campaign-wide stop.
-5. Identify critical affected dependencies: rights, secrets, real/irreversible data and unauthorized operations cannot be deferred for speed; P0/P1 stops affected paths. Continue safe independent work where possible.
-6. On any interruption, leave a concise source-grounded checkpoint of delivered outcomes, evidence, unverified claims and the next action. Do not claim hidden autonomous work after the actual session ends.
+## PLAN — whole product, long but revisable program
 
-## STEER ANYTIME — developer retains the control plane
+Capture **actual product promise**, complete major user journeys, credible architecture/data ownership and mature reuse, protected risks, long-horizon outcomes and final READY criteria. The roadmap may contain dozens/hundreds of slices. Unknown details are hypotheses, not facts; change them when reality disproves them.
 
-The developer may at any moment ask:
-- “Which real user journey now works end to end? Show actual evidence.”
-- “Did this change duplicate an existing source of truth?”
-- “What architecture assumption most threatens future work?”
-- “What small experiment would falsify this success claim?”
-- “Should the next run be longer, shorter, or start structural hardening?”
+Do not stop after a beautiful plan when the user also authorized implementation; **start the first safe meaningful RUN**.
 
-Answer material questions with exact source, tests or observations when possible. **An agent explanation is not proof.** Change course immediately when direction is wrong, rather than relying on blind confidence in later cleanup.
+## RUN — continuous execution in authorized scope
 
-## HARDEN — repeated convergence, not cosmetic bug fixing
+1. Choose a meaningful batch horizon (small for uncertain dangerous seams, large for understood reversible work). The developer can extend/shorten it at any moment.
+2. Implement **real product value**, not merely create docs/task IDs, within the actual session's tools and permissions.
+3. After each meaningful batch, do a **brief synchronous same-agent Review**: product/architecture drift, source/data authority, obvious defects, risks, evidence honestly reported. This is **self-review**, not independent review.
+4. Resolve P0/P1 **affected dependencies**, record P2/P3 and deferrable `NOT_RUN` evidence with owner/due point; continue truly safe authorized work rather than waiting for routine exhaustive PR re-reviews.
+5. Save the observed branch/SHA, actual delivered outcomes, checks, blockers and **next safe campaign** in `R2R.md` after coherent work and on stopping. Do not require approval after each low-risk tiny change.
+6. If the agent has no code/Git tools, do not pretend a modification/test happened. Save/copy the plan as text and state the actual blocker.
 
-As real product journeys exist (or systemic failures recur):
-1. Integrate and observe **actual** user paths. Don't substitute a passing synthetic test for real interaction/persistence.
-2. Repair architectural mismatches, duplicate authorities and broken integration contracts; first rounds may be significant restructuring.
-3. Fix reproducible defects; exercise negative boundaries, recovery, restart, regression and performance as appropriate.
-4. Track missing validations as `NOT_RUN` with affected scope, risk, owner and due stage. Do not silently convert deferred testing into PASS.
-5. Repeat until final acceptance criteria, evidence and permitted release decision actually hold.
+## HARDEN — evidence-backed readiness, repeat as needed
 
-## Review decision — no automatic fixed cadence
+When important end-to-end flows exist or structural failure signals appear:
+- Exercise real integrated product paths, not just green mocks.
+- Correct duplicate state authority and interface/UX architecture **before** chasing repeated symptoms.
+- Test real interactions, persistence/restart, permission/negative paths, recovery and appropriate regressions as the project requires.
+- Distinguish `PASS`, `FAIL`, `NOT_RUN`, and `BLOCKED` with exact source/build/evidence. Rerun affected checks after material rewrites.
+- Only the owner may authorize release or accept material risk. “All tasks coded” is not READY.
 
-- **High confidence, reversible work:** continue long RUN; at chosen meaningful batch boundaries, perform a short synchronous self-review and resume.
-- **A consequential unverified dependency:** investigate before building more dependent work.
-- **Costly full review, safe independent work exists:** perform synchronous *quick* Review now, record a clearly scoped deferred deep check and continue safely.
-- **Risk of real-data loss, permission/rights breach or irreversible effect:** stop the unsafe operation and get the necessary protection/approval.
-- **Structural rework repeats:** shorten RUN and redesign the shared seam now.
+## Persistent state: one `R2R.md`, not a bureaucracy
 
-**No automatic async Review:** do not launch or depend on local multi-agent reviewer infrastructure; synchronous quick review is the current R2R default. Never mislabel the same agent's self-check as independent.
+Use [assets/R2R.md](assets/R2R.md) as a **starter template**. Keep it short. Maintain only the global product target and references, long roadmap and current execution truth. Don't duplicate already authoritative plans or create dozens of progress files.
 
-Do not require a multi-document governance stack for small improvements. Use a concise conversation, one card or existing repo docs.
-
-## Output after a meaningful batch (short)
+At a meaningful stopping point, answer briefly:
 
 ```text
-Delivered: <actual features/artifacts, source SHA/ref>
-Proof: <specific PASS / FAIL / NOT_RUN, and what it covers>
-Risk/holds: <affected dependency only>
-Steering needed: <only if a real decision or permission is required>
-Next: <highest-value continuation and resume point>
+Delivered: <real outcomes and code/ref>
+Quick self-review: <scope, findings, PASS/FAIL/NOT_RUN as appropriate>
+Blocked: <only affected risky dependencies>
+Next: <the next meaningful authorized campaign>
+R2R.md: <updated / not updated, why>
 ```
 
-**Never:** auto-merge/release/publish without authorization, overwrite unknown local work, expose secrets, or claim an independent review, an unattended background run or product readiness without real evidence.
+## Safety and scope
 
-If core product breadth exists but end-to-end behavior remains unreliable, use the [HARDEN operating playbook](../../docs/method/hardening-playbook.md): structural diagnosis → real path proof → resilience / negative cases → repeated regression → explicit acceptance. There is no hard-coded number of repair rounds.
+The method never grants new access. Protect auth/rights/secrets/real irreversible data, preserve other people's work and branch history, honor human approval points. High-consequence risky changes need focused deep checks **now**, not deferred to final HARDEN.
 
-**Optional reading:** [R2R core method](../../docs/method/r2r.md), [review economics](../../docs/method/review-economics.md), [quality](../../docs/method/quality.md), [one-card](../../quickstart/one-card.md).
+Never pretend a second independent reviewer exists. Do not spawn automatic async Review infrastructure. Do not claim hidden work after a session ends or that unrun tests passed. No auto-merge, public release or deployment without authorization.
+
+More detail if needed: [references/operating-guide.md](references/operating-guide.md). No external R2R repository files are required to use this copied Skill.
