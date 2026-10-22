@@ -1,16 +1,16 @@
-# GitHub discoverability metadata for R2R
+# R2R GitHub discoverability — Run to Ready
 
-**These are proposed repository About settings**, not settings already applied. The connected GitHub code interface can commit this file, but does not currently provide a repository Topics/Description update action. Repo metadata must be edited with an authorized GitHub About setting.
+**Repository metadata suggestions, NOT yet applied:** the available GitHub integration cannot edit the repo's About description and Topics. They must be applied by an authorized repository admin in GitHub → About (gear icon).
 
-## Repository description — recommended
+## Recommended description
 
 ```text
-Fast AI coding iteration Skill: Spec + parallel agents + human steering, focused reviews, batched fixes and product hardening.
+R2R (Run to Ready): AI-native software delivery with Spec-driven direction, parallel agents, rapid iterations and product hardening.
 ```
 
-Alternate Chinese-facing description: `AI 编码快速迭代 Skill：兼容 Spec 与多 Agent 并行，轻量 Review、集中修复和最终产品 HARDEN。`
+**Chinese one-liner:** `R2R：面向 AI 时代的软件产品交付方法；Spec 定方向，多 Agent 横向并行，快速纵向迭代，反复 HARDEN 到 READY。`
 
-## Recommended GitHub Topics
+## Recommended Topics
 
 ```text
 ai-coding
@@ -18,25 +18,25 @@ coding-agents
 agent-skills
 spec-driven-development
 multi-agent
+software-development
 iterative-development
-code-review
-developer-tools
-software-engineering
 ai-development
+software-engineering
+developer-tools
 ```
 
-The terms describe relationships and discoverability, **not claims that R2R includes a multi-agent runtime**. GitHub Topics are different from Git tags, GitHub Release versions and Issue labels.
+Topics describe **composition/compatibility**, not proof that this Skill itself implements a multi-agent runtime.
 
-## Apply to the actual repository
+## README/search copy
 
-In [kingwangking/r2r](https://github.com/kingwangking/r2r), open the **About** settings (gear icon), paste the repository description, choose the Topics above and save. Use [Release v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) as the current stable distribution reference.
+**Name:** R2R — Run to Ready
+**Hook:** From AI-generated code to a real, ready-to-use product.
+**Central idea:** One goal (READY), three connected capabilities (correct Spec, parallel width, vertical iteration), repeated integrated HARDEN.
+**Distinctive contribution:** long-horizon human-steered feedback/fix/Review scheduling to bridge rapid coding and actual accepted product.
+**Source of credibility:** transparent reuse of established Spec/SDD, multi-agent coding, CI, iterative/evolutionary engineering; not false claims of invention or published benchmark uplift.
 
-## Searchable README copy
+**Stable release:** [v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0). New definition is an unreleased development update until the maintainer issues another tag. Do not overwrite previous tag or imply published behavior has changed.
 
-- **Name:** R2R — Run to Ready
-- **English hook:** Fast AI coding iteration. Fewer review bottlenecks. Real product readiness.
-- **What it solves:** review-fix-review serial stalls, many P2/P3 interruptions, weak human steering, integration/READY gaps.
-- **How it works:** PLAN → meaningful RUN → short synchronous self-review → severity-routed fixes / grouped ordinary repairs → next RUN → HARDEN.
-- **Compatible with:** Spec-driven development / Spec Kit, concurrent coding agents on clear layered architectures, CI/Git and existing project specs.
+To apply, open [repository home](https://github.com/kingwangking/r2r) → About → Edit, and paste the description and Topics above. The homepage may link the latest Release.
 
-Do not invent measured speedups, native background scheduling or proven agent-host behavior.
+See [full positioning](positioning.md) and [compatibility](compatibility.md).

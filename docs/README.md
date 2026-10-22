@@ -14,7 +14,7 @@
 - [中文介绍与启动](zh/README.md)
 - [Web + GitHub 纯网页端执行](../quickstart/web-github.md)
 - [Review 深度与执行长度的动态判断](../quickstart/decision-guide.md)
-- [Purpose and audience](product/positioning.md)
+- [Run-to-Ready product definition and audience](product/positioning.md)
 - [Spec + parallel multi-agent + R2R compatibility](product/compatibility.md)
 - [GitHub About/Topics discoverability text](product/discoverability.md)
 - [R2R in one page](method/r2r.md)

@@ -7,7 +7,7 @@ R2R 的当前交付形态是**独立可搬运的 Skill + 可复制 Prompt + 目�
 
 **Plan big. Run long. Harden deep. Steer anytime.**
 
-R2R（Run to Ready）是面向 AI 编码的**快速迭代与成熟产品收敛方法**，与 Spec-driven、Spec Kit、分层明确时的多 Agent 并行开发可叠加使用：Spec 负责规格、架构与验收；并行 Agent 提升横向执行速度；R2R 管理纵向连续 Slice、Finding 修复节奏和最终 HARDEN。它要处理的根本矛盾是：
+**R2R = Run to Ready，核心目标是把 AI 时代扩大的开发能力转化为真正正确、完整、可靠、通过验收的软件产品。** 它将三项相互作用的能力组织到一起：**成熟的 Spec/SDD 保障方向与架构；分层明确时利用多 Agent 提升横向开发容量；R2R 特别强化纵向连续迭代、开发者频繁纠偏与 Review/Finding 修复节奏**，最后反复整合和 HARDEN 直到 READY。它不是宣称发明 Spec 或并发，而是组合成熟能力，针对新凸显的交付瓶颈给出完整的操作框架。它要处理的根本矛盾是：
 
 - **速度必须提高：** 如果每次 AI 开发都等待一轮昂贵的全面 Review，AI 的生产优势会被抵消。
 - **复杂度必须能够承载：** AI 使独立开发者能够构建原本需要团队完成的大型项目，局部审查不等于整体工程可靠。

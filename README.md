@@ -1,95 +1,110 @@
 # R2R — Run to Ready
 
-**Fast AI coding iteration. Fewer review bottlenecks. Real product readiness.**
+**From AI-generated code to a real, ready-to-use product.**
 
-*Plan big · Run long · Harden deep · Steer anytime.*
+**One goal. Three connected capabilities. Continuous developer steering.**
 
-**中文：** R2R 是 AI 编码快速迭代 Skill：在 Spec 规划和可选的多 Agent 并行开发基础上，通过开发者高频参与、分级处理 Finding、批量修复普通问题与最终 HARDEN，持续推进真实软件产品交付。
+R2R is an **AI-native software delivery method and portable Agent Skill**. It brings together proven **Spec-driven direction**, **multi-agent parallel implementation** when the architecture supports it, and **fast successive iteration**, then keeps integrating, repairing and hardening until the real product meets its acceptance criteria.
 
-[Quick start](#quick-start) · [中文使用指南](quickstart/use.md) · [Spec + multi-agent compatibility](docs/product/compatibility.md) · [v0.1.0 Release](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) · [MIT](LICENSE)
+**中文：** R2R（Run to Ready）面向 AI 时代的核心交付挑战：**不只是更快生成代码，而是更快、更可靠地把正确的产品真正做出来。** 以 Spec 保证目标和架构方向，用多 Agent 在分层清晰时横向并发，通过持续纵向迭代与开发者高频纠偏推进，最终整合、修复、HARDEN 到 READY。
 
-## The problem: AI writes faster than projects finish
+[Install R2R](#try-r2r) · [中文使用指南](quickstart/use.md) · [Three-capability model](docs/product/compatibility.md) · [v0.1.0 GitHub Release](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) · [MIT](LICENSE)
 
-AI coding agents can produce code rapidly. But complex products often slow down because:
+## The problem R2R addresses
 
-- Every tiny change enters **full Review → fix → full Review again**, creating a serial bottleneck.
-- Ordinary P2/P3 findings and wording-only changes keep interrupting the main coding agent.
-- Developers have critical product and architecture insight, yet conventional loops underuse **frequent developer steering**.
-- Many completed slices or parallel agent outputs don't automatically become **one reliable, integrated product**.
+AI coding drastically expands implementation capacity. A complex product still fails to reach a usable finish if the **goal is wrong**, **parallel changes cannot integrate**, or **serial review/fix/re-review and fragmented tasks stall progress**. Finally, numerous completed tasks are not the same as a reliable product.
 
-**R2R's answer:** keep the full product destination visible, RUN meaningful batches, do short risk-focused Review, promptly repair impactful functionality/security/data problems, **queue ordinary P2/P3 for grouped fixes**, and resume the next Slice. Then repeatedly HARDEN actual user journeys. Never defer dangerous real-data, permissions, rights or safety boundaries merely for speed.
+**R2R's answer is an integrated path to READY**, not a competing Spec tool, new multi-agent runtime or permission to skip quality:
 
-## R2R fits with Spec-driven development and parallel agents
-
-| Layer | What it solves | How R2R combines |
+| Connected capability | What it accomplishes | Practical foundation |
 | --- | --- | --- |
-| **[Spec-driven development / Spec Kit](https://github.github.com/spec-kit/)** | Requirements, architecture, tasks, contracts and acceptance criteria (including its own implementation/convergence) | **Preserve existing Spec as authority**; R2R does not duplicate or replace it |
-| **Parallel multi-agent coding** | **Horizontal throughput** across independent UI / API / domain components with clear ownership | Multiple agents may implement in parallel when the host and architecture permit; the main executor integrates |
-| **R2R** | **Longitudinal iteration throughput** across many batches, findings, human decisions and integration | RUN → quick synchronous Review → fix important / batch ordinary findings → next Slice → repeated HARDEN |
+| **1 · Correct direction — Spec** | Define *the right product*: actual user journeys, constraints, architectural ownership, contracts and READY criteria | Existing Spec / SDD / [GitHub Spec Kit](https://github.github.com/spec-kit/) |
+| **2 · Horizontal throughput — Multi-Agent** | Implement truly independent layers/modules in parallel when the host, ownership and integration contracts allow | Existing coding-agent subagents, branches/worktrees and CI |
+| **3 · Longitudinal throughput — Iteration** | Advance Slice after Slice through frequent human STEER, focused synchronous Review, severity-ranked fixes and batched P2/P3 repairs | R2R's distinctive operating policy on top of the existing agent |
 
-**Spec sets the target; parallel agents speed up independent work; R2R keeps successive iterations moving toward a mature product.** R2R works with one agent too. It does **not** ship a new orchestrator or prohibit multi-agent development.
+**The outcome is not pillar #3. The outcome is READY.** These capabilities feed each other: Spec sets safe implementation boundaries; parallel development increases useful work but creates integration needs; fast iterations feed observed evidence back to the developer and Spec. **Repeated product HARDEN** closes the gap between code produced and the product actually usable.
 
 ```text
-Developer + existing Spec / architecture
-                  ↓
-Main Codex → RUN useful slice(s) ← optional parallel UI / API agents
-                  ↓
-Integrate → short synchronous Review
-            ├── important code / security / data issue → scoped fix & quick recheck
-            ├── ordinary P2/P3 → batch repair queue
-            └── wording only → correct, usually no independent re-review
-                  ↓
-Developer STEER → next Slice → next Slice → product HARDEN → READY
+                   R2R = RUN TO READY
+          One target: an accepted software product
+                              ▲
+              real integration + repeated HARDEN
+                              ▲
+     ┌────────────────────────┼───────────────────────┐
+  CORRECT DIRECTION      HORIZONTAL SPEED       VERTICAL SPEED
+  Spec / architecture    optional Multi-Agent   fast RUN / next Slice
+  user journeys          owned modules          frequent developer STEER
+  contracts / READY      safe parallel work     focused Review / fix queues
+     └────────────────────────┼───────────────────────┘
+                       observed Git + tests
 ```
 
-[Detailed compatibility and practical example](docs/product/compatibility.md) · [Finding routing](docs/method/review-economics.md)
+**Mature foundations, unified purpose.** R2R reuses methods and tooling that already exist; it does **not** claim to have invented specification, parallel agents, or convergence. Spec Kit itself supports implementation and convergence. R2R's proposed contribution is a **practical delivery policy integrating these capabilities and allocating human/review effort over time**, especially around rapid vertical iteration.
 
-## Quick start
+[How to combine Spec, parallel agents and R2R](docs/product/compatibility.md) · [Finding/review rules](docs/method/review-economics.md)
 
-**Stable published Skill:** [v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) (MIT). The post-release [CLI install / ZIP checksum smoke](https://github.com/kingwangking/r2r/actions/runs/39737882456) passed.
+## How R2R drives progress
 
-For Codex, use GitHub CLI with `gh skill` support:
+After planning against the product's existing Spec:
+
+- **RUN real work.** Allow meaningful batches, with independent agents in parallel where genuinely useful.
+- **STEER frequently.** The developer revises product/architecture decisions, priorities, execution length and review depth throughout—not only at phase boundaries.
+- **Review briefly and by risk.** Fix material code, security, safety and data-integrity issues promptly, with targeted rechecks when warranted. Queue ordinary, nonblocking P2/P3 for batch repair. Do not re-review harmless wording changes endlessly.
+- **Continue the next safe Slice.** The primary Codex/executor collects important Findings and coordinates fixes; one repair does not trigger a mandatory full Review loop.
+- **HARDEN to READY.** Integrate real user paths, correct structural faults, exercise recovery and negative scenarios, and verify acceptance of the actual artifact. Do not confuse intermediate progress with finished quality.
+
+Neither long RUN nor parallel implementation overrides credentials, permissions, real-data integrity, intellectual-property rights or irreversible-operation safeguards.
+
+## Try R2R
+
+**Published stable Skill:** [v0.1.0 Release](https://github.com/kingwangking/r2r/releases/tag/v0.1.0), MIT, standalone ZIP + SHA-256. [Post-release GitHub CLI install check](https://github.com/kingwangking/r2r/actions/runs/39737882456) passed.
+
+In a GitHub CLI version with `gh skill` support, install to Codex:
 
 ```bash
 gh skill install kingwangking/r2r r2r --pin v0.1.0 --agent codex --scope user
 ```
 
-For Claude Code, see [installation and ZIP/manual alternatives](quickstart/install.md).
+[Other agent install options](quickstart/install.md) · [Download release ZIP](https://github.com/kingwangking/r2r/releases/tag/v0.1.0)
 
-**Without installing a Skill:** copy this prompt into an AI coding agent with access to your project:
+**Or without an installation**, prompt a coding agent with actual repository access:
 
 ```text
-Use R2R for fast iteration on this project. Read the real repository and
-existing Specs/architecture; keep the Specs authoritative. Set a revisable
-whole-product plan and a short R2R.md checkpoint, then start the first
-authorized useful RUN. After meaningful batches, perform a short synchronous
-self-review. Fix impactful code, safety and data-integrity issues by severity,
-with a focused recheck if needed; group ordinary P2/P3 repairs; don't restart
-full Review for wording-only fixes unless acceptance, security authorization
-or traceability depends on them. I will steer frequently. Continue the next
-safe Slice. Use parallel workers only for well-owned independent modules if
-the actual host supports them. HARDEN real integrated user journeys before
-claiming READY. Preserve permissions and honest PASS/FAIL/NOT_RUN evidence.
+Use R2R (Run to Ready) to deliver this product.
+1. Start from our existing Spec, architecture and user acceptance; correct
+   missing intent rather than duplicating or replacing the Spec.
+2. If the architecture permits and real subagents are available, parallelize
+   independently owned layers/modules with explicit integration contracts.
+3. Execute meaningful batches and keep successive iterations moving.
+   I will steer priorities and architecture frequently. After each batch,
+   quickly self-review; fix important functionality/security/data findings
+   by severity, batch ordinary nonblocking P2/P3, and avoid full re-review
+   cycles for wording-only edits.
+4. Integrate, restructure and HARDEN actual product journeys until there
+   is evidence for our agreed READY criteria.
+Maintain a concise R2R.md progress checkpoint, read real Git state on resume,
+protect permissions/data/rights, and report PASS/FAIL/NOT_RUN truthfully.
+Begin the first authorized useful batch.
 ```
 
-The refined Finding-routing text on the current HARDEN branch is **unreleased**; it does not retroactively alter the immutable v0.1.0 ZIP.
+The improved three-capability definition and Finding policy in the active development PR are **not** retroactively part of immutable `v0.1.0`; the prompt above reflects the **current source direction**.
 
-## Use three natural-language actions — steer at any time
+## Three actions, developer steering all the way
 
-| Say | Expected agent behavior |
+| Say to the existing agent | Expected action |
 | --- | --- |
-| **Start R2R** / 采用 R2R 开发 | Read real source/Spec; create or update `R2R.md` and a long product plan; begin authorized code work |
-| **Continue R2R** / 继续 R2R | Verify actual Git state; collect findings, batch nonblocking repairs and continue the next safe Slice |
-| **Harden with R2R** / 进入 R2R HARDEN | Connect real product paths, repair structural failures, test recovery/negative cases and converge on acceptance |
+| **Start R2R** / 采用 R2R 开发 | Ground work in existing Spec, plan safe parallel boundaries and long path to READY; begin authorized work |
+| **Continue R2R** / 继续 R2R | Read actual Git and `R2R.md`, integrate results, triage findings and move through more slices |
+| **Harden with R2R** / 进入 R2R HARDEN | Repeatedly restructure, integrate, exercise real product/negative/recovery paths and close acceptance gaps |
 
-**STEER frequently:** “Check the persistence authority”, “Parallelize the independent UI and API tasks”, “Repair P2/P3 in one batch”, “Don't review this wording change again”, or “Pause this dangerous migration”.
+**STEER ANYTIME:** “We got the architecture wrong”, “Have UI and API agents work in parallel”, “Batch these P2/P3”, “Stop unsafe migration”, “Show the true persisted user path”.
 
-R2R does not create unattended background execution. Same-agent quick review is **self-review**, not an independent reviewer. Real tool access and developer authorization still govern execution.
+You can start with one agent, without Spec Kit or a multi-agent runtime. R2R **composes available capabilities** rather than installing them. It cannot execute secretly after its authorized session ends, and a same-agent check is not an independent review.
 
-## Who is it for?
+## Trust and scope
 
-Developers using **Codex, Claude Code or other AI coding agents**, especially with existing Spec-driven processes, CI, Git worktrees and optional parallel agents on clearly layered software. R2R is the **iteration, feedback-routing and final-convergence layer**, not a replacement for Spec, tests, CI or high-risk reviews.
+**What is real:** published [v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0), MIT license, tested Skill source/package and GitHub CLI install path. **What is not yet proved:** measured speedups over other methods, end-to-end behavior in a real Codex/Claude Code project, or that every developer/project will reach READY.
 
-[Full Chinese guide](quickstart/use.md) · [One-page method](docs/method/r2r.md) · [Compatibility](docs/product/compatibility.md) · [Contributing](CONTRIBUTING.md) · [Project's own R2R.md](R2R.md)
+**R2R offers a complete *operating approach* to an AI-era delivery problem**, not a verified one-click solution, automatic parallel-agent orchestration, or a guarantee of successful delivery. Its value claim can be tested on real projects.
 
-**Evidence boundary:** official Skill publishing checks and CLI installation have passed. Real Codex/Claude Code workflow adherence and measured development-speed improvements remain unverified; no numeric performance claim is made.
+[中文使用](quickstart/use.md) · [One-page method](docs/method/r2r.md) · [Compatibility](docs/product/compatibility.md) · [FAQ](docs/product/faq.md) · [Contributing](CONTRIBUTING.md) · [This project's R2R.md](R2R.md)

@@ -4,7 +4,7 @@
 
 ## PLAN：项目终点
 
-**交付物：** 易安装、易理解、可恢复、在现有 AI 编码 Agent 中可直接使用的 R2R **快速迭代** Skill；可叠加既有 Spec/SDD 与多 Agent 并行，而不是替代它们。开发者只需要 Start → Continue → Harden，随时 STEER。可移植 Skill 和发行源保持单一事实来源。
+**交付物：** R2R = Run to Ready：以**正确目标、横向执行、纵向迭代、最终真实 READY**为整体产品交付框架的可安装 Skill；采用现有 Spec/SDD 和可用多 Agent 并行，不替代它们，重点新增持续迭代与反馈收敛策略。开发者只需要 Start → Continue → Harden，随时 STEER。可移植 Skill 和发行源保持单一事实来源。
 
 **现有权威资料：** [README](README.md)、[方法定义](docs/method/r2r.md)、[项目整体路线](docs/program/roadmap.md)、[最新发布版本](https://github.com/kingwangking/r2r/releases/latest)、[源码状态](docs/program/current-state.md)。不要在本文件里复写完整路线图。
 
@@ -24,7 +24,8 @@
 - **本轮已交付（PR #2 未发布）：** 核心 Skill Review 分流策略、Spec 与并行 Agent 兼容指南、对外宣传 README、中文入门和推荐 Topics/About 说明。
 - **真实 CI：** [Run #39745403270](https://github.com/kingwangking/r2r/actions/runs/39745403270) PASS：12 个测试、文档链接与发行状态检查、官方 Skill dry-run、本地/远程安装检查和打包。此结果只覆盖该次源代码版本；下一次修订后重新检查。
 - **GitHub Topics/Description：** [已拟定可复制的元数据](docs/product/discoverability.md)，**尚未应用到仓库 About**（当前 GitHub 接口不提供该项修改操作）。
-- **下一批：** 完成这轮 PR 的轻量自检、让维护者在 GitHub About 应用 Topic/简介；以后做真实 Codex/Claude Start → Continue → Harden 试用（NOT_RUN）。
+- **Owner STEER（定义调整）：** R2R 的总目标是 Run to Ready，组合成熟 Spec 正确性、可选多 Agent 横向并发和 R2R 纵向高效迭代，闭环到真实 HARDEN/READY；不是只把纵向提速当作项目定义。
+- **下一批：** 核对 README/Skill/方法定义统一性与 CI，通过后保持 Draft PR；GitHub About 描述/Topics 待应用，真实 Codex/Claude 完整项目验证仍 NOT_RUN。
 
 ## HARDEN：本阶段验收
 
