@@ -1,6 +1,6 @@
 ---
 name: r2r
-description: Use R2R (Run to Ready) to deliver an AI-built software product from correct Spec and architecture through optional parallel multi-agent implementation, fast human-steered iteration and evidence-backed final readiness. Existing tools and agents, no extra runtime.
+description: Use R2R (Run to Ready) to deliver AI-built software from correct Spec through nested multi-agent Campaign execution when available, dynamic model/effort selection, rapid iteration and evidence-backed readiness. No extra runtime.
 ---
 
 # R2R — Run to Ready
@@ -9,7 +9,7 @@ description: Use R2R (Run to Ready) to deliver an AI-built software product from
 
 **R2R = Run to Ready: get from a trustworthy product goal to an actually usable, accepted product.** The outcome is READY, not merely generated code, a complete task list or a fast iteration counter. Its coherent operating model combines three connected capabilities:
 1. **Direction / correctness — Spec:** establish true user outcomes, constraints, architecture/ownership and acceptance using the project's existing specification system.
-2. **Width / parallel execution — multi-agent:** where independent layer boundaries and integration contracts are real, delegate separate slices to genuinely available agents; otherwise execute sequentially.
+2. **Width / parallel execution — multi-agent:** on large separable programs, prefer **multiple concurrent Campaign Lead Agents, each genuinely delegating its own scoped Workstream subagents**, with one Integrator for shared seams. Models and reasoning effort are selected per role and risk, not pinned to one preset. If agents/tools are unavailable, execute sequentially and say so.
 3. **Depth / successive iteration — R2R's focus:** advance RUN after RUN, with frequent developer STEER, targeted Review, severity-routed fixes, a batched P2/P3 queue, durable recovery and repeated product HARDEN until evidence supports READY.
 
 **These are interdependent, not three competing frameworks.** Wrong goals make parallel implementation wasteful; parallel outputs without integrated iteration drift apart; rapid iterations without agreed READY criteria can produce an incomplete product. Spec and agent runtimes supply mature building blocks, while R2R supplies the encompassing delivery policy. It is an instruction Skill for existing coding agents—not a new Spec engine, agent orchestrator or background daemon.
@@ -41,10 +41,22 @@ Capture **actual product promise**, complete major user journeys, credible archi
 
 Do not stop after a beautiful plan when the user also authorized implementation; **start the first safe meaningful RUN**.
 
+## RUN — hierarchical agent topology and model selection for substantial work
+
+If several complete Campaigns are ready and the current execution surface genuinely supports nested agents:
+
+1. **Program Lead / main executor:** freeze only necessary shared contracts and source pins, own Wave/frontier/triage and launch independent Campaign Lead Agents concurrently.
+2. **Every Campaign Lead:** actively delegate scoped implementation, testing, reference, review or repair work to its own Workstream subagents (more than one when useful); integrate and verify the child results before claiming the Campaign delivered.
+3. **One Integrator per shared seam:** cross-Campaign state, public DTOs, migrations, Host/Save and protected release operations are not editable by unrelated children.
+4. **Adaptive models:** select actually available models and supported reasoning effort by task capability, consequence, latency/cost and current permissions. A single model family or fixed maximum thinking effort is **not a global requirement**; routine work may use faster/lower-effort agents, critical architecture/security may merit stronger reasoning.
+5. **Proof, not theater:** report which Agents actually ran, their owned inputs/outputs, actual checks, child findings and integrated outcome. When real subagents/parallelism are unavailable or unsafe, use scoped sequential work and state the limitation. Do not fake nested dispatch or require paid services.
+
+Read [hierarchical agents & model-routing details](references/hierarchical-agents.md) only when this topology is applicable. It is the **preferred scalable execution pattern**, not mandatory for trivial tasks, permission gates or a host with no nested-agent support.
+
 ## RUN — continuous execution in authorized scope
 
 1. Choose a meaningful batch horizon (small for uncertain dangerous seams, large for understood reversible work). The developer can extend/shorten it at any moment.
-2. Implement **real product value**, not merely create docs/task IDs, within the actual session's tools and permissions. When genuinely separable tasks and agent resources exist, parallelize by owned component/layer with explicit integration responsibility; the main executor combines outcomes. Parallelism is optional, not something this Skill pretends to provide.
+2. Implement **real product value**, not merely create docs/task IDs. For substantial separable work with supported resources, execute the **Program Lead → parallel Campaign Leads → each Lead's Workstream subagents** topology above; the parent/Integrator combines outputs and verifies full behavior. Otherwise execute within the available scope sequentially. Never mistake an instruction to spawn agents for evidence that they actually ran.
 3. After each meaningful batch, do a **brief synchronous same-agent Review** (unless a real separate reviewer is available and actually used). Focus on impactful source, functionality, safety, data integrity, contracts and honest evidence. This is **self-review**, not independent review.
 4. **Route every meaningful Finding, then keep moving:** repair code/functionality, security and data-integrity defects promptly **according to severity and dependent risk**, using a short targeted recheck when justified. Stop P0/P1-affected work, not all independent work. Queue ordinary nonblocking P2/P3 by owner/area/batch for later grouped fixes. For purely documentary or evidence-wording findings, do **not** repeatedly request independent Review unless the wording changes acceptance, security/authorization or traceability; correct the text and move on.
 5. **Main executor (e.g. Codex)** owns triage, assigning fixes to itself or truly available agents, collecting material findings and resuming the next slice **after the focused fix check**. Never restart a complete Review loop just because a fix landed. Extra review is risk-triggered, not change-triggered.
@@ -78,6 +90,6 @@ R2R.md: <updated / not updated, why>
 
 The method never grants new access. Protect auth/rights/secrets/real irreversible data, preserve other people's work and branch history, honor human approval points. High-consequence risky changes need focused deep checks **now**, not deferred to final HARDEN.
 
-Never pretend a second independent reviewer exists. Current default Review is synchronous and lightweight; **optional parallel implementation agents are welcome** when the host supports them and boundaries are clear. No automatic async Review infrastructure is assumed. Do not claim hidden work after a session ends or that unrun tests passed. No auto-merge, public release or deployment without authorization.
+Never pretend a second independent reviewer exists. Current default Review is synchronous and lightweight; **hierarchical multi-Agent execution is the preferred option for large, separable projects when actually supported**. Model/effort assignment is flexible, not fixed. No automatic async Review infrastructure is assumed. Do not claim hidden work after a session ends or that unrun tests passed. No auto-merge, public release or deployment without authorization.
 
 More detail if needed: [references/operating-guide.md](references/operating-guide.md). No external R2R repository files are required to use this copied Skill.

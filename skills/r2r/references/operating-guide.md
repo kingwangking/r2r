@@ -33,6 +33,12 @@ After writing the plan, start the first safe authorized implementation campaign,
 
 **Spec and parallel composition:** reuse canonical Spec/plan/tasks artifacts; do not replace them with R2R.md. When architecture is distinctly layered and module ownership is clear, multiple agents can build independent slices in parallel. R2R shapes the sequence of integrations, focused reviews and product convergence; a one-agent synchronous Review default does not forbid parallel implementations.
 
+## Prefer multi-level parallel Agents on a real large Program
+
+Where the current executor genuinely supports subagent spawning and independently owned Campaigns, use **Program Lead → multiple parallel Campaign Lead Agents → each Campaign Lead delegates Workstream subagents**. The child Agents can independently own implementation, tests, references or review; the Campaign Lead integrates and repairs children, and a single Program Integrator writes shared Host/schema/Save/release seams. Do not hold all Campaigns for a blocked unrelated permission or a slow review.
+
+Model and reasoning effort are **per work item**: check available and authorized options, assign higher reasoning for critical architecture/data/rights or debugging and economical sufficient effort for routine code/tests/docs. Do not hardcode a single model or force maximum effort for all subagents. Only treat a child as executed if a genuine child run/handoff exists; unsupported runtimes fall back to sequential execution. See [hierarchical-agent execution](hierarchical-agents.md).
+
 ## STEER
 
 A good developer question has high information gain: “Does this business path truly reach persistence?”, “Who owns the canonical state?”, “Which existing mature component did we reuse?”, “What would invalidate upcoming work?”. Answer with source references or a genuine test, not model confidence.
