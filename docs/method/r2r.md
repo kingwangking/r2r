@@ -1,13 +1,27 @@
 # R2R in one page
 
-**R2R = Run to Ready.** Plan big. Run long. Harden deep. Steer anytime.
+**R2R = Run to Ready.** Its **goal is the correct, stable and usable end product**, not merely faster code generation or faster iteration. **Plan big. Run long. Harden deep. Steer anytime.**
+
+## The complete AI-era delivery problem
+
+Three necessary capabilities form **one coupled product-development system**:
+
+| R2R capability | Established practice used | Why it matters |
+| --- | --- | --- |
+| **Correct direction (what / why / contract)** | Existing Spec-driven development, architecture, acceptance / Spec Kit when adopted | Prevents high-speed delivery of the wrong product |
+| **Horizontal throughput (how much independent work now)** | Available multi-agent parallel execution, clear layers and integration contracts | Scales implementation capacity where responsibility can be separated |
+| **Longitudinal throughput (how quickly progress compounds)** | R2R's adaptive slice-to-slice RUN, frequent developer STEER, short synchronous Review, severity-based Finding triage and batched repairs | Prevents serial review/rework and stalled integration from consuming AI's coding capacity |
+
+**READY is the governing destination**, achieved through repeated actual integration, structural HARDEN and evidence-based acceptance. The three capabilities constrain one another: wrong Specs multiply mistakes, unsafe parallel work magnifies conflicts, and fast RUN without integration/acceptance never arrives at READY.
+
+This is a **complete practical operating model**, not a claim that R2R invented SDD, concurrency or convergence, and not proof of a measured productivity advantage. Existing Spec Kit includes implement/converge; R2R explicitly reuses those capabilities.
 
 ## Core principle
 **The final product must be stable; intermediate products need not be release-ready.** The developer chooses how much intermediate stability is required for progress. Safety, recoverability, permissions, intellectual property and truthful evidence never become optional.
 
 ## Relation to Spec-driven and parallel multi-agent development
 
-**Spec defines intent** and acceptance (for example, Spec Kit's specify → plan → tasks → implement → converge). **Parallel agents increase horizontal capacity** where architecture, ownership and integration contracts are clear. **R2R increases longitudinal iteration throughput** across slices, developer intervention, feedback, repairs and HARDEN. They are compatible layers, not competing methodologies. Keep original specs authoritative and use R2R.md only for the overarching roadmap/checkpoint. Parallel implementation is welcome; synchronous quick Review remains the simple default when no separate reviewer infrastructure exists.
+**R2R names the full Run-to-Ready goal**, not just the third technique. Spec (including existing Spec Kit workflows) grounds the target, optional parallel agents scale independently owned work, and **R2R's most distinctive operating contribution** is longitudinal execution/review/repair economics—coordinated by the developer and primary executor. Keep existing Specs authoritative; use `R2R.md` as a lightweight program/checkpoint. A solo agent is sufficient to adopt the method, even though parallelism can add capacity.
 
 ## PLAN
 Establish a whole-product capability map, actual user journeys, architectural/data ownership, mature implementations to reuse, high-impact unknowns, long-horizon roadmap and final acceptance. Plans may be extremely long and are revisable. Prioritize overall direction, not exhaustive low-level design.

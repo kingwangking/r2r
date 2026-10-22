@@ -1,12 +1,32 @@
 # R2R + Spec-driven development + parallel agents
 
-**R2R is the rapid-iteration and product-convergence layer.** It does not replace requirements/specification systems or a multi-agent implementation system.
+**R2R is the Run-to-Ready outcome framework:** a full product-delivery path that *integrates* correct Spec goals, optional horizontally parallel agents, rapidly compounding vertical iterations and repeated real-product convergence. Its **distinctive operational focus** is vertical iteration, but its definition is the complete route to READY—not just one loop. It does not replace existing specification systems or agent-execution runtimes.
 
 | Practice | Optimizes | Typical existing artifacts | How it combines |
 | --- | --- | --- | --- |
 | **Spec / SDD** | Correct intent, constraints, architecture and acceptance | `spec.md`, `plan.md`, `tasks.md`, ADR/contract docs | Keep those documents authoritative; R2R uses them as its PLAN inputs |
 | **Parallel multi-agent execution** | **Horizontal** throughput: multiple independent components in the same iteration | Component ownership, interfaces, worktrees/branches, integration contracts | Use when layers/modules have clear boundaries and integration ownership; primary executor integrates results |
-| **R2R** | **Longitudinal** throughput: next slice after next slice, steering, focused Review and repeated HARDEN | Lightweight program/checkpoint (`R2R.md`), existing issue/CI evidence, batched P2/P3 queue | Controls RUN / triage / fix / resume across serial or parallel implementation |
+| **R2R vertical practice** | **Longitudinal** throughput: next slice after next slice, steering, focused Review and repeated HARDEN | Lightweight program/checkpoint (`R2R.md`), existing issue/CI evidence, batched P2/P3 queue | Controls RUN / triage / fix / resume across serial or parallel implementation; **whole R2R goal** is READY |
+
+## One target, three coupled engineering capabilities
+
+```text
+                      RUN TO READY (R2R)
+                  Actual accepted software product
+                                ▲
+                 Repeated integrated HARDEN + proof
+                                ▲
+        ┌───────────────────────┼─────────────────────┐
+   RIGHT TARGET             MORE WIDTH          FASTER DEPTH
+   Spec / SDD           Multi-agent tasks       Iteration loop
+   product contract     layer ownership         developer STEER
+   architecture         safe isolation          scoped Review
+   READY criteria       integration owner       finding fix/queue
+        └───────────────────────┼─────────────────────┘
+                           Real Git state
+```
+
+These are not isolated levers. Spec/architecture sets safe parallel boundaries; parallel integration exposes new facts and risks; vertical RUN loops feed learning back to the Spec and the developer, while HARDEN closes end-product gaps. R2R's innovation *proposal* is the disciplined **composition and temporal economics**, not newly invented Specs or agent concurrency.
 
 ## Combined example (not a required stack)
 

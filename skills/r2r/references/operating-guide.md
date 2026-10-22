@@ -2,6 +2,12 @@
 
 The parent [SKILL.md](../SKILL.md) handles the default path. Load this reference when the agent needs help with a long campaign, risky dependencies or a structured finish. Everything here ships inside the copied Skill directory.
 
+## The Run-to-Ready outcome
+
+R2R is the **end-to-end AI product delivery discipline**, not the name for iteration speed alone: **correct intent (Spec)** + **safe horizontal throughput (optional parallel agents)** + **fast vertical iteration (developer STEER, scoped Review, finding triage, fix batches)** + **actual integrated HARDEN** → evidence-backed READY. It *reuses* mature Spec/parallel infrastructure instead of implementing those systems itself.
+
+A good Start establishes the target and integration plan; a good Continue may combine parallel outputs, repair important findings and keep moving; a good Harden checks real user outcomes. No compulsory orchestration server.
+
 ## Start
 
 Ask or infer from the actual project: real user promise, existing specs, architecture/data authority, biggest unknowns, long-term scope, readiness criteria and developer authorization. Read Git and preserve current work. Use [the starter asset](../assets/R2R.md) to create a root `R2R.md` **only if useful for multi-session work**. Do not make duplicate spec, roadmap, evidence and governance hierarchies.

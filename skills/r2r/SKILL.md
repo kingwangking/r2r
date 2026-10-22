@@ -1,15 +1,20 @@
 ---
 name: r2r
-description: Use R2R for fast AI software development iteration, long-running coding campaigns, human-steered implementation, batched bug fixing, focused code review and final hardening. Complements spec-driven development and parallel multi-agent coding; no extra runtime.
+description: Use R2R (Run to Ready) to deliver an AI-built software product from correct Spec and architecture through optional parallel multi-agent implementation, fast human-steered iteration and evidence-backed final readiness. Existing tools and agents, no extra runtime.
 ---
 
 # R2R — Run to Ready
 
 **Plan big · Run long · Harden deep · Steer anytime.**
 
-A portable workflow for **existing** AI coding agents. It strengthens **fast successive iterations and feedback-to-fix throughput**, not the definition of specs or the parallel computing ability of multiple agents. It does not supply tool access or run a background daemon.
+**R2R = Run to Ready: get from a trustworthy product goal to an actually usable, accepted product.** The outcome is READY, not merely generated code, a complete task list or a fast iteration counter. Its coherent operating model combines three connected capabilities:
+1. **Direction / correctness — Spec:** establish true user outcomes, constraints, architecture/ownership and acceptance using the project's existing specification system.
+2. **Width / parallel execution — multi-agent:** where independent layer boundaries and integration contracts are real, delegate separate slices to genuinely available agents; otherwise execute sequentially.
+3. **Depth / successive iteration — R2R's focus:** advance RUN after RUN, with frequent developer STEER, targeted Review, severity-routed fixes, a batched P2/P3 queue, durable recovery and repeated product HARDEN until evidence supports READY.
 
-**Composable workflow:** keep any existing specs (including Spec Kit `spec.md`, `plan.md`, `tasks.md`) authoritative for requirements and design; when modules have clear ownership, allow distinct agents to implement independent slices **in parallel**. R2R governs the main executor's **successive** RUN → focused Review → fix/queue → next RUN → HARDEN loop across those results. Parallelism is optional, never prohibited or required. Developers steer frequently; their questions/priority changes are ordinary inputs, not exceptions. Do not duplicate or replace their Spec process.
+**These are interdependent, not three competing frameworks.** Wrong goals make parallel implementation wasteful; parallel outputs without integrated iteration drift apart; rapid iterations without agreed READY criteria can produce an incomplete product. Spec and agent runtimes supply mature building blocks, while R2R supplies the encompassing delivery policy. It is an instruction Skill for existing coding agents—not a new Spec engine, agent orchestrator or background daemon.
+
+**One integrated workflow:** preserve existing Spec/Spec Kit `spec.md`, `plan.md`, `tasks.md` as authority; translate its tasks into bounded work for independent agents only when useful; let the primary executor integrate their results, collect meaningful Findings, apply focused synchronous Review and resume the next Slice. Developer steering is frequent and authoritative. Spec Kit itself supports implement/converge; R2R builds on, rather than claims to replace, those steps.
 
 ## Recognize three user intents
 
@@ -26,6 +31,10 @@ A portable workflow for **existing** AI coding agents. It strengthens **fast suc
 - In **CONTINUE**, read `R2R.md` **and** current Git facts; Git reality supersedes stale status. Do not re-plan from scratch or overwrite unexpected concurrent changes.
 - In **HARDEN**, read promised end-to-end journeys and READY requirements. Decide what can actually be exercised with available tools. If critical environment/test access is unavailable, say so.
 
+## PLAN — correct destination from real Spec
+
+Use the product's existing Spec/SDD, accepted user journeys, architectural ownership and measurable READY criteria to ensure the work is pointed at the **right outcome**. No competing specs; if gaps exist, clarify them with the developer and update the established authority. An efficient but wrong product is not R2R success.
+
 ## PLAN — whole product, long but revisable program
 
 Capture **actual product promise**, complete major user journeys, credible architecture/data ownership and mature reuse, protected risks, long-horizon outcomes and final READY criteria. The roadmap may contain dozens/hundreds of slices. Unknown details are hypotheses, not facts; change them when reality disproves them.
@@ -35,7 +44,7 @@ Do not stop after a beautiful plan when the user also authorized implementation;
 ## RUN — continuous execution in authorized scope
 
 1. Choose a meaningful batch horizon (small for uncertain dangerous seams, large for understood reversible work). The developer can extend/shorten it at any moment.
-2. Implement **real product value**, not merely create docs/task IDs, within the actual session's tools and permissions.
+2. Implement **real product value**, not merely create docs/task IDs, within the actual session's tools and permissions. When genuinely separable tasks and agent resources exist, parallelize by owned component/layer with explicit integration responsibility; the main executor combines outcomes. Parallelism is optional, not something this Skill pretends to provide.
 3. After each meaningful batch, do a **brief synchronous same-agent Review** (unless a real separate reviewer is available and actually used). Focus on impactful source, functionality, safety, data integrity, contracts and honest evidence. This is **self-review**, not independent review.
 4. **Route every meaningful Finding, then keep moving:** repair code/functionality, security and data-integrity defects promptly **according to severity and dependent risk**, using a short targeted recheck when justified. Stop P0/P1-affected work, not all independent work. Queue ordinary nonblocking P2/P3 by owner/area/batch for later grouped fixes. For purely documentary or evidence-wording findings, do **not** repeatedly request independent Review unless the wording changes acceptance, security/authorization or traceability; correct the text and move on.
 5. **Main executor (e.g. Codex)** owns triage, assigning fixes to itself or truly available agents, collecting material findings and resuming the next slice **after the focused fix check**. Never restart a complete Review loop just because a fix landed. Extra review is risk-triggered, not change-triggered.

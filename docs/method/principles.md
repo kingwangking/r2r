@@ -1,6 +1,6 @@
-# Nine operating principles — R2R should fit on one page
+# Nine operating principles — Run to Ready
 
-1. **Final quality is non-negotiable.** Readiness requires real integrated product evidence, not merely completion of tasks.
+1. **Run to Ready is the goal.** R2R organizes correct Spec intent, optional parallel implementation and long-horizon iteration into a real, evidence-backed accepted product. READY requires integrated product evidence, not merely completion of tasks.
 2. **Intermediate quality is selectable.** Avoid a universal per-slice release-ready requirement; protect irreversible and high-risk boundaries immediately.
 3. **Plan for the whole product.** Ensure capability coverage, credible architectural ownership, reuse decisions and final acceptance before scaling work.
 4. **Long execution is a first-class capability.** Agents should carry meaningful campaigns forward without ceremonial approval at every ordinary step; do not pretend inactive sessions run forever.
