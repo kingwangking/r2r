@@ -21,7 +21,10 @@
 - **Review：** 每个有意义的批次同步轻量自检；重大风险需深入验证；不把自检称为独立 Review。
 - **真实验证：** [CI Run #39739514168](https://github.com/kingwangking/r2r/actions/runs/39739514168) **SUCCESS**：12 个源码/负例测试、文档一致性检查、官方 Skill 发布前检查、本地/远程指定 SHA 安装、ZIP/校验文件构建。仅证明这批检查范围。
 - **Owner STEER：** 功能/安全/数据完整性 Finding 按风险及时修复并按需针对性快审；普通 P2/P3 批次集中修复；纯措辞不反复独立 Review（除验收/授权/追溯风险）。主 Codex 收集重要 Finding、安排修复并持续下一 Slice。R2R 聚焦纵向迭代，兼容 Spec 与多 Agent 分层并行。
-- **下一批：** 验证核心 Skill/README 一致性及 CI，申请设置 GitHub About/Topics；以后再在真实 Codex 或 Claude 做 Start → Continue → Harden 试用（NOT_RUN）。
+- **本轮已交付（PR #2 未发布）：** 核心 Skill Review 分流策略、Spec 与并行 Agent 兼容指南、对外宣传 README、中文入门和推荐 Topics/About 说明。
+- **真实 CI：** [Run #39745403270](https://github.com/kingwangking/r2r/actions/runs/39745403270) PASS：12 个测试、文档链接与发行状态检查、官方 Skill dry-run、本地/远程安装检查和打包。此结果只覆盖该次源代码版本；下一次修订后重新检查。
+- **GitHub Topics/Description：** [已拟定可复制的元数据](docs/product/discoverability.md)，**尚未应用到仓库 About**（当前 GitHub 接口不提供该项修改操作）。
+- **下一批：** 完成这轮 PR 的轻量自检、让维护者在 GitHub About 应用 Topic/简介；以后做真实 Codex/Claude Start → Continue → Harden 试用（NOT_RUN）。
 
 ## HARDEN：本阶段验收
 
