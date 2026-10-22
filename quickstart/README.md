@@ -1,6 +1,11 @@
-# Quickstart — R2R needs no new tools
+# Quickstart — Start · Continue · Harden
 
-Use an existing specification/repository and your preferred AI coding agent. The method works from ChatGPT web with GitHub as well as local tools.
+**New user? Start with [the complete user guide](use.md) or [installation](install.md).** You can also simply copy the prompt from the [root README](../README.md) — no R2R runtime required.
+
+This page keeps the detailed action prompts for readers who prefer a step-by-step chat workflow.
+
+
+Use an existing specification/repository and your preferred AI coding agent. For a long-lived product, create a single project-root `R2R.md` from [the portable Skill template](../skills/r2r/assets/R2R.md); do not duplicate existing specs or establish a separate governance stack. The method works from ChatGPT web with GitHub as well as local tools.
 
 ## 1. PLAN (copy)
 ```text
@@ -34,6 +39,8 @@ correct major architecture and integration mismatches first, then fix failures,
 run negative/restart/regression tests and repeat. Report NOT_RUN honestly.
 Do not declare ready because the task list is complete or a shallow review passed.
 ```
+
+**Prefer the reusable interface:** Start R2R → Continue R2R → Harden with R2R. See [full illustrated usage](../examples/complete-usage.md).
 
 **After a new session starts:** [one-message resume](resume-in-one-message.md). **When feature breadth exists but the product is not usable:** [HARDEN playbook](../docs/method/hardening-playbook.md).
 

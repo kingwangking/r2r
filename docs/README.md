@@ -2,6 +2,12 @@
 
 **Current truth:** [program/current-state.md](program/current-state.md)
 
+**For actual users — read only these**
+- [Start / Continue / Harden (Chinese)](../quickstart/use.md)
+- [Install portable Skill or copy Prompt](../quickstart/install.md)
+- [Complete fictional teaching conversation](../examples/complete-usage.md)
+- [Project-root R2R.md starter](../skills/r2r/assets/R2R.md)
+
 **Start**
 - [中文介绍与启动](zh/README.md)
 - [Web + GitHub 纯网页端执行](../quickstart/web-github.md)

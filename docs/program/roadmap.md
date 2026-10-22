@@ -2,6 +2,8 @@
 
 **Goal:** a simple, adopted and evidence-tested method for AI-assisted high-throughput construction of complex *ultimately reliable* products.
 
+**Productization direction (Owner, 2026-10-22):** prioritize a **complete usable end-user form** before spending cycles on complex experiments. The product is a portable no-server Skill + copy/paste Prompt + optional one-file R2R.md project state; users say Start / Continue / Harden, with STEER anytime. W5 empirical validation remains important but is **not** a prerequisite to delivering a coherent candidate package or documenting usage.
+
 The roadmap is deliberately complete and long; execution horizons remain dynamic and developer-controlled. Completing an item means delivering evidence or an artifact, not just writing a plan.
 
 ## W0 — foundation (candidate delivered)
@@ -50,6 +52,15 @@ The roadmap is deliberately complete and long; execution horizons remain dynamic
 - W5.4 publish limitations and failures; do not exaggerate causal claims.
 - W5.5 independent critique of evidence where available.
 **Exit:** useful reproducible evidence, or explicit finding that claims remain unproven.
+
+## Usable product package — near-term priority before complex validation
+- U1 One README entry leading to the **three natural-language actions**.
+- U2 Fully self-contained `skills/r2r/` folder with an internal `assets/R2R.md` and internal reference; no links outside the copied Skill.
+- U3 Clear Codex/Claude Code/manual installation routes, no invented public registry installer.
+- U4 First-use, resume, developer steering and HARDEN example, with real-vs-hypothetical labels.
+- U5 One durable target-project `R2R.md` rather than many mandatory governance documents.
+- U6 Candidate usability/source check; deeper controlled verification remains future W5, public release requires W6 owner decisions.
+**Exit:** a permitted user can understand what to copy, where it goes, what to say, what state is saved and what the AI should do next, without needing a new runtime.
 
 ## W6 — open-source community preparation
 - W6.1 English/Chinese concise docs and FAQ.
