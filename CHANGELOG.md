@@ -10,7 +10,8 @@ R2R is **pre-release**. Source/package tests and official GitHub CLI publish dry
 - Long-program `R2R.md` target-project template.
 - Documentation for GitHub CLI `gh skill` release/install and prompt-only use.
 - Stdlib-only source validation, deterministic Skill-only ZIP and SHA-256 generation.
-- Read-only GitHub Actions candidate build (no automatic Release creation).
+- Read-only GitHub Actions candidate build (no automatic Release creation), with official GitHub CLI publish dry-run.
+- Isolated GitHub CLI local and pinned-remote Skill installation smoke tests, verifying state template and guide files.
 
 ### Method
 - Long-horizon PLAN and RUN; synchronous risk-scoped lightweight self-Review after meaningful batches; repeated structural HARDEN and evidence-based READY.

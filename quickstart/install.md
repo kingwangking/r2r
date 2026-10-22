@@ -63,4 +63,8 @@ These are natural-language triggers, not native CLI commands implemented by the 
 
 ## Publisher's release workflow
 
-See [distribution plan](../docs/product/distribution.md). GitHub CLI provides `gh skill publish --dry-run` to validate and `gh skill publish --tag vX.Y.Z` to create a release **after authorization**. The official `gh skill publish --dry-run` and candidate ZIP/sha256 packaging **passed in GitHub Actions** at [run #39734623413](https://github.com/kingwangking/r2r/actions/runs/39734623413), along with Python source/unit checks. This did **not** publish a Release or install the Skill in Codex/Claude Code. The release tag, license and actual host installation remain outstanding.
+See [distribution plan](../docs/product/distribution.md). GitHub CLI provides `gh skill publish --dry-run` to validate and `gh skill publish --tag vX.Y.Z` to create a release **after authorization**. The official `gh skill publish --dry-run` and candidate ZIP/sha256 packaging **passed in GitHub Actions** at [run #39734623413](https://github.com/kingwangking/r2r/actions/runs/39734623413), along with Python source/unit checks. Further successful CI checks:
+- [Run #39735594895](https://github.com/kingwangking/r2r/actions/runs/39735594895) installed `r2r` from its **local repository** using `gh skill install --from-local` into a runner temp directory and confirmed asset integrity.
+- [Run #39735750731](https://github.com/kingwangking/r2r/actions/runs/39735750731) installed `r2r` from **GitHub at the exact PR head SHA** using `gh skill install --pin`, and confirmed the copied template/reference content.
+
+Neither run published a Release or started a real Codex/Claude Code agent. **Host activation remains NOT_RUN**; license choice, release authorization and version tag remain pending.

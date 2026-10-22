@@ -30,7 +30,9 @@ No R2R native CLI, IDE, multi-Agent backend, scheduler, hosted API, unattended c
 - [x] Official GitHub CLI `gh skill publish --dry-run`: [Actions run #39734623413](https://github.com/kingwangking/r2r/actions/runs/39734623413), SUCCESS on `972cbd536b3fd5cd3659f11ab2882e43badcfeb6`.
 - [ ] License, naming and third-party rights approved — OWNER DECISION.
 - [ ] Approved ref/merge and immutable version tag — NOT_DONE.
-- [ ] Installation in at least one real host — NOT_RUN.
+- [x] **GitHub CLI local installer** completed in isolated CI directory and preserved Skill/template/reference: [run #39735594895](https://github.com/kingwangking/r2r/actions/runs/39735594895) — SUCCESS on `7746c07a686dae74a2fd73ab52ca9f16837c2538`.
+- [x] **Remote pinned-SHA Skill install** from GitHub repository completed in isolated CI directory and preserved all Skill assets: [run #39735750731](https://github.com/kingwangking/r2r/actions/runs/39735750731) — SUCCESS on `8a4946e74c1b2f48ed56cc0f9c18d8dad6d209c2`.
+- [ ] **Actual agent-host activation/behavior** in Codex, Claude Code or other coding agent — NOT_RUN. Installing via CLI to a temporary CI directory does not establish prompt-trigger reliability.
 - [ ] Actual GitHub Release publication — NOT_DONE.
 
-These checkboxes are **source/package readiness only**. Controlled efficiency experiments can follow an early, honestly labeled release; unsafe external changes or unsupported claims cannot.
+These checkboxes are **source/package/CLI installation readiness only**, not a host behavior or release sign-off. Controlled efficiency experiments can follow an early, honestly labeled release; unsafe external changes or unsupported claims cannot.
