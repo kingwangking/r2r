@@ -14,6 +14,9 @@ on:
       - "LICENSE"
       - "docs/zh/README.md"
       - "docs/product/distribution.md"
+      - "docs/product/landing.html"
+      - "scripts/check_landing.py"
+      - "tests/test_landing.py"
       - "scripts/check_docs.py"
       - "tests/test_docs.py"
   push:
@@ -31,6 +34,9 @@ on:
       - "docs/zh/README.md"
       - "scripts/check_docs.py"
       - "tests/test_docs.py"
+      - "docs/product/landing.html"
+      - "scripts/check_landing.py"
+      - "tests/test_landing.py"
   workflow_dispatch:
 
 permissions:
@@ -51,6 +57,7 @@ jobs:
           python -m unittest discover -s tests -v
           python scripts/skill_release.py
           python scripts/check_docs.py
+          python scripts/check_landing.py
       - name: Official GitHub CLI Skill specification check (dry-run only)
         env:
           GH_TOKEN: ${{ github.token }}
@@ -99,6 +106,31 @@ jobs:
           assert "name: r2r" in text, "wrong installed Skill"
           print("REMOTE_SKILL_INSTALL_PASS: pinned GitHub source copied with full assets")
           PY
+      - name: Render animated landing in headless Chrome
+        run: |
+          set -e
+          mkdir -p dist
+          CHROME="$(command -v google-chrome || command -v chromium || true)"
+          if [ -z "$CHROME" ]; then
+            echo "No Chrome binary found; real browser screenshot NOT_RUN" >&2
+            exit 1
+          fi
+          timeout 40s "$CHROME" --headless=new --disable-dev-shm-usage --disable-gpu --no-sandbox             --window-size=1440,1100 --screenshot="$PWD/dist/r2r-landing-desktop.png"             "file://$PWD/docs/product/landing.html" > /tmp/r2r-chrome.log 2>&1
+          timeout 40s "$CHROME" --headless=new --disable-dev-shm-usage --disable-gpu --no-sandbox             --window-size=420,900 --screenshot="$PWD/dist/r2r-landing-mobile.png"             "file://$PWD/docs/product/landing.html" >> /tmp/r2r-chrome.log 2>&1
+          test -s dist/r2r-landing-desktop.png
+          test -s dist/r2r-landing-mobile.png
+          timeout 40s "$CHROME" --headless=new --disable-dev-shm-usage --disable-gpu --no-sandbox             --virtual-time-budget=1000 --dump-dom "file://$PWD/docs/product/landing.html"             > /tmp/r2r-landing-dom.html 2>> /tmp/r2r-chrome.log
+          grep -q 'class="step is-active"' /tmp/r2r-landing-dom.html
+          echo "LANDING_CHROME_PASS: JS-created timeline rendered, desktop and mobile screenshots saved"
+      - name: Upload standalone landing previews
+        uses: actions/upload-artifact@v4
+        with:
+          name: r2r-landing-screenshots
+          path: |
+            dist/r2r-landing-desktop.png
+            dist/r2r-landing-mobile.png
+          if-no-files-found: error
+          retention-days: 14
       - name: Package candidate (no tag and no Release)
         run: |
           python scripts/skill_release.py --pack dist/r2r-skill.zip
