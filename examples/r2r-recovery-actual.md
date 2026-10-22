@@ -36,3 +36,9 @@ This entry is a **before-W3 snapshot**, not a promise that these remain the curr
 The next actual experiment should test **stale checkpoints, moved HEAD and a dependent P1** with a clearly marked hypothetical fixture or an authorized sandbox, not production data.
 
 See [resume instruction](../quickstart/resume-in-one-message.md) and [current status](../docs/program/current-state.md).
+
+## Subsequent confirmed execution during this new session
+
+The W3 batch was actually committed as `51660d659419ef57f9baf75ac4f628c571ba7a1c`, then the author-side synchronous check verified the new source files and **6/6** new internal links. The next RUN immediately produced W4 hardening guidance at `217177575afdb83b16da793f32a6d00a417a8579`; a separate synchronous author-side check inspected the PR diff/tree and confirmed **48 tracked files**, **145/145** relative document links, and no unmatched added-line code fences. The session did **not** open a second reviewer, run an application or validate real-user readiness.
+
+This demonstrates **source-state recovery → productive RUN → synchronous quick Review → next RUN** in this documentation project. It does not prove automated or safe unattended execution of 40 slices in a real complex software project. The old `current-state.md` still said W3 was next; correcting it to match these commits is a real stale-checkpoint reconciliation.
