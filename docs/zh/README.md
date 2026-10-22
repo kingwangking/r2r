@@ -84,4 +84,4 @@ HARDEN：核心能力形成后多轮整合、结构优化、真实使用测试�
 - [风险与最终质量收敛](../method/quality.md)
 - [现有模板](../../templates/README.md)
 
-**状态说明：** 当前仅证明方法说明和模板已形成，尚无声称的实验提升百分比。远程仓库当前为 Public，但正式 Release 与开源许可证尚未确定；公开可见不等于已获得开源使用许可。
+**当前状态：** [R2R v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) 已按 [MIT](../../LICENSE) 正式发布；已经通过 GitHub CLI 安装/校验检查。尚未开展可信的开发效率对照实验，也没有完成真实 Codex/Claude Code 指令效果验证。

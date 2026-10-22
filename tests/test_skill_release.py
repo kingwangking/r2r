@@ -21,6 +21,7 @@ class SkillReleaseTests(unittest.TestCase):
             "[asset](assets/R2R.md) [guide](references/operating-guide.md)\n",
             encoding="utf-8",
         )
+        (root / "LICENSE").write_text("MIT\n", encoding="utf-8")
         (root / "assets/R2R.md").write_text("# Template\n", encoding="utf-8")
         (root / "references/operating-guide.md").write_text("# Guide\n", encoding="utf-8")
         return root
@@ -30,7 +31,7 @@ class SkillReleaseTests(unittest.TestCase):
             folder = Path(d)
             root = self.make_skill(folder)
             paths, links = checker.check_skill(root)
-            self.assertEqual(len(paths), 3)
+            self.assertEqual(len(paths), 4)
             self.assertEqual(links, 2)
             a, b = folder / "a.zip", folder / "b.zip"
             first = checker.pack_skill(root, a)
@@ -39,8 +40,15 @@ class SkillReleaseTests(unittest.TestCase):
             self.assertEqual(a.read_bytes(), b.read_bytes())
             with zipfile.ZipFile(a) as zf:
                 self.assertEqual(sorted(zf.namelist()), [
-                    "r2r/SKILL.md", "r2r/assets/R2R.md", "r2r/references/operating-guide.md"
+                    "r2r/LICENSE", "r2r/SKILL.md", "r2r/assets/R2R.md", "r2r/references/operating-guide.md"
                 ])
+
+    def test_missing_license_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = self.make_skill(Path(d))
+            (root / "LICENSE").unlink()
+            with self.assertRaises(checker.SkillCheckError):
+                checker.check_skill(root)
 
     def test_mismatched_name_rejected(self):
         with tempfile.TemporaryDirectory() as d:

@@ -1,24 +1,19 @@
-# R2R Agent Skill — portable product package
+# R2R Agent Skill — portable package
 
-The distributable artifact is the **entire** [`skills/r2r/`](r2r/SKILL.md) folder:
+[**R2R v0.1.0**](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) is published under the [MIT license](../LICENSE). The **entire** `skills/r2r/` directory is the installable package:
 
 ```text
 r2r/
-  SKILL.md                       ← agent entry and three natural-language modes
-  assets/R2R.md                  ← optional root project-state template
-  references/operating-guide.md ← additional detail only when needed
+  SKILL.md                       — agent entry, Start / Continue / Harden
+  LICENSE                        — MIT license inside the package
+  assets/R2R.md                  — target project's optional root-state template
+  references/operating-guide.md — optional operational detail
 ```
 
-Everything linked from the Skill stays **inside the same copied folder**, so it does not depend on the original source repository being checked out.
+All Skill-internal references stay inside this folder; copying it does **not** require the R2R source repository or any local R2R daemon.
 
-[Installation guide](../quickstart/install.md) uses **GitHub Releases/Tags + `gh skill install`** as the proposed official distribution, with `npx skills add` and manual folder copy as alternatives. [Release workflow](../docs/product/distribution.md). The repository is now Public but remains unreleased, without an approved open-source license.
+**Install:** [GitHub CLI or manual ZIP instructions](../quickstart/install.md). The default workflow is to install by pinned Release tag, open the target project's existing coding agent and say “Start R2R”, later “Continue R2R”, then “Harden with R2R”.
 
-## User-facing behavior
+**Actual evidence:** [Release post-install smoke](https://github.com/kingwangking/r2r/actions/runs/39737882456) passed CLI installation, package file checks and ZIP checksum. This does not prove the actual Codex/Claude Agent follows every instruction; its full host behavior remains **NOT_RUN**.
 
-- **Start R2R** → inspect real project and specs, create/update root `R2R.md`, immediately start the first safe authorized campaign.
-- **Continue R2R** → inspect Git and R2R.md, reconcile stale facts and continue.
-- **Harden with R2R** → focus on real integrated product quality and explicit readiness.
-
-Review defaults to synchronous lightweight **self-review**, not a fictional second agent. R2R does not include an execution scheduler or extra local runtime.
-
-**Current distribution status:** candidate in a **public** repository, unmerged into `main`, without a license or tagged Release. The file structure follows the published Agent Skills pattern, but Official GitHub CLI publish **dry-run validation passed at Actions run #39734623413**, but Skill-host installation and real end-user evaluation remain `NOT_RUN`; public distribution awaits license/rights and maintainer approval.
+The source can evolve on `main` without changing published `v0.1.0`. New substantive changes require a new version, not an overwritten tag.

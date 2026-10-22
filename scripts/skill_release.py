@@ -19,7 +19,7 @@ SKILL = REPO / "skills" / "r2r"
 NAME_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 LINK_PATTERN = re.compile(r"\[[^\]\n]+\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
 METADATA_PATTERN = re.compile(r"^([a-zA-Z][a-zA-Z0-9_-]*):\s*(.*)$")
-REQUIRED = ("SKILL.md", "assets/R2R.md", "references/operating-guide.md")
+REQUIRED = ("SKILL.md", "LICENSE", "assets/R2R.md", "references/operating-guide.md")
 
 
 class SkillCheckError(Exception):

@@ -37,6 +37,15 @@ class DocCheckTests(unittest.TestCase):
             f.write_text(f.read_text(encoding="utf-8") + "\nThe PR is still in an unmerged Draft.\n", encoding="utf-8")
             self.assertTrue(any("stale pre-release" in x for x in mod.check(root)))
 
+    def test_secondary_entry_staleness_is_detected(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            self.fixture(root)
+            (root / "skills/README.md").write_text(
+                "This package is still in an unmerged Draft PR.\n", encoding="utf-8"
+            )
+            self.assertTrue(any("skills/README.md" in x and "stale" in x for x in mod.check(root)))
+
     def test_version_mismatch_is_detected(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)

@@ -19,4 +19,4 @@ A concise method, copyable prompts, templates, an honest worked example and a re
 
 Optional automation is a later research decision, only if repeated evidence shows an essential unmet need.
 
-**Open source:** the source repository is Public, but licensing/rights and a tagged GitHub Release are still unresolved. Do not claim a public open-source release or implied permission to reuse without a license.
+**Open source:** [v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) is publicly released under [MIT](../../LICENSE). Do not claim external agent-host validation or measured throughput advantages based solely on publication.

@@ -13,6 +13,7 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 ENTRY_POINTS = ("README.md", "quickstart/install.md", "quickstart/use.md")
+STATUS_DOCS = ("skills/README.md", "docs/zh/README.md", "CONTRIBUTING.md", "docs/product/positioning.md")
 MARKDOWN_LINK = re.compile(r"\[[^\]\n]*\]\(([^)\n]+)\)")
 RELEASE_HEADING = re.compile(r"^## v(\d+\.\d+\.\d+)\b", re.MULTILINE)
 STALE_PUBLICATION = re.compile(
@@ -58,8 +59,14 @@ def check(root: Path) -> list[str]:
             release_url = f"https://github.com/kingwangking/r2r/releases/tag/v{version}"
             if release_url not in text:
                 issues.append(f"{path}: missing canonical published Release link {release_url}")
-            for match in STALE_PUBLICATION.finditer(text):
-                issues.append(f"{path}: stale pre-release claim: {match.group(0)!r}")
+    for path in (*ENTRY_POINTS, *STATUS_DOCS):
+        target = root / path
+        if not target.is_file():
+            # Secondary documentation may not be present in isolated test fixtures.
+            continue
+        text = target.read_text(encoding="utf-8")
+        for match in STALE_PUBLICATION.finditer(text):
+            issues.append(f"{path}: stale pre-release claim: {match.group(0)!r}")
 
     license_root = read("LICENSE")
     license_skill = read("skills/r2r/LICENSE")

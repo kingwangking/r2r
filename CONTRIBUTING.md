@@ -1,7 +1,9 @@
-# Contributing
+# Contributing to R2R
 
-The repository is **Public**, but no open-source LICENSE has been approved or tagged Release published. Public visibility is not a blanket reuse permission. These contribution guidelines anticipate a future maintainer-authorized release.
+R2R is publicly released under the [MIT license](LICENSE); the initial [v0.1.0 Release](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) is available. Propose changes through an issue or a pull request; don't alter published tags or assume a new release follows every merge.
 
-Please propose improvements with **problem → observable evidence → minimal change → checks performed → limitations**. Useful inputs include practical cases, counterexamples, clearer onboarding and reproducible comparisons of intermediate-review costs versus final-product acceptance.
+**Prefer meaningful product improvements:** a reproducible usability friction point, incorrect Skill behavior, unclear installation instruction, broken recovery flow, or a concise successful/negative case study. Format: **problem → observed evidence → minimal fix → actual checks → known limitations**.
 
-Do not upload proprietary project code, unreleased personal documents, customer data, copyrighted material without permission, credentials or private logs. No false research results or invented user adoption metrics. Keep lightweight changes lightweight; deep review is appropriate for conceptual pivots, safety and public release.
+R2R uses its own method: commit a useful batch, perform a short synchronous self-review, fix unsafe affected paths and continue. Deep review is warranted for permissions, rights, destructive operations or systemic architecture risks, not every typo.
+
+Do not contribute proprietary project code or unreleased customer/personal content, credentials, unlicensed assets, invented benchmark numbers or false test results. Agent-host behavior should only be marked PASS after an actual observed host run. The maintainer authorizes release scope and versioning.
