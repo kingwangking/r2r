@@ -86,7 +86,7 @@
     .lane-track { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 9px; position: relative; }
     .lane-track::before { content: ""; position: absolute; height: 2px; background: #4b5d71; left: 4%; right: 4%; top: 40%; z-index: 0; }
     .step { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 11px; min-width: 0; }
-    .dot { display: grid; place-items: center; height: 47px; width: 47px; flex: none; border: 1px solid #506278; background: #1c2b41; border-radius: 15px; font-weight: 900; font-size: 14px; color: #93a5ba; transition: transform .35s, box-shadow .35s, background .35s, border-color .35s; }
+    .dot { display: grid; place-items: center; height: 47px; width: 47px; flex: none; border: 1px solid #506278; background: #1c2b41; border-radius: 15px; font-weight: 900; font-size: 14px; color: #93a5ba; transition: none; /* Timed storyboard steps are animated via JS; avoid stale selection styles. */ }
     .step .step-name { display: block; min-height: 31px; font-size: 11px; color: #97a8bb; line-height: 1.25; font-weight: 750; }
     .lane[data-lane="stalled"] .step.is-active .dot { background: #6b3137; border-color: var(--red); box-shadow: 0 0 0 7px #ff856e20, 0 0 38px #ff856e5a; color: #fff; transform: translateY(-3px) scale(1.08); }
     .lane[data-lane="r2r"] .step.is-active .dot { background: #186a62; border-color: var(--green); box-shadow: 0 0 0 7px #70ebbb1c, 0 0 38px #70ebbb44; color: #fff; transform: translateY(-3px) scale(1.08); }
@@ -94,7 +94,7 @@
     .lane[data-lane="stalled"] .step.is-past .dot { border-color: #a15b5e; }
     .lane[data-lane="r2r"] .step.is-past .dot { border-color: #5ea48e; }
     .lane:not(.is-focused) { opacity: .34; filter: saturate(.45); }
-    .lane { transition: opacity .35s, filter .35s; }
+    .lane { transition: none; } /* Explicit mode switch stays visually in sync with story state. */
     .board-caption { background: #0a1525; border: 1px solid #32455b; border-radius: 16px; padding: 23px; min-height: 128px; }
     .state { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
     .state-tag { font-size: 11px; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
@@ -106,7 +106,7 @@
     .small-control { border: 1px solid #3f546c; cursor: pointer; background: #23344a; color: #f1f7ff; padding: 9px 15px; border-radius: 9px; font-weight: 700; font-size: 12px; }
     .small-control:hover { background: #2f4761; }
     .progress { flex: 1 1 230px; height: 6px; background: #293b50; border-radius: 20px; overflow: hidden; }
-    .progress > span { width: 0; height: 100%; display: block; background: var(--red); border-radius: 20px; transition: width .4s, background .4s; }
+    .progress > span { width: 0; height: 100%; display: block; background: var(--red); border-radius: 20px; transition: none; /* Matches story progress immediately, including headless fast-forward. */ }
     .progress[data-mode="r2r"] > span { background: var(--green); }
     .disclaimer { font-size: 12px; color: #7f91a8; margin-top: 16px; line-height: 1.6; }
     .pain-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; margin-top: 37px; }
