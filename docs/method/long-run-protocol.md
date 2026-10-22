@@ -33,6 +33,12 @@ A meaningful batch may include **one** risky change or **many** reversible indep
 
 A *quick* Review is a **synchronous self-review** by default. It is **not** independent audit and does not imply whole-product readiness. High-risk changes may need deeper focused verification *at once* or a genuinely separate sequential reviewer if available.
 
+## 1.1 — Concurrency scales at two levels where it actually exists
+
+For a **large** R2R Program with independent Campaigns and available nested Agent tools, prefer multiple Campaign Lead Agents in parallel; each Campaign Lead must delegate its own safely separable Workstream subagents and then own the integrated Campaign output. The Program Integrator freezes common contracts and owns shared writes. Workstream subagents can use **different actual available models and reasoning effort** based on task complexity, risk and resource/cost. Never hard-pin all children to one model or force high-effort thought for mechanical work.
+
+This topology is a preferred **implementation option**, not a mandatory agent tree for a one-file task or a promise of parallel execution when the host lacks the capability. Record actual dispatch, ownership, verification and integration evidence; if disabled, continue sequentially. The Skill copy contains [hierarchical-agent guidance](../../skills/r2r/references/hierarchical-agents.md); it is documentation, not a new scheduler or an asynchronous task guarantee.
+
 ## 2 — Dependency-scoped holds; no false global stop
 
 Given a finding, distinguish:
