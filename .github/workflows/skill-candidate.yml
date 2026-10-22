@@ -80,7 +80,7 @@ jobs:
           installed = hits[0].parent
           source = Path("skills/r2r")
           assert installed.name == "r2r", installed
-          for relative in ("assets/R2R.md", "references/operating-guide.md"):
+          for relative in ("assets/R2R.md", "references/operating-guide.md", "references/hierarchical-agents.md"):
               assert (installed / relative).is_file(), f"missing installed file: {relative}"
               assert (installed / relative).read_bytes() == (source / relative).read_bytes(), relative
           text = (installed / "SKILL.md").read_text(encoding="utf-8")
@@ -102,7 +102,7 @@ jobs:
           assert len(hits) == 1, f"expected one remote installed Skill: {hits}"
           folder = hits[0].parent
           assert folder.name == "r2r", folder
-          for path in ("assets/R2R.md", "references/operating-guide.md"):
+          for path in ("assets/R2R.md", "references/operating-guide.md", "references/hierarchical-agents.md"):
               assert (folder / path).read_bytes() == (Path("skills/r2r") / path).read_bytes(), path
           text = hits[0].read_text(encoding="utf-8")
           assert "name: r2r" in text, "wrong installed Skill"
