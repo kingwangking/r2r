@@ -1,6 +1,6 @@
 # R2R v0.1.0 — release candidate notes (NOT PUBLISHED)
 
-**Status:** Proposed candidate; `v0.1.0` is a suggested first tag, not an existing release or authorization to create one.
+**Status:** this is a historical release-preflight checklist. The owner has now approved MIT and the `v0.1.0` release. Confirm [the actual Release](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) and associated CI evidence; do not treat the approval itself as proof.
 
 ## What the product includes
 
@@ -28,11 +28,11 @@ No R2R native CLI, IDE, multi-Agent backend, scheduler, hosted API, unattended c
 - [x] Installation and end-user Start/Continue/Harden docs exist (observed in Git).
 - [x] Python source checks, five unit tests and candidate ZIP + SHA-256: [Actions run #39734487738](https://github.com/kingwangking/r2r/actions/runs/39734487738), SUCCESS on `7fecbed11aa037d594d755e457f225664653c192`.
 - [x] Official GitHub CLI `gh skill publish --dry-run`: [Actions run #39734623413](https://github.com/kingwangking/r2r/actions/runs/39734623413), SUCCESS on `972cbd536b3fd5cd3659f11ab2882e43badcfeb6`.
-- [ ] License, naming and third-party rights approved — OWNER DECISION.
-- [ ] Approved ref/merge and immutable version tag — NOT_DONE.
+- [x] Owner authorized MIT and v0.1.0 publication. Full independent legal/name clearance is not asserted.
+- [ ] Confirm exact merge/main source SHA and immutable version tag in actual GitHub history.
 - [x] **GitHub CLI local installer** completed in isolated CI directory and preserved Skill/template/reference: [run #39735594895](https://github.com/kingwangking/r2r/actions/runs/39735594895) — SUCCESS on `7746c07a686dae74a2fd73ab52ca9f16837c2538`.
 - [x] **Remote pinned-SHA Skill install** from GitHub repository completed in isolated CI directory and preserved all Skill assets: [run #39735750731](https://github.com/kingwangking/r2r/actions/runs/39735750731) — SUCCESS on `8a4946e74c1b2f48ed56cc0f9c18d8dad6d209c2`.
 - [ ] **Actual agent-host activation/behavior** in Codex, Claude Code or other coding agent — NOT_RUN. Installing via CLI to a temporary CI directory does not establish prompt-trigger reliability.
-- [ ] Actual GitHub Release publication — NOT_DONE.
+- [ ] Confirm actual GitHub Release publication with tag and download assets; link the post-merge CI result.
 
 These checkboxes are **source/package/CLI installation readiness only**, not a host behavior or release sign-off. Controlled efficiency experiments can follow an early, honestly labeled release; unsafe external changes or unsupported claims cannot.

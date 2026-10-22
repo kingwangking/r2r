@@ -33,7 +33,7 @@ gh skill install kingwangking/r2r r2r --agent codex --scope user
 npx skills add kingwangking/r2r --skill r2r
 ```
 
-**Current fact:** this repository is now **Public**, but the Skill remains on **Draft PR #1**, not in default `main`, and **no Release exists**. The commands above describe a future stable installation path, not a completed installation. Readers can examine the candidate branch or copy the self-contained [`skills/r2r/`](skills/r2r/SKILL.md) folder or use a [prompt-only route](quickstart/install.md). The distributable release is a **versioned GitHub Release/Tag** over this source; a dedicated ZIP containing only the Skill folder is optional. See [distribution and release process](docs/product/distribution.md), [v0.1.0 candidate notes](docs/product/release-candidate-v0.1.0.md) and [changelog](CHANGELOG.md).
+**Installation:** select an actually published tag from [GitHub Releases](https://github.com/kingwangking/r2r/releases), or copy the self-contained [`skills/r2r/`](skills/r2r/SKILL.md) folder or use a [prompt-only route](quickstart/install.md). The distributable release is a **versioned GitHub Release/Tag** over this source; a dedicated ZIP containing only the Skill folder is optional. See [distribution and release process](docs/product/distribution.md), [v0.1.0 candidate notes](docs/product/release-candidate-v0.1.0.md) and [changelog](CHANGELOG.md).
 
 ## Then use three natural-language actions
 
@@ -78,6 +78,6 @@ my-product/
 
 Deep methodology, research, comparisons, examples and the [internal R2R development program](docs/program/roadmap.md) are optional reading, not installation requirements.
 
-**Release status:** [No GitHub Releases have been published yet](https://github.com/kingwangking/r2r/releases). GitHub Skill publish dry-run, license/rights, tagged release and real installation are pending owner authorization. Source code and a Draft PR are not equivalent to a distributed product.
+**Versioned distribution:** [GitHub Releases](https://github.com/kingwangking/r2r/releases). The first version is `v0.1.0`; inspect the actual Releases page to confirm it has been published before using a pinned installation command.
 
-**Project status:** this repository is **Public but not released**. No open-source LICENSE has been selected; public visibility does not itself grant open-source reuse rights. A genuine GitHub Actions candidate package and official `gh skill publish --dry-run` have passed, but release authorization and host installation remain pending.
+**License:** [MIT](LICENSE), including the distributable Skill directory. This is an instruction-based product: package verification can pass without proving that a particular AI host follows every R2R instruction.

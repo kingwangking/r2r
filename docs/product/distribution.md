@@ -2,7 +2,7 @@
 
 **Decision:** Use GitHub-native Skill publishing/installing instead of developing a custom installer or requiring users to browse a GitHub directory. Source repository is the development/workspace; a **tagged GitHub Release** is the supported versioned distribution artifact.
 
-**Status 2026-10-22:** GitHub reports `kingwangking/r2r` as **Public** with **0 GitHub Releases**. Draft PR #1 is unmerged and default `main` lacks this Skill. No LICENSE has been approved; public visibility is not the same as open-source permission.
+**First-release preparation:** the repository is Public and the owner approved MIT licensing, merging and publishing `v0.1.0` on 2026-10-22. The one-time publishing workflow runs only after a merge commit explicitly marked `[publish-r2r-v0.1.0]`. To determine whether the Release actually exists, inspect [GitHub Releases](https://github.com/kingwangking/r2r/releases); approval or this document alone is not proof of publication.
 
 ## Three distinct concepts
 
@@ -30,7 +30,7 @@
 
 ## Proposed release procedure (not executed)
 
-1. Owner approves release scope, rights of all source assets, an explicit **license**, final version tag and permission to publish. The repository is already Public; do not change its visibility. Do not publish private project details without permission.
+1. The owner approved **MIT** and the first **v0.1.0** release. License copies live at the repository root and inside the portable Skill. The repository is already Public; do not change its visibility. Do not publish private project details without permission.
 2. Commit final `skills/r2r` assets and human-facing install/usage docs on an authorized release ref. Resolve PR merge by owner instruction.
 3. The project's read-only [candidate workflow](../../.github/workflows/skill-candidate.yml) has already run both package tests and the official `gh skill publish --dry-run` at [run #39734623413](https://github.com/kingwangking/r2r/actions/runs/39734623413): SUCCESS. Repeat on the **final approved release commit** if its sources changed. A successful dry-run is not a Release.
 4. After authorization, use `gh skill publish --tag vX.Y.Z` to validate and create a tagged GitHub Release. The public release version must point to the intended source, not a Draft PR-only branch.

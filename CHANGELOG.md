@@ -1,8 +1,8 @@
 # Changelog
 
-R2R is **pre-release**. Source/package tests and official GitHub CLI publish dry-run succeeded on the candidate branch, but no immutable tagged release or host installation is claimed. No GitHub Release has been published as of the last source inspection.
+R2R publishes versioned Agent Skills using GitHub Releases. Consult [the actual Releases page](https://github.com/kingwangking/r2r/releases) to determine which versions have been published.
 
-## Unreleased — candidate v0.1.0 (proposed, not tagged)
+## v0.1.0 — initial Skill release
 
 ### Added
 - Portable `r2r` Agent Skill with self-contained template and operating guide.
@@ -18,6 +18,6 @@ R2R is **pre-release**. Source/package tests and official GitHub CLI publish dry
 - No mandatory local multi-Agent implementation.
 
 ### Unverified
-- Real host installation, empirically proven speedup and release-grade product-quality field results are **NOT_RUN**. No published version, source license or final Release authorization is implied.
+- Real host installation, empirically proven speedup and release-grade product-quality field results are **NOT_RUN**. License: MIT. The packaged and CLI installer checks are automated; real coding-agent end-to-end behavior and measured throughput remain outside the scope of these release tests.
 
 See [candidate notes](docs/product/release-candidate-v0.1.0.md).
