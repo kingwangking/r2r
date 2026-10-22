@@ -5,11 +5,15 @@
 ## Core principle
 **The final product must be stable; intermediate products need not be release-ready.** The developer chooses how much intermediate stability is required for progress. Safety, recoverability, permissions, intellectual property and truthful evidence never become optional.
 
+## Relation to Spec-driven and parallel multi-agent development
+
+**Spec defines intent** and acceptance (for example, Spec Kit's specify → plan → tasks → implement → converge). **Parallel agents increase horizontal capacity** where architecture, ownership and integration contracts are clear. **R2R increases longitudinal iteration throughput** across slices, developer intervention, feedback, repairs and HARDEN. They are compatible layers, not competing methodologies. Keep original specs authoritative and use R2R.md only for the overarching roadmap/checkpoint. Parallel implementation is welcome; synchronous quick Review remains the simple default when no separate reviewer infrastructure exists.
+
 ## PLAN
 Establish a whole-product capability map, actual user journeys, architectural/data ownership, mature implementations to reuse, high-impact unknowns, long-horizon roadmap and final acceptance. Plans may be extremely long and are revisable. Prioritize overall direction, not exhaustive low-level design.
 
 ## RUN
-Let an authorized agent implement and continue producing useful changes. After each meaningful execution batch, perform a **synchronous, lightweight, risk-focused review** in the current workflow, resolve critical affected-path issues, log noncritical findings and continue. Deep reviews remain developer- or risk-triggered, not obligatory after every edit. A failing noncritical smoke test is a fact to record, not necessarily a stop-the-world event. A P0/P1 risk blocks its **affected dependency**, while unrelated work may continue safely. Preserve the actual work state for restart; do not require developer approval after every small task.
+Let an authorized agent (or coordinated independent agents) implement and continue producing useful changes. After each meaningful execution batch, perform a **synchronous, lightweight, risk-focused review** in the current workflow; triage meaningful Findings, promptly fix functionality/security/data-integrity issues by severity, queue nonblocking P2/P3 for batched repairs and continue. A repair triggers only the **necessary focused recheck**, not a new complete Review cycle. Deep reviews remain developer- or risk-triggered, not obligatory after every edit. A failing noncritical smoke test is a fact to record, not necessarily a stop-the-world event. A P0/P1 risk blocks its **affected dependency**, while unrelated work may continue safely. Preserve the actual work state for restart; do not require developer approval after every small task.
 
 ## STEER ANYTIME
 The developer sets the current horizon and may ask product/architecture questions, inspect evidence, shorten/extend execution, change review intensity, stop for a key uncertainty or trigger re-design. Agent explanations are not proof; demand source-grounded evidence for important claims.

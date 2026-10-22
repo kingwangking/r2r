@@ -1,59 +1,51 @@
-# Review economics — synchronous by default, lightweight by design
+# Review economics — findings should accelerate the next Slice
 
-**R2R current default:** **RUN → synchronous quick Review → RUN** within the same active execution process. This is an intentional engineering choice because a convenient local multi-agent execution/reviewer architecture is not presently available. It must not become the old *full deep review after every tiny change* loop.
+**R2R default:** a useful RUN batch → **synchronous quick Review** → severity-based repair/queue → **continue RUN**. Frequent developer steering is expected. The primary coding agent (such as Codex) should collect impactful Findings and keep delivery moving—not get trapped in serial full Review after every repair.
 
-## The distinction that matters
+## Triage and routing
 
-| | R2R default | Traditional costly bottleneck |
+| Finding | What to do now | Repeat Review? |
 | --- | --- | --- |
-| Frequency | After a **meaningful work batch**, which may include many small tasks | Every small increment |
-| Timing | Immediately after the batch, **synchronously** | Serial gate with potentially lengthy queue/re-review |
-| Depth | Fast, relevant, risk-scaled | Broad, often release-level by default |
-| Reviewer | Current agent's clearly labeled **self-check**; ask another reviewer only if really available/needed | Formal independent review routinely demanded |
-| Handling | Fix P0/P1 affected paths; note P2/P3 and continue approved scope | All findings repeatedly halt all work |
-| Finality | Only checks this batch and what was actually observed | Risk of over-interpreting approval as product-ready |
+| **Code functionality, safety, security, data integrity** | Prioritize by severity and actual dependent harm; fix important affected paths promptly, block unsafe writes/permissions until safe; unrelated safe work can proceed | Short **focused** recheck when the changed contract/risk warrants; full deep check only when materially justified |
+| **Ordinary P2/P3** | Record owner, affected module, evidence and target fix batch; **repair together later** | Not by default; targeted regression when batch lands |
+| **Pure docs / evidence phrasing** | Fix cheaply and maintain true traceable state | **No repeated independent Review** unless it would corrupt acceptance, safety/authorization or audit traceability |
+| **Systemic contract/architecture failure** | Stop dependent work, revisit design/Spec and interface owners; restructure early | Risk-driven deeper architecture/integration check, then return to RUN |
 
-**Synchronous does not mean deep.** A 60-second focused source/contract check and an hour-long system-wide audit are both synchronous activities but have very different costs.
+**Severity overrides label.** A concrete data-loss or auth issue is not safely deferrable just because someone called it P2. Never trade away rights, secrets, real-data protections or final release gates.
 
-## Minimum synchronous loop
+## The quick synchronous loop
 
 ```text
-PLAN: whole product and current authorized campaign
-     ↓
-RUN: implement a meaningful batch (size chosen by developer)
-     ↓
-REVIEW: quick synchronous source/evidence check of that batch
-     ├─ Critical risk or wrong direction → stop/fix affected work, rerun relevant check
-     ├─ Ordinary issue / deferred evidence → record and continue
-     └─ No material finding → continue
-     ↓
-RUN: next meaningful batch, while authorization/session exists
-     ↓
-HARDEN when integration/restructuring or final READY requires it
+Spec / existing architecture  →  RUN a meaningful Slice or batch
+                                   ↓
+                       short synchronous source/evidence Review
+                                   ↓
+                     main Codex / executor triages Findings
+                      ├─ high-impact affected path → scoped repair
+                      │                             → focused recheck as needed
+                      ├─ ordinary P2/P3 → queue for grouped repair
+                      ├─ wording-only → correct; no review carousel
+                      └─ safe independent work → continue now
+                                   ↓
+                       next RUN / next Slice ← developer STEER
+                                   ↓
+                          periodic integrated HARDEN
 ```
 
-The **developer may intervene any time**; meaningful batch size and review depth are dynamically chosen. There is no “review every N commits” law, and there is no assumption that another agent is running concurrently.
+A single reviewer is enough to carry out the baseline loop and must label its own work **self-review**. A genuinely separate reviewer (sequential or in parallel) can be used when available and useful; **R2R does not prohibit parallel implementation agents**. When multiple agents own clearly isolated layers, the primary executor integrates outcomes and triages integration findings.
 
-## What quick Review should inspect
+## What the main executor must keep visible
 
-1. Does the change serve the agreed user/product target, or has the implementation drifted?
-2. Has it broken a known architecture, data authority, permissions or irreversible-data boundary?
-3. Are changed files and any PASS/FAIL/NOT_RUN statements real and source-grounded?
-4. Is there a single high-information architecture/product question that must be answered before dependent work?
-5. If a finding is nonblocking, what is its owner, affected path and eventual validation stage?
+- Current program/Spec sources, recent changed source/ref and actual proof.
+- High-impact Findings with exact affected dependencies; ensure critical repairs have a relevant recheck.
+- **One small P2/P3 repair queue** grouped by module, owner or batch; avoid requiring a new governance system.
+- Developer STEER changes, current Slice and the next safe iteration.
+- Outstanding deep checks that final HARDEN must pay down; no NOT_RUN → PASS promotion.
 
-Keep the summary compact: **scope/commit → up to three actionable findings → decision → next work**. The limit of three is a reporting convenience **only for quick review**, never a cap on reporting real P0/P1 problems.
+## When to review deeper
 
-## When deeper synchronous review is justified
+Authentication, migrations, rights, destructive changes, shared persisted state, repeated contract failures or release readiness are worthy of deeper evidence; do them where the risk matters. Avoid requiring every new doc commit or small repair to repeat release-level source/GUI/independent approval.
 
-Shared persistent state, auth or credentials, data migrations, architectural pivots, recurring cross-module failures or claims that a real user journey/release is ready can merit source- or runtime-backed deeper review. Ask the developer for any consequential missing authorization. A distinct independent reviewer, if available, can perform **sequential independent review**, but do not invent its participation or label a self-check independent.
+For detailed severity safeguards see [quality](quality.md), [one-page method](r2r.md), [review template](../../templates/review.md) and [integration with other methods](../product/compatibility.md).
 
-## Handling verification debt
-
-Ordinary P2/P3 findings and tests intentionally deferred can be documented and revisited. Do not accumulate unowned missing evidence or proceed through an unsafe dependency. Periodic real integration and final HARDEN remain necessary. This is *review-effort allocation*, not deleting verification.
-
-## Future options
-
-Parallel/async reviewer dispatch would require real suitable agent/workspace infrastructure and a separate reason to implement it. It is **not part of this baseline workflow or an R2R requirement**.
-
-See [quality](quality.md), [steering](steering.md), [decision guide](../../quickstart/decision-guide.md) and [evaluation protocol](../research/evaluation-protocol.md).
+**Outcome to optimize:** accepted software functionality per unit of total developer + agent time, while maintaining the agreed final quality—not number of Review rounds.
