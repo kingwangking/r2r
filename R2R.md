@@ -16,10 +16,11 @@
 
 - **正式已发布：** `v0.1.0`，Tag 固定在 `1f7bdd09e2f304d4dd03f6575114ebc73a5e413a`。MIT。
 - **真实检查：** [发布后安装/校验 PASS](https://github.com/kingwangking/r2r/actions/runs/39737882456)；真实 Codex / Claude Code 交互执行 **NOT_RUN**。
-- **当前阶段：** 发布后 HARDEN。首先处理用户入口中残留的旧发行状态、安装说明不一致，以及防止状态再次过期的回归检查。
+- **当前阶段：** 发布后 HARDEN。第一轮已修复 README、中文使用指南、安装页及 Skill/贡献/定位等旧状态；新建 [Draft PR #2](https://github.com/kingwangking/r2r/pull/2)，维持已发布的 v0.1.0 不变。
 - **当前工作分支：** `hardening/post-v0.1.0-usability`（历史名称；恢复时请重新读取 Git）。
 - **Review：** 每个有意义的批次同步轻量自检；重大风险需深入验证；不把自检称为独立 Review。
-- **下一批：** 以入门质量为核心，加入文档版本/发布状态回归检查、运行 CI、处理发现，再总结后续是否需要新的版本。
+- **真实验证：** [CI Run #39739514168](https://github.com/kingwangking/r2r/actions/runs/39739514168) **SUCCESS**：12 个源码/负例测试、文档一致性检查、官方 Skill 发布前检查、本地/远程指定 SHA 安装、ZIP/校验文件构建。仅证明这批检查范围。
+- **下一批：** 对真实 Codex 或 Claude Code 做一个小规模 Start → Continue → Harden 交互试用，观察指令遵循与 R2R.md 的实际生成；未经真实执行标记 NOT_RUN。根据使用问题修订后再决定下一次版本发布。
 
 ## HARDEN：本阶段验收
 

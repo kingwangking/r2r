@@ -1,6 +1,6 @@
 # R2R Agent Charter
 
-Read [README](README.md), [method](docs/method/r2r.md), [roadmap](docs/program/roadmap.md) and [current state](docs/program/current-state.md) before work.
+Read [README](README.md), the project's own [R2R.md](R2R.md), [method](docs/method/r2r.md), [roadmap](docs/program/roadmap.md), and the historical [release status](docs/program/current-state.md) before work. Always reconcile a checkpoint with live Git HEAD.
 
 **Product:** a **user-ready portable R2R Skill**, copyable start/continue/harden prompts and an optional root `R2R.md` template, backed by a simple high-throughput AI engineering method. **Prioritize the complete end-user experience before expensive comparative validation.** R2R does not require a local runtime. ChatGPT Web + GitHub is the primary development channel for this repository.
 

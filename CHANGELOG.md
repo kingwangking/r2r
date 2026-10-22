@@ -2,6 +2,14 @@
 
 R2R publishes versioned Agent Skills using GitHub Releases. Consult [the actual Releases page](https://github.com/kingwangking/r2r/releases) to determine which versions have been published.
 
+## Unreleased — post-v0.1.0 HARDEN (in Draft PR #2)
+
+- Correct published-version installation/Chinese onboarding and contributor/Skill status after the first Release.
+- Add root `R2R.md` so R2R itself follows its Start / Continue / Harden practice without duplicating existing plans.
+- Add documentation-state and internal Markdown-link regression checks with isolated positive/negative unit tests.
+- Require MIT LICENSE in the distributable Skill source/package; guard missing-license regressions in tests.
+- Existing `v0.1.0` Tag and published ZIP remain unchanged. Do not advertise this unreleased work as installed v0.1.0 functionality.
+
 ## v0.1.0 — initial Skill release
 
 ### Added
