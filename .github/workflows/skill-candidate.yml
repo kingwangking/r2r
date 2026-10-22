@@ -17,6 +17,8 @@ on:
       - "docs/product/landing.html"
       - "scripts/check_landing.py"
       - "tests/test_landing.py"
+      - ".github/workflows/pages.yml"
+      - "docs/product/pages.md"
       - "scripts/check_docs.py"
       - "tests/test_docs.py"
   push:
@@ -144,6 +146,23 @@ jobs:
             dist/r2r-landing-mobile.png
             dist/r2r-landing-long-desktop.png
             dist/r2r-landing-long-mobile.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Prepare GitHub Pages preview package (no public deploy)
+        run: |
+          set -eu
+          mkdir -p dist/pages
+          cp docs/product/landing.html dist/pages/index.html
+          touch dist/pages/.nojekyll
+          test -s dist/pages/index.html
+      - name: Upload Pages preview source artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: r2r-pages-static-preview
+          path: |
+            dist/pages/index.html
+            dist/pages/.nojekyll
+          include-hidden-files: true
           if-no-files-found: error
           retention-days: 14
       - name: Package candidate (no tag and no Release)

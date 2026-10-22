@@ -1,0 +1,55 @@
+name: R2R visual site (GitHub Pages)
+
+# Deploy only from the approved default branch, not from open PR source.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/product/landing.html'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: r2r-github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out approved main
+        uses: actions/checkout@v4
+      - name: Verify standalone landing source and JavaScript
+        run: python3 scripts/check_landing.py
+      - name: Build static GitHub Pages root
+        run: |
+          set -eu
+          mkdir -p _site
+          cp docs/product/landing.html _site/index.html
+          touch _site/.nojekyll
+          test -s _site/index.html
+          ! grep -q '<script[^>]*src=' _site/index.html
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy approved standalone site
+        id: deployment
+        uses: actions/deploy-pages@v4
