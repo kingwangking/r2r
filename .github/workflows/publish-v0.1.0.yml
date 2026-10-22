@@ -1,0 +1,77 @@
+name: Publish approved R2R v0.1.0
+
+# Only an explicitly marked owner-approved merge into main can publish.
+# Does not publish on pull requests, default pushes, or arbitrary tags.
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: r2r-release-v0.1.0
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.repository == 'kingwangking/r2r' && contains(github.event.head_commit.message, '[publish-r2r-v0.1.0]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out the exact approved main commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Prepare Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check license and release source
+        run: |
+          cmp LICENSE skills/r2r/LICENSE
+          python -m unittest discover -s tests -v
+          python scripts/skill_release.py
+          gh skill publish --dry-run
+      - name: Package versioned Skill-only ZIP and checksum
+        run: |
+          python scripts/skill_release.py --pack dist/r2r-skill-v0.1.0.zip
+      - name: Publish exact version once
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if gh release view v0.1.0 >/dev/null 2>&1; then
+            echo "Release v0.1.0 already exists; will not republish or move the tag"
+          else
+            gh skill publish --tag v0.1.0
+          fi
+          test "$(gh release view v0.1.0 --json tagName -q .tagName)" = "v0.1.0"
+      - name: Attach deterministic manual-install assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release upload v0.1.0 dist/r2r-skill-v0.1.0.zip dist/r2r-skill-v0.1.0.zip.sha256
+      - name: Verify released Skill can be installed by tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh skill install kingwangking/r2r r2r --pin v0.1.0 --dir "$RUNNER_TEMP/r2r-released"
+          python - "$RUNNER_TEMP/r2r-released" <<'PY'
+          from pathlib import Path
+          import sys
+          root = Path(sys.argv[1])
+          skills = list(root.rglob("SKILL.md"))
+          assert len(skills) == 1, skills
+          installed = skills[0].parent
+          for item in ("SKILL.md", "LICENSE", "assets/R2R.md", "references/operating-guide.md"):
+              assert (installed / item).read_bytes() == (Path("skills/r2r") / item).read_bytes(), item
+          print("TAGGED_RELEASE_SKILL_INSTALL_PASS")
+          PY
+      - name: Print final Release URL and evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release view v0.1.0 --json tagName,url,isDraft,isPrerelease,assets

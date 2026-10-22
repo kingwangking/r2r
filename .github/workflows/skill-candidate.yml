@@ -1,0 +1,97 @@
+name: Skill candidate package
+
+on:
+  pull_request:
+    paths:
+      - "skills/r2r/**"
+      - "scripts/skill_release.py"
+      - "tests/test_skill_release.py"
+      - ".github/workflows/skill-candidate.yml"
+      - "quickstart/install.md"
+      - "docs/product/distribution.md"
+  push:
+    branches: [main]
+    paths:
+      - "skills/r2r/**"
+      - "scripts/skill_release.py"
+      - "tests/test_skill_release.py"
+      - ".github/workflows/skill-candidate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exactly the event source
+        uses: actions/checkout@v4
+      - name: Prepare Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check release source and failure cases
+        run: |
+          python -m unittest discover -s tests -v
+          python scripts/skill_release.py
+      - name: Official GitHub CLI Skill specification check (dry-run only)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh --version
+          gh skill publish --dry-run
+      - name: Local Skill installer smoke (no agent execution)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh skill install . r2r --from-local --dir "$RUNNER_TEMP/r2r-installed"
+          python - "$RUNNER_TEMP/r2r-installed" <<'PY'
+          from pathlib import Path
+          import sys
+          root = Path(sys.argv[1])
+          hits = list(root.rglob("SKILL.md"))
+          assert len(hits) == 1, f"expected one installed Skill, got: {hits}"
+          installed = hits[0].parent
+          source = Path("skills/r2r")
+          assert installed.name == "r2r", installed
+          for relative in ("assets/R2R.md", "references/operating-guide.md"):
+              assert (installed / relative).is_file(), f"missing installed file: {relative}"
+              assert (installed / relative).read_bytes() == (source / relative).read_bytes(), relative
+          text = (installed / "SKILL.md").read_text(encoding="utf-8")
+          assert "name: r2r" in text, "installed Skill frontmatter has unexpected name"
+          assert "Start / initialize" in text, "installed Skill body appears incomplete"
+          print("LOCAL_SKILL_INSTALL_PASS: installer copied Skill, state template and guide")
+          PY
+      - name: Remote GitHub Skill install by exact SHA (no release)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          R2R_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          gh skill install kingwangking/r2r r2r --pin "$R2R_SOURCE_SHA" --dir "$RUNNER_TEMP/r2r-remote"
+          python - "$RUNNER_TEMP/r2r-remote" <<'PY'
+          from pathlib import Path
+          import sys
+          root = Path(sys.argv[1])
+          hits = list(root.rglob("SKILL.md"))
+          assert len(hits) == 1, f"expected one remote installed Skill: {hits}"
+          folder = hits[0].parent
+          assert folder.name == "r2r", folder
+          for path in ("assets/R2R.md", "references/operating-guide.md"):
+              assert (folder / path).read_bytes() == (Path("skills/r2r") / path).read_bytes(), path
+          text = hits[0].read_text(encoding="utf-8")
+          assert "name: r2r" in text, "wrong installed Skill"
+          print("REMOTE_SKILL_INSTALL_PASS: pinned GitHub source copied with full assets")
+          PY
+      - name: Package candidate (no tag and no Release)
+        run: |
+          python scripts/skill_release.py --pack dist/r2r-skill.zip
+      - name: Upload candidate ZIP and checksum
+        uses: actions/upload-artifact@v4
+        with:
+          name: r2r-skill-candidate
+          path: |
+            dist/r2r-skill.zip
+            dist/r2r-skill.zip.sha256
+          if-no-files-found: error
+          retention-days: 14
