@@ -104,7 +104,7 @@ The developer participates **throughout**: correcting product understanding, swi
 
 **[▶ Open the animated, interactive demo in your browser →](https://htmlpreview.github.io/?https://github.com/kingwangking/r2r/blob/hardening/post-v0.1.0-usability/docs/product/landing.html)**
 
-[View the standalone HTML source](docs/product/landing.html) or download that one file and open it locally; it needs no external scripts or stylesheets. The instant preview uses a third-party public-GitHub HTML viewer and points to the **development PR branch** (not a permanent GitHub Pages address). After merging, switch this link to a stable hosted page.
+[View the standalone HTML source](docs/product/landing.html) or download that one file and open it locally; it needs no external scripts or stylesheets. The instant preview uses a third-party public-GitHub HTML viewer and points to the **development PR branch** (not a permanent GitHub Pages address). The [first-party GitHub Pages workflow](docs/product/pages.md) is now prepared. **No live Pages deployment is claimed** until the Pages source is enabled and a real deployment succeeds. After approved merge, replace this temporary third-party preview URL with the verified first-party website.
 
 The page animates a **hypothetical failure pattern** and a **proposed R2R workflow**, not fabricated measured performance data.
 

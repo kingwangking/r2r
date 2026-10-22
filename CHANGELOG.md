@@ -6,6 +6,8 @@ R2R publishes versioned Agent Skills using GitHub Releases. Consult [the actual 
 
 - Rewrite README around the AI software delivery pain, a relatable illustrative review stall, and a plausible Spec + parallelism + rapid-iteration solution.
 - Add self-contained animated HTML explainer with interactive stalled/R2R paths, keyboard-accessible controls, reduced-motion support and an install CTA; add HTML/JS checks and actual headless Chrome desktop/mobile screenshots to CI.
+- Harden animation UX: automatically switch from review-stall story to R2R and stop at READY; correct below-fold content visibility and fast-forward UI highlighting/progress.
+- Prepare first-party GitHub Pages Actions workflow and PR-only static preview artifact. Requires the repository Pages source to be configured before real deployment.
 
 - Elevate the definition to **Run to Ready, an AI-native end-to-end product delivery goal**, composing mature Spec/SDD (correctness), optional parallel multi-agent execution (horizontal capacity), and human-steered fast iteration (vertical throughput), with integrated HARDEN to evidence-backed READY. Vertical iteration remains the distinctive policy, not the whole definition.
 - Refresh README, Chinese onboarding, positioning, compatibility/FAQ and GitHub metadata suggestions to reflect one goal/three capabilities.

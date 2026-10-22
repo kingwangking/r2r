@@ -26,7 +26,11 @@
 - **GitHub Topics/Description：** [已拟定可复制的元数据](docs/product/discoverability.md)，**尚未应用到仓库 About**（当前 GitHub 接口不提供该项修改操作）。
 - **Owner STEER（定义调整）：** R2R 的总目标是 Run to Ready，组合成熟 Spec 正确性、可选多 Agent 横向并发和 R2R 纵向高效迭代，闭环到真实 HARDEN/READY；不是只把纵向提速当作项目定义。
 - **演示与 CI：** [Actions #39755809412](https://github.com/kingwangking/r2r/actions/runs/39755809412) PASS：HTML 结构与 JS 检查、Chrome 实际渲染与桌面/手机截图、官方 Skill dry-run、安装检查和候选包构建。预览截图在 `r2r-landing-screenshots` Artifact，尚未部署 GitHub Pages。
-- **下一批：** 阅读实际截图反馈并优化演示页；合并后调整预览地址为稳定公共链接（如启用 GitHub Pages）；GitHub About/Topics 待设置，真实 Codex/Claude 完整项目验证仍 NOT_RUN。
+- **视觉 HARDEN：** 已查看真实 Chrome 桌面/手机及整页截图，针对三个具体问题修复：演示卡在 Review 停滞循环、滚动动画使内容不可读、快速模拟下进度/高亮与 READY 状态不同步。现已自动播放两条流程并停在 READY，所有页面内容默认可读。
+- **站点工程：** [GitHub Pages 指南](docs/product/pages.md)和 [Pages Actions 工作流](.github/workflows/pages.yml)已在 PR 中准备，只允许 main 触发部署；PR CI 只生成静态预览包，不部署。
+- **真实新验证：** [Actions #39774330194](https://github.com/kingwangking/r2r/actions/runs/39774330194) PASS：16 项测试，官方 Skill 格式、源码链接、CLI 本地/远程安装、Chrome 演示自动抵达 READY、桌面/手机整页截图以及 Pages 静态预览包。
+- **未完成：** GitHub Pages 的仓库 Source 设置、真实公开网站部署、GitHub About/Topics、实际 Codex/Claude 创作项目完整实践，均保持 NOT_RUN。
+- **下一批：** 保持 Draft PR；维护者确认 Pages 设置并批准合并后可部署，拿到真实公开 URL 再替换 README 的第三方预览链接；之后针对真实用户反馈迭代。
 
 ## HARDEN：本阶段验收
 
