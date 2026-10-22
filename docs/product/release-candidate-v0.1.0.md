@@ -1,0 +1,36 @@
+# R2R v0.1.0 — release candidate notes (NOT PUBLISHED)
+
+**Status:** Proposed candidate; `v0.1.0` is a suggested first tag, not an existing release or authorization to create one.
+
+## What the product includes
+
+- **Portable Agent Skill** in `skills/r2r/`: Start, Continue, Harden and developer steering, no R2R background runtime.
+- **One-project-state template:** `skills/r2r/assets/R2R.md`, with complete product plan + actual state and next run.
+- **Self-contained instructions:** `skills/r2r/references/operating-guide.md`, portable with the Skill.
+- **Documentation:** [user guide](../../quickstart/use.md), [installer guide](../../quickstart/install.md), [README](../../README.md).
+- **Candidate packaging:** `scripts/skill_release.py --pack dist/r2r-skill.zip` creates a deterministic Skill-only ZIP and SHA-256 text. [GitHub Actions candidate workflow](../../.github/workflows/skill-candidate.yml) runs source tests and saves an artifact **without publishing**.
+
+## What is explicitly not included
+
+No R2R native CLI, IDE, multi-Agent backend, scheduler, hosted API, unattended cross-session agent, or proven throughput benchmark. GitHub CLI's `gh skill` installer/publisher are **external tools**, not R2R-developed software.
+
+## Proposed distribution
+
+1. After owner-approved rights, license, tag, and target branch decisions, merge/rebase the approved candidate.
+2. Run `gh skill publish --dry-run` with a compatible GitHub CLI.
+3. Create `v0.1.0` GitHub Release using `gh skill publish --tag v0.1.0` **only when authorized**.
+4. Optionally attach the Skill-only ZIP and SHA-256 produced by the approved commit's package job.
+5. Try an actual host installation and report PASS or NOT_RUN. The release itself should clearly disclose any untested hosts.
+
+## Lightweight first-release acceptance
+
+- [x] `skills/r2r/` includes Skill + internal template and reference (observed in Git source).
+- [x] Installation and end-user Start/Continue/Harden docs exist (observed in Git).
+- [ ] Automated source tests / candidate artifact — wait for actual Actions result.
+- [ ] GitHub CLI `gh skill publish --dry-run` — NOT_RUN.
+- [ ] License, naming and third-party rights approved — OWNER DECISION.
+- [ ] Approved ref/merge and immutable version tag — NOT_DONE.
+- [ ] Installation in at least one real host — NOT_RUN.
+- [ ] Actual GitHub Release publication — NOT_DONE.
+
+These checkboxes are **source/package readiness only**. Controlled efficiency experiments can follow an early, honestly labeled release; unsafe external changes or unsupported claims cannot.
