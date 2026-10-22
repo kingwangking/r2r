@@ -1,6 +1,6 @@
 # Host the R2R animated explainer with GitHub Pages
 
-**Current state:** This deployment workflow was prepared in [PR #2](https://github.com/kingwangking/r2r/pull/2). **No public GitHub Pages URL is claimed active** until GitHub confirms a completed deployment. The stable `v0.1.0` GitHub Release is unrelated to Pages and remains unchanged.
+**Current state:** [PR #2](https://github.com/kingwangking/r2r/pull/2) is merged into `main` as `ec8c5424742883abf66d733c960d20e0aab1c7c1`. The [Pages workflow #39777577717](https://github.com/kingwangking/r2r/actions/runs/39777577717) detected Pages disabled and intentionally skipped site build/deploy. **No public GitHub Pages URL is active/verified.** The stable `v0.1.0` GitHub Release is unrelated to Pages and remains unchanged.
 
 ## What is actually published?
 
@@ -12,7 +12,7 @@
 ## How to enable the real site
 
 1. In [repository Settings → Pages](https://github.com/kingwangking/r2r/settings/pages), set **Build and deployment → Source → GitHub Actions**. The connected code API does not expose this administrative setting. The repository was inspected before merge with `has_pages: false`.
-2. After approved PR #2 is merged into `main`, the workflow checks the `has_pages` flag. If Pages has not been enabled, it emits an activation notice and **skips build/deployment without creating a misleading red CI failure**. Once Pages is enabled, manually run **R2R visual site (GitHub Pages)** from the Actions tab; if Pages was enabled before merge, the main push can deploy automatically.
+2. PR #2 is already merged. The workflow checks `has_pages`; with Pages disabled it emits an activation notice and **skips site build/deployment without misleading red CI**. After enabling Pages, manually run [R2R visual site (GitHub Pages)](https://github.com/kingwangking/r2r/actions/workflows/pages.yml) from the Actions tab.
 3. Open the workflow run and verify its **Deploy approved standalone site** step shows success.
 4. Only then use the hosted site at the URL reported by the deployment. Expected standard GitHub Pages project URL: `https://kingwangking.github.io/r2r/` (do **not** claim this URL is live before verification).
 5. Replace the [temporary HTMLPreview link in README](../../README.md) with the verified first-party Pages URL; update GitHub About homepage if desired.

@@ -104,7 +104,7 @@ The developer participates **throughout**: correcting product understanding, swi
 
 **[▶ Open the animated, interactive demo in your browser →](https://htmlpreview.github.io/?https://github.com/kingwangking/r2r/blob/main/docs/product/landing.html)**
 
-[View the standalone HTML source](docs/product/landing.html) or download that one file and open it locally; it needs no external scripts or stylesheets. The instant preview uses a third-party public-GitHub HTML viewer and points to the default branch (not a permanent GitHub Pages address). The [first-party GitHub Pages workflow](docs/product/pages.md) is now prepared. **No live Pages deployment is claimed** until the Pages source is enabled and a real deployment succeeds. After approved merge, replace this temporary third-party preview URL with the verified first-party website.
+[View the standalone HTML source](docs/product/landing.html) or download that one file and open it locally; it needs no external scripts or stylesheets. The instant preview uses a third-party public-GitHub HTML viewer and points to the default branch (not a permanent GitHub Pages address). The [first-party GitHub Pages workflow](docs/product/pages.md) is now prepared. **No live Pages deployment is claimed** until the Pages source is enabled and a real deployment succeeds. After GitHub Pages is enabled in repository Settings and a deployment succeeds, this temporary third-party preview can be replaced with the verified first-party site.
 
 The page animates a **hypothetical failure pattern** and a **proposed R2R workflow**, not fabricated measured performance data.
 
@@ -138,7 +138,7 @@ Only claim tools/tests/actions really run; do not bypass release approvals.
 Start the first safe authorized batch now.
 ```
 
-The **current development branch** refines the three-capability definition and Finding policy; the published `v0.1.0` Skill is immutable and does not magically inherit unmerged changes.
+The current **main** source includes the refined three-capability definition and Finding policy. The already published `v0.1.0` Skill remains immutable; these post-release improvements are **not included in that tag**.
 
 **Three everyday actions:** `Start R2R` → `Continue R2R` → `Harden with R2R`, and **STEER at any time**. These are natural-language intents, not a proprietary scheduler or native slash commands.
 

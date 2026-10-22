@@ -35,7 +35,7 @@ Topics describe **composition/compatibility**, not proof that this Skill itself 
 **Distinctive contribution:** long-horizon human-steered feedback/fix/Review scheduling to bridge rapid coding and actual accepted product.
 **Source of credibility:** transparent reuse of established Spec/SDD, multi-agent coding, CI, iterative/evolutionary engineering; not false claims of invention or published benchmark uplift.
 
-**Stable release:** [v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0). New definition is an unreleased development update until the maintainer issues another tag. Do not overwrite previous tag or imply published behavior has changed.
+**Stable release:** [v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0). The new definition has reached `main` but remains **unreleased as a tagged Skill version** until the maintainer issues another tag. Do not overwrite previous tag or imply published behavior has changed.
 
 To apply, open [repository home](https://github.com/kingwangking/r2r) → About → Edit, and paste the description and Topics above. The homepage may link the latest Release.
 
