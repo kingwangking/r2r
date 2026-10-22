@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#09111e">
+  <meta name="description" content="AI can write the code. Why isn't your product ready? See the delivery bottleneck and how R2R combines Spec, parallel agents and fast iteration to get to READY.">
+  <meta property="og:title" content="R2R — Run to Ready">
+  <meta property="og:description" content="AI can write the code. Why isn't your product ready? A visual story of the AI software delivery gap.">
+  <meta property="og:type" content="website">
+  <title>R2R — From AI Code to a Ready Product</title>
+  <style>
+    :root {
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color-scheme: dark;
+      --bg: #09111e;
+      --bg2: #0c1727;
+      --card: #101e30;
+      --card2: #17273b;
+      --text: #f1f7ff;
+      --muted: #9aabc1;
+      --line: #293a50;
+      --red: #ff856e;
+      --green: #70ebbb;
+      --blue: #94bbff;
+      --yellow: #fcd38b;
+      --radius: 22px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    a { color: inherit; }
+    button { font: inherit; }
+    button:focus-visible, a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+    .skip { position: absolute; top: -80px; left: 14px; background: var(--text); color: var(--bg); padding: 12px; z-index: 99; }
+    .skip:focus { top: 14px; }
+    .shell { width: min(1160px, calc(100% - 42px)); margin-inline: auto; }
+    .nav { z-index: 20; position: sticky; top: 0; border-bottom: 1px solid #ffffff14; backdrop-filter: blur(20px); background: #09111eda; }
+    .navinner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 850; letter-spacing: -.045em; font-size: 24px; }
+    .brandmark { display: grid; place-items: center; width: 37px; height: 37px; border-radius: 11px; color: #07131e; background: var(--green); font-size: 16px; letter-spacing: -.1em; box-shadow: 0 0 30px #70ebbb36; }
+    .navlinks { display: flex; flex-wrap: wrap; gap: 23px; align-items: center; color: #b6c5d8; font-size: 13px; font-weight: 650; }
+    .navlinks a { text-decoration: none; }
+    .navlinks a:hover { color: #fff; }
+    .navpill { display: inline-flex; align-items: center; border: 1px solid #70ebbb55; border-radius: 100px; padding: 9px 13px; color: var(--green); }
+    .hero { position: relative; overflow: hidden; background: radial-gradient(ellipse 68% 50% at 70% 24%, #1b4e7040, transparent 75%), radial-gradient(ellipse 40% 48% at 5% 70%, #6f365026, transparent 75%); }
+    .hero::before { content: ""; inset: 0; position: absolute; pointer-events: none; opacity: .21; background-image: linear-gradient(#86a0c10c 1px, transparent 1px), linear-gradient(90deg, #86a0c10c 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(to bottom, black, transparent); }
+    .hero-inner { position: relative; padding: 104px 0 78px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--green); font-size: 12px; letter-spacing: .19em; font-weight: 850; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; background: var(--green); border-radius: 50%; box-shadow: 0 0 0 5px #70ebbb1c; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: clamp(46px, 7.6vw, 91px); line-height: 1.02; letter-spacing: -.075em; font-weight: 850; margin: 25px 0 27px; max-width: 1010px; }
+    h1 span { color: var(--red); }
+    .hero-lead { font-size: clamp(17px, 2.1vw, 23px); line-height: 1.6; max-width: 760px; color: #b9c7d8; }
+    .hero-lead strong { color: #fff; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .button { cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 800; font-size: 14px; padding: 14px 20px; border-radius: 12px; min-height: 47px; border: 1px solid #46566d; background: #172536; color: var(--text); transition: transform .2s, background .2s, box-shadow .2s; }
+    .button:hover { transform: translateY(-2px); background: #233951; }
+    .button-primary { background: var(--green); color: #061520; border-color: var(--green); box-shadow: 0 7px 32px #70ebbb25; }
+    .button-primary:hover { background: #a4ffda; }
+    .button-ghost { background: transparent; }
+    .hero-foot { display: flex; gap: 14px; flex-wrap: wrap; color: #7e93ab; margin-top: 35px; font-size: 12px; }
+    .hero-foot span:not(:last-child)::after { content: " /"; padding-left: 14px; color: #59718e; }
+    .section { padding: 92px 0; }
+    .section-label { color: var(--green); text-transform: uppercase; letter-spacing: .17em; font-size: 12px; font-weight: 800; display: block; margin-bottom: 18px; }
+    h2 { font-size: clamp(34px, 5.1vw, 60px); letter-spacing: -.065em; line-height: 1.09; margin-bottom: 21px; max-width: 940px; }
+    .lede { color: #aebfd2; font-size: clamp(16px, 1.7vw, 19px); line-height: 1.7; max-width: 790px; }
+    .danger { color: var(--red); } .mint { color: var(--green); }
+    .board-wrap { position: relative; z-index: 2; margin-top: -14px; }
+    .board { background: linear-gradient(145deg, #142239, #0d192c); border: 1px solid #344961; border-radius: 25px; box-shadow: 0 35px 110px #0008, inset 0 1px 0 #ffffff16; overflow: hidden; }
+    .board-head { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 17px 24px; border-bottom: 1px solid #304157; background: #111e30; }
+    .board-title { display: flex; align-items: center; gap: 13px; font-size: 13px; color: #c5d1e0; font-weight: 800; }
+    .traffic { display: flex; gap: 6px; } .traffic i { width: 9px; height: 9px; border-radius: 100%; background: #415469; display: inline-block; }
+    .traffic i:first-child { background: #f68d77; } .traffic i:nth-child(2) { background: #e8c16f; } .traffic i:nth-child(3) { background: #7bb89e; }
+    .simulation-label { font-size: 11px; border: 1px solid #546781; color: #aab9ce; border-radius: 100px; padding: 5px 10px; }
+    .board-body { padding: 32px; }
+    .board-intro { color: #b6c5d8; font-size: 15px; line-height: 1.65; margin: 0 0 22px; }
+    .segmented { background: #0a1525; border: 1px solid #31445c; padding: 5px; border-radius: 13px; display: inline-flex; flex-wrap: wrap; gap: 4px; margin-bottom: 34px; }
+    .segmented button { cursor: pointer; border: 0; color: #91a4bb; background: transparent; border-radius: 9px; padding: 11px 17px; font-size: 13px; font-weight: 750; }
+    .segmented button[aria-pressed="true"] { background: #25354b; color: #fff; box-shadow: 0 2px 8px #0006; }
+    .segmented .bad[aria-pressed="true"] { color: #ffb6a8; } .segmented .good[aria-pressed="true"] { color: #91ffcf; }
+    .lane { margin-bottom: 29px; position: relative; }
+    .lane-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 13px; font-weight: 800; margin-bottom: 17px; }
+    .lane-head span { font-size: 11px; font-weight: 550; color: #8da0b9; }
+    .lane-track { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 9px; position: relative; }
+    .lane-track::before { content: ""; position: absolute; height: 2px; background: #4b5d71; left: 4%; right: 4%; top: 40%; z-index: 0; }
+    .step { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 11px; min-width: 0; }
+    .dot { display: grid; place-items: center; height: 47px; width: 47px; flex: none; border: 1px solid #506278; background: #1c2b41; border-radius: 15px; font-weight: 900; font-size: 14px; color: #93a5ba; transition: none; /* Timed storyboard steps are animated via JS; avoid stale selection styles. */ }
+    .step .step-name { display: block; min-height: 31px; font-size: 11px; color: #97a8bb; line-height: 1.25; font-weight: 750; }
+    .lane[data-lane="stalled"] .step.is-active .dot { background: #6b3137; border-color: var(--red); box-shadow: 0 0 0 7px #ff856e20, 0 0 38px #ff856e5a; color: #fff; transform: translateY(-3px) scale(1.08); }
+    .lane[data-lane="r2r"] .step.is-active .dot { background: #186a62; border-color: var(--green); box-shadow: 0 0 0 7px #70ebbb1c, 0 0 38px #70ebbb44; color: #fff; transform: translateY(-3px) scale(1.08); }
+    .lane .step.is-past .dot { border-color: #7696a4; color: #e8f3ff; }
+    .lane[data-lane="stalled"] .step.is-past .dot { border-color: #a15b5e; }
+    .lane[data-lane="r2r"] .step.is-past .dot { border-color: #5ea48e; }
+    .lane:not(.is-focused) { opacity: .34; filter: saturate(.45); }
+    .lane { transition: none; } /* Explicit mode switch stays visually in sync with story state. */
+    .board-caption { background: #0a1525; border: 1px solid #32455b; border-radius: 16px; padding: 23px; min-height: 128px; }
+    .state { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .state-tag { font-size: 11px; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+    .state-tag[data-kind="stalled"] { color: #ffac99; } .state-tag[data-kind="r2r"] { color: #7cf0c2; }
+    .state-kicker { font-size: 11px; color: #8a9db4; }
+    .state-text { font-size: clamp(16px, 2.2vw, 22px); line-height: 1.4; font-weight: 680; min-height: 60px; margin: 0; }
+    .board-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; align-items: center; margin-top: 21px; }
+    .media-controls { display: flex; gap: 9px; }
+    .small-control { border: 1px solid #3f546c; cursor: pointer; background: #23344a; color: #f1f7ff; padding: 9px 15px; border-radius: 9px; font-weight: 700; font-size: 12px; }
+    .small-control:hover { background: #2f4761; }
+    .progress { flex: 1 1 230px; height: 6px; background: #293b50; border-radius: 20px; overflow: hidden; }
+    .progress > span { width: 0; height: 100%; display: block; background: var(--red); border-radius: 20px; transition: none; /* Matches story progress immediately, including headless fast-forward. */ }
+    .progress[data-mode="r2r"] > span { background: var(--green); }
+    .disclaimer { font-size: 12px; color: #7f91a8; margin-top: 16px; line-height: 1.6; }
+    .pain-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; margin-top: 37px; }
+    .pain-card { border: 1px solid var(--line); background: #111d2d; border-radius: 19px; padding: 25px 23px; min-height: 228px; }
+    .pain-no { display: inline-block; margin-bottom: 24px; color: var(--red); font-size: 12px; font-weight: 850; }
+    .pain-card h3 { font-size: 19px; letter-spacing: -.025em; margin-bottom: 12px; }
+    .pain-card p { font-size: 14px; line-height: 1.65; color: #a4b4c9; }
+    .turning { background: linear-gradient(180deg, #0b1927 0%, #0d2130 52%, #0b1723); border-block: 1px solid #1d3648; }
+    .pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 42px; }
+    .pillar { position: relative; padding: 29px; border-radius: 20px; background: #142337; border: 1px solid #39506a; overflow: hidden; }
+    .pillar::before { content: ""; position: absolute; top: 0; left: 0; height: 4px; width: 100%; background: var(--blue); }
+    .pillar:nth-child(2)::before { background: var(--yellow); } .pillar:nth-child(3)::before { background: var(--green); }
+    .pillar .index { font-size: 12px; color: #8ea0b7; letter-spacing: .1em; font-weight: 780; }
+    .pillar h3 { font-size: 24px; letter-spacing: -.045em; margin: 21px 0 9px; }
+    .pillar p { color: #abbcd0; line-height: 1.7; font-size: 14px; }
+    .pillar strong { display: block; color: #fff; margin-top: 22px; font-size: 12px; }
+    .connector { text-align: center; padding: 34px 0 18px; color: #b5c8dc; letter-spacing: .14em; font-size: 12px; font-weight: 750; }
+    .ready { text-align: center; border: 1px solid #499480; border-radius: 26px; background: radial-gradient(ellipse at center top, #246b565c 0%, #112b31 50%, #10202e 100%); padding: 43px 30px 52px; box-shadow: 0 25px 88px #0005; }
+    .ready .ready-word { font-size: clamp(66px, 11vw, 142px); font-weight: 900; line-height: 1.06; letter-spacing: -.08em; color: var(--green); text-shadow: 0 0 70px #70ebbb40; }
+    .ready p { max-width: 670px; color: #c2d8d7; margin: 20px auto 0; line-height: 1.7; font-size: 17px; }
+    .steer-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 40px; align-items: center; }
+    .chats { padding: 25px; background: #111f32; border: 1px solid #30465e; border-radius: 22px; display: grid; gap: 13px; }
+    .chat { max-width: 89%; font-size: 13px; line-height: 1.55; border-radius: 15px 15px 15px 3px; background: #22384c; color: #d5e4f0; padding: 13px 17px; }
+    .chat:nth-child(2n) { margin-left: auto; border-radius: 15px 15px 3px 15px; background: #205349; color: #e3fff4; }
+    .cta-section { border-block: 1px solid #24374e; background: radial-gradient(ellipse at 86% 40%, #1a715343, transparent 47%); }
+    .install { background: #101e30; border: 1px solid #355066; border-radius: 18px; display: flex; align-items: stretch; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 13px; margin-top: 29px; }
+    .install code { color: #b6fbdc; font-size: 13px; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; align-self: center; padding: 10px; }
+    .install button { border-radius: 10px; border: 1px solid #6fd9ac; background: #21483e; color: #b2ffdd; font-weight: 800; cursor: pointer; padding: 11px 17px; }
+    .install button:hover { background: #285d4c; }
+    .under { color: #92a6bb; font-size: 13px; line-height: 1.7; max-width: 850px; margin-top: 18px; }
+    .bottom { padding: 40px 0; color: #8799b0; font-size: 13px; }
+    .bottom-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; border-top: 1px solid #263749; padding-top: 26px; }
+    .bottom a { color: #b9d3e9; text-decoration-color: #4f7899; }
+    .reveal { opacity: 1; transform: none; } /* Content is readable even without JS or scroll events. */
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (max-width: 900px) {
+      .pain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .pillars { grid-template-columns: 1fr; }
+      .steer-grid { grid-template-columns: 1fr; }
+      .navlinks { gap: 13px; }
+      .board-body { padding: 22px; }
+      .lane-track { gap: 4px; }
+      .dot { width: 41px; height: 41px; }
+    }
+    @media (max-width: 600px) {
+      .navlinks a:not(.navpill) { display: none; }
+      .hero-inner { padding: 53px 0 42px; }
+      .hero h1 { margin: 19px 0 19px; }
+      .hero .actions { margin-top: 25px; }
+      .hero-foot { margin-top: 25px; }
+      .section { padding: 68px 0; }
+      .shell { width: min(1160px, calc(100% - 28px)); }
+      .board-head { padding: 15px; }
+      .board-body { padding: 17px; }
+      .lane-track { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px 5px; }
+      .lane-track::before { display: none; }
+      .dot { height: 39px; width: 39px; border-radius: 12px; }
+      .step .step-name { font-size: 10px; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .pain-card { min-height: 0; }
+      .board-caption { padding: 18px; }
+      .simulation-label { display: none; }
+      .bottom { padding-bottom: 25px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="shell navinner">
+      <a class="brand" href="https://github.com/kingwangking/r2r" aria-label="R2R GitHub README"><span class="brandmark">R²</span> R2R <span style="font-size:12px;font-weight:550;letter-spacing:0;color:#94a8bb">RUN TO READY</span></a>
+      <nav class="navlinks" aria-label="Primary">
+        <a href="#the-problem">The problem</a>
+        <a href="#the-answer">The approach</a>
+        <a href="#how-to-start">Try R2R</a>
+        <a class="navpill" href="https://github.com/kingwangking/r2r">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero">
+      <div class="shell hero-inner">
+        <span class="eyebrow">The AI software delivery gap</span>
+        <h1>The AI wrote the code.<br><span>Why isn't your product ready?</span></h1>
+        <p class="hero-lead">More code. More agents. More completed tasks. Yet the release is still blocked. <strong>AI expanded our ability to build—but not automatically our ability to finish.</strong></p>
+        <div class="actions">
+          <a class="button button-primary" href="#demo">Watch the bottleneck ↓</a>
+          <a class="button button-ghost" href="#the-answer">See the R2R approach ↗</a>
+        </div>
+        <div class="hero-foot"><span>Developer-led</span><span>Works with existing Specs</span><span>Optional parallel agents</span><span>No new orchestrator</span></div>
+      </div>
+    </section>
+
+    <div id="demo" class="shell board-wrap">
+      <div class="board" role="region" aria-label="Interactive comparison of delivery loops">
+        <div class="board-head">
+          <div class="board-title"><span class="traffic" aria-hidden="true"><i></i><i></i><i></i></span> DELIVERY PIPELINE / CONCEPTUAL DEMO</div>
+          <span class="simulation-label">Illustration · not a timed benchmark</span>
+        </div>
+        <div class="board-body">
+          <p class="board-intro">A fast coding agent can get trapped in a slow delivery loop. Watch this <strong>illustrative</strong> story unfold: first the bottleneck, then the R2R response, ending at READY. Choose either tab to explore a specific part.</p>
+          <div class="segmented" role="group" aria-label="Choose workflow to animate">
+            <button id="watch-stalled" class="bad" type="button" aria-pressed="true">✕ Watch the stall</button>
+            <button id="watch-r2r" class="good" type="button" aria-pressed="false">✓ Watch Run to Ready</button>
+          </div>
+          <div class="lane is-focused" data-lane="stalled">
+            <div class="lane-head"><strong class="danger">THE REVIEW CAROUSEL</strong><span>Lots of activity, no final outcome</span></div>
+            <div id="lane-stalled" class="lane-track" aria-label="Review bottleneck workflow"></div>
+          </div>
+          <div class="lane" data-lane="r2r">
+            <div class="lane-head"><strong class="mint">RUN TO READY</strong><span>Integrated progress, real acceptance</span></div>
+            <div id="lane-r2r" class="lane-track" aria-label="R2R workflow"></div>
+          </div>
+          <div class="board-caption">
+            <div class="state"><span id="state-tag" class="state-tag" data-kind="stalled">BUILDING ≠ READY</span><span id="step-count" class="state-kicker">STEP 1 / 6</span></div>
+            <p id="state-text" class="state-text" aria-live="polite">The coding agent ships a feature. Everyone is optimistic.</p>
+          </div>
+          <div class="board-footer">
+            <div class="media-controls">
+              <button class="small-control" id="toggle-play" type="button" aria-label="Pause animation">Ⅱ Pause</button>
+              <button class="small-control" id="restart" type="button" aria-label="Restart animation">↺ Replay</button>
+            </div>
+            <div id="progress" class="progress" data-mode="stalled" role="progressbar" aria-label="Illustrative sequence progress" aria-valuemin="0" aria-valuemax="12" aria-valuenow="1"><span id="progress-fill"></span></div>
+          </div>
+          <p class="disclaimer">This is a conceptual illustration of failure modes and a proposed operating response. It does not represent measured results, a real project's test output or guaranteed R2R performance.</p>
+        </div>
+      </div>
+    </div>
+
+    <section id="the-problem" class="section">
+      <div class="shell">
+        <span class="section-label reveal">01 / The hidden bottleneck</span>
+        <h2 class="reveal">Coding is faster.<br><span class="danger">Delivery can still be stuck.</span></h2>
+        <p class="lede reveal">The pain isn't just slow generation. It is the friction between knowing what to build, integrating everyone's work, learning from review and reaching a trustworthy product.</p>
+        <div class="pain-grid">
+          <div class="pain-card reveal"><span class="pain-no">01 / DIRECTION</span><h3>Fast, but wrong</h3><p>AI implements exactly what was asked. The actual customer journey, scope or architecture was misunderstood.</p></div>
+          <div class="pain-card reveal"><span class="pain-no">02 / CONCURRENCY</span><h3>Parallel, but fragmented</h3><p>UI and API agents both finish. Their contracts, state ownership or integration assumptions don't match.</p></div>
+          <div class="pain-card reveal"><span class="pain-no">03 / REVIEW</span><h3>Reviewed, then reviewed again</h3><p>A routine change enters another full audit. Important fixes and harmless wording issues receive the same ceremony.</p></div>
+          <div class="pain-card reveal"><span class="pain-no">04 / QUALITY</span><h3>“Done”, but not usable</h3><p>Tests cover components, yet persistence, restart, permissions or the actual packaged user path still break.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="the-answer" class="section turning">
+      <div class="shell">
+        <span class="section-label reveal">02 / One goal, three coupled capabilities</span>
+        <h2 class="reveal">Don't replace mature tools.<br><span class="mint">Make them work together.</span></h2>
+        <p class="lede reveal">R2R stands on existing Spec-driven development and agent execution. The practical focus it adds is the <strong>longitudinal delivery loop</strong> that keeps the right work moving, integrated and corrected until the product is actually ready.</p>
+        <div class="pillars">
+          <div class="pillar reveal"><span class="index">01 / THE RIGHT TARGET</span><h3>Spec</h3><p>Use your real users, existing Spec/SDD, architecture contracts and acceptance criteria. Fast implementation of the wrong thing is not success.</p><strong>Correctness of direction →</strong></div>
+          <div class="pillar reveal"><span class="index">02 / THE WIDTH</span><h3>Multi-Agent</h3><p>Where modules and owners are genuinely independent, execute in parallel. The primary agent remains accountable for integrating the results.</p><strong>Useful implementation capacity →</strong></div>
+          <div class="pillar reveal"><span class="index">03 / THE MOMENTUM</span><h3>R2R Iteration</h3><p>RUN meaningful batches. Let the developer steer. Review by risk. Fix serious findings promptly; batch ordinary P2/P3. Keep moving.</p><strong>Compounding, directed progress →</strong></div>
+        </div>
+        <div class="connector reveal">TOGETHER + REAL INTEGRATION + REPEATED HARDEN ↓</div>
+        <div class="ready reveal">
+          <span class="eyebrow">One actual destination</span>
+          <div class="ready-word">READY.</div>
+          <p>Not “a lot of code”. Not “all tasks closed”. A product that passes its real user journeys, important safety/data checks and accepted delivery criteria.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell steer-grid">
+        <div class="reveal">
+          <span class="section-label">03 / The developer is part of the loop</span>
+          <h2>Steer early.<br><span class="mint">Steer often.</span></h2>
+          <p class="lede">The developer doesn't disappear after planning. Real product insights change priorities and architecture. R2R makes those interventions part of continuous development—not a reason to restart everything.</p>
+        </div>
+        <div class="chats reveal" aria-label="Illustrative developer and agent feedback">
+          <div class="chat">Developer: “Does the search index own a second copy of the source of truth?”</div>
+          <div class="chat">Agent: “I'll check the actual storage path, then correct that contract before dependent slices.”</div>
+          <div class="chat">Developer: “Batch minor P2/P3 fixes. Continue the safe UI and API work.”</div>
+          <div class="chat">Agent: “Important findings triaged, the repair batch logged, continuing the next slice.”</div>
+          <div class="chat">Developer: “Now HARDEN the entire create → save → restart → export journey.”</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section" id="how-to-start">
+      <div class="shell">
+        <span class="section-label reveal">04 / Use it in the coding tool you already have</span>
+        <h2 class="reveal">Start with one skill.<br><span class="mint">Keep your existing stack.</span></h2>
+        <p class="lede reveal">R2R is a portable set of coding-agent instructions. It works with Spec processes, optional parallel workers, Git and existing CI. No special R2R server, new IDE or background orchestrator is required.</p>
+        <div class="install reveal">
+          <code id="install-command">gh skill install kingwangking/r2r r2r --pin v0.1.0 --agent codex --scope user</code>
+          <button id="copy-install" type="button">Copy command</button>
+        </div>
+        <div class="actions reveal">
+          <a class="button button-primary" href="https://github.com/kingwangking/r2r/releases/tag/v0.1.0">Get stable v0.1.0 ↗</a>
+          <a class="button button-ghost" href="https://github.com/kingwangking/r2r">Read the GitHub README ↗</a>
+        </div>
+        <p class="under">After installing, tell your agent <strong>“Start R2R”</strong>, later <strong>“Continue R2R”</strong>, and when necessary <strong>“Harden with R2R”</strong>. You can STEER at any time. The published v0.1.0 is immutable; current development-branch wording may be newer.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="bottom">
+    <div class="shell bottom-row">
+      <div>© 2026 R2R contributors · MIT · <a href="https://github.com/kingwangking/r2r">GitHub</a> · <a href="https://github.com/kingwangking/r2r/blob/main/docs/product/compatibility.md">Method compatibility</a></div>
+      <div>Actual CLI package/install smoke passed. Real host usage and comparative productivity gains are not yet proven.</div>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      "use strict";
+      const scenarios = {
+        stalled: {
+          labels: ["Build", "Review", "Fix", "Re-review", "Another fix", "Not ready"],
+          notes: [
+            "The coding agent ships a feature. Everyone is optimistic.",
+            "The entire change enters a broad review—even ordinary low-risk work.",
+            "A finding is repaired, but the next safe feature hasn't moved.",
+            "The fix triggers another full review. The serial queue grows.",
+            "More words and minor issues circulate while integration waits.",
+            "The backlog moved, but the real end-to-end product remains unverified."
+          ],
+          tag: "BUILDING ≠ READY", symbols: ["⌁", "?", "↺", "?", "↺", "×"]
+        },
+        r2r: {
+          labels: ["Spec", "Parallel", "RUN", "Focused check", "Next RUN", "HARDEN → READY"],
+          notes: [
+            "The Spec and the developer define the correct product and acceptance.",
+            "Independent UI and API work can run in parallel when contracts allow.",
+            "A meaningful batch creates real, integrated product value.",
+            "Important risks get focused fixes; ordinary P2/P3 join a grouped queue.",
+            "The primary agent incorporates developer STEER and continues the next safe slice.",
+            "Real user journeys, recovery and security checks support an evidence-backed READY decision."
+          ],
+          tag: "DELIVERY → READY", symbols: ["✓", "⇉", "→", "✓", "→", "★"]
+        }
+      };
+      const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const lanes = {
+        stalled: document.getElementById("lane-stalled"),
+        r2r: document.getElementById("lane-r2r")
+      };
+      const buttons = {
+        stalled: document.getElementById("watch-stalled"),
+        r2r: document.getElementById("watch-r2r")
+      };
+      const narrative = document.getElementById("state-text");
+      const tag = document.getElementById("state-tag");
+      const counter = document.getElementById("step-count");
+      const bar = document.getElementById("progress-fill");
+      const progress = document.getElementById("progress");
+      const play = document.getElementById("toggle-play");
+      const restart = document.getElementById("restart");
+      let mode = "stalled", position = 0, playing = !reduced, timer = null;
+
+      for (const name of ["stalled", "r2r"]) {
+        scenarios[name].labels.forEach((title, index) => {
+          const item = document.createElement("div");
+          item.className = "step";
+          item.dataset.index = String(index);
+          const icon = document.createElement("span");
+          icon.className = "dot";
+          icon.setAttribute("aria-hidden", "true");
+          icon.textContent = scenarios[name].symbols[index];
+          const label = document.createElement("span");
+          label.className = "step-name";
+          label.textContent = title;
+          item.append(icon, label);
+          lanes[name].append(item);
+        });
+      }
+      function paint() {
+        for (const name of ["stalled", "r2r"]) {
+          const isCurrent = name === mode;
+          lanes[name].parentElement.classList.toggle("is-focused", isCurrent);
+          buttons[name].setAttribute("aria-pressed", String(isCurrent));
+          [...lanes[name].children].forEach((el, index) => {
+            el.classList.toggle("is-active", isCurrent && index === position);
+            el.classList.toggle("is-past", isCurrent && index < position);
+          });
+        }
+        narrative.textContent = scenarios[mode].notes[position];
+        tag.textContent = scenarios[mode].tag;
+        tag.dataset.kind = mode;
+        const storyStep = position + (mode === "r2r" ? 7 : 1);
+        const reachedReady = mode === "r2r" && position === 5 && !playing;
+        counter.textContent = "STORY " + storyStep + " / 12";
+        bar.style.width = (storyStep / 12 * 100) + "%";
+        progress.dataset.mode = mode;
+        progress.setAttribute("aria-valuenow", String(storyStep));
+        narrative.setAttribute("aria-live", playing ? "off" : "polite");
+        play.textContent = reachedReady ? "↺ Replay full story" : playing ? "Ⅱ Pause" : "▶ Play";
+        play.setAttribute("aria-label", reachedReady ? "Replay both workflows" : playing ? "Pause animation" : "Play animation");
+      }
+      function stopClock() { if (timer !== null) { window.clearInterval(timer); timer = null; } }
+      function advance() {
+        if (position < 5) {
+          position += 1;
+        } else if (mode === "stalled") {
+          // First show why the old loop stalls; then deliver the R2R response.
+          mode = "r2r";
+          position = 0;
+        } else {
+          // Leave the story visibly finished at READY, rather than looping forever.
+          playing = false;
+          stopClock();
+        }
+        paint();
+      }
+      function schedule() {
+        stopClock();
+        if (playing) timer = window.setInterval(advance, 1650);
+      }
+      function switchTo(next) {
+        mode = next; position = 0; playing = !reduced; paint(); schedule();
+      }
+      buttons.stalled.addEventListener("click", () => switchTo("stalled"));
+      buttons.r2r.addEventListener("click", () => switchTo("r2r"));
+      play.addEventListener("click", () => {
+        if (!playing && mode === "r2r" && position === 5) {
+          mode = "stalled"; position = 0;
+        }
+        playing = !playing; paint(); schedule();
+      });
+      restart.addEventListener("click", () => {
+        mode = "stalled"; position = 0; playing = !reduced; paint(); schedule();
+      });
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) stopClock(); else schedule();
+      });
+      paint(); schedule();
+
+      const reveal = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window && !reduced) {
+        const observer = new IntersectionObserver(entries => {
+          for (const entry of entries) if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            // Progressive enhancement: don't hide marketing content until JS runs.
+            // Animate only elements observed entering view; screenshots/no-JS stay readable.
+            if (entry.target.animate) {
+              entry.target.animate(
+                [{ opacity: .72, transform: "translateY(14px)" },
+                 { opacity: 1, transform: "translateY(0)" }],
+                { duration: 500, easing: "ease-out" }
+              );
+            }
+            observer.unobserve(entry.target);
+          }
+        }, { threshold: .09, rootMargin: "0px 0px 40px 0px" });
+        reveal.forEach(el => observer.observe(el));
+      } else { reveal.forEach(el => el.classList.add("visible")); }
+
+      document.getElementById("copy-install").addEventListener("click", async event => {
+        const cmd = document.getElementById("install-command").textContent.trim();
+        const button = event.currentTarget;
+        let ok = false;
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(cmd);
+            ok = true;
+          } else {
+            const temp = document.createElement("textarea");
+            temp.value = cmd; temp.style.position = "fixed"; temp.style.left = "-9999px";
+            document.body.append(temp); temp.select();
+            ok = !!document.execCommand("copy"); temp.remove();
+          }
+        } catch (e) { ok = false; }
+        const original = button.textContent;
+        button.textContent = ok ? "✓ Copied" : "Select command above";
+        window.setTimeout(() => { button.textContent = original; }, 2300);
+      });
+    })();
+  </script>
+</body>
+</html>

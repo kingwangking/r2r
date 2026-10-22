@@ -9,7 +9,7 @@
 | Layer | Where | What users get |
 | --- | --- | --- |
 | **Source and development** | `skills/r2r/SKILL.md` + sibling assets/references inside Git | Reviewable/editable Skill, not a public release |
-| **Release / version** | Git tag + GitHub Release, e.g. `v0.1.0` once authorized | Frozen version, release notes, GitHub-generated source archives, optional Skill-only ZIP |
+| **Release / version** | Existing Git tag + GitHub Release `v0.1.0` | Frozen version, release notes, GitHub-generated source archives and Skill-only ZIP |
 | **Installation / discovery** | `gh skill install`, `npx skills add`, eventually plugins/marketplaces | Convenience, source tracking, update paths, potentially broader discovery |
 
 **Important:** An Agent Skill is *intrinsically a directory*; a Release is its **versioned publication**, not a replacement for `SKILL.md`. Many Skill catalogs directly serve GitHub directory references without Releases. For R2R, publish a tagged version so users needn't track an unstable development HEAD.
@@ -17,7 +17,7 @@
 ## Distribution contract
 
 - Repo layout: `skills/r2r/SKILL.md`, `skills/r2r/assets/R2R.md`, `skills/r2r/references/operating-guide.md`.
-- Public brand/version: R2R / Run to Ready; proposed **`v0.1.0` as an example only**; owner chooses final version.
+- Published brand/version: R2R / Run to Ready **v0.1.0**, approved by the owner and tagged; future versions require their own explicit decision.
 - User install after public release:
   ```bash
   gh skill install kingwangking/r2r r2r --agent codex --scope user
@@ -28,14 +28,14 @@
 - Running the installed Skill uses the coding agent's **existing tools and permissions**, not a new R2R runtime.
 - Target-project root `R2R.md` is created **during usage**, not a file the installer must force into every repository.
 
-## Proposed release procedure (not executed)
+## What happened for v0.1.0; repeatable steps for later versions
 
 1. The owner approved **MIT** and the first **v0.1.0** release. License copies live at the repository root and inside the portable Skill. The repository is already Public; do not change its visibility. Do not publish private project details without permission.
 2. Commit final `skills/r2r` assets and human-facing install/usage docs on an authorized release ref. Resolve PR merge by owner instruction.
 3. The project's read-only [candidate workflow](../../.github/workflows/skill-candidate.yml) has already run both package tests and the official `gh skill publish --dry-run` at [run #39734623413](https://github.com/kingwangking/r2r/actions/runs/39734623413): SUCCESS. Repeat on the **final approved release commit** if its sources changed. A successful dry-run is not a Release.
 4. After authorization, use `gh skill publish --tag vX.Y.Z` to validate and create a tagged GitHub Release. The public release version must point to the intended source, not a Draft PR-only branch.
 5. GitHub includes source zip/tar archives for a Release. Optionally attach a dedicated `r2r-skill-vX.Y.Z.zip` containing only the standalone folder for manual users, with checksum if useful. **This extra ZIP does not replace the Git source used by installers.**
-6. CI has already confirmed **local** `gh skill install --from-local` ([run 39735594895](https://github.com/kingwangking/r2r/actions/runs/39735594895)) and **pinned remote GitHub source** `gh skill install --pin <SHA>` ([run 39735750731](https://github.com/kingwangking/r2r/actions/runs/39735750731)) without creating a Release. After authorized publication, confirm `gh skill preview`, default/latest-tag `gh skill install`, **actual prompt activation in a real Codex/Claude Code host**, appropriate user/project scopes and update path. If not executed, label NOT_RUN and clearly mark the release's limitations; do not claim an untested agent host behavior is proven. If not executed, label NOT_RUN and clearly mark the release's limitations; do not claim an untested installation is proven.
+6. CI has already confirmed **local** `gh skill install --from-local` ([run 39735594895](https://github.com/kingwangking/r2r/actions/runs/39735594895)) and **pinned remote GitHub source** `gh skill install --pin <SHA>` ([run 39735750731](https://github.com/kingwangking/r2r/actions/runs/39735750731)) without creating a Release. The v0.1.0 post-release [GitHub CLI installation smoke](https://github.com/kingwangking/r2r/actions/runs/39737882456) passed. **Actual prompt activation in a Codex/Claude Code host**, user/project scope behavior and future updates still require observation; label those NOT_RUN rather than claiming comprehensive validation.
 7. Subsequent versions use SemVer tags, clear release notes and updated installation instructions. Avoid republishing a mutable tag.
 
 ## Optional later discovery, not the MVP

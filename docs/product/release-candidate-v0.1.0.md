@@ -1,4 +1,4 @@
-# R2R v0.1.0 — release candidate notes (NOT PUBLISHED)
+# R2R v0.1.0 — historical release candidate checklist (now published)
 
 **Status:** this is a historical release-preflight checklist. The owner has now approved MIT and the `v0.1.0` release. Confirm [the actual Release](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) and associated CI evidence; do not treat the approval itself as proof.
 

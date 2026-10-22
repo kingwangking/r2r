@@ -32,7 +32,8 @@ This is a **complete but revisable product route**, not a fixed number of tasks.
 - **Review policy:** synchronous quick self-review after meaningful batches; deeper when risk demands
 - **Evidence:** <what actually passed / failed / was NOT_RUN; exact scope>
 - **P0/P1 holds and affected dependencies:** <none verified / specific; not generic>
-- **Deferred proof / P2/P3:** <claim, owner, due milestone; use 'none known' only if checked>
+- **Grouped P2/P3 fix queue:** <nonblocking Finding, owner/module, target batch>
+- **Deferred proof:** <claim, owner, due milestone; use 'none known' only if checked>
 - **Latest STEER / architecture change:** <developer direction and why>
 - **Resume instruction:** inspect actual Git/ref, reconcile this file, continue next authorized batch
 

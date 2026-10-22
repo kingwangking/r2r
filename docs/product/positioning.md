@@ -1,22 +1,29 @@
-# R2R product positioning
+# R2R product positioning — Run to Ready
 
-**User:** a developer directing AI agents to build multi-module software beyond toy demos.
+**Definition:** **R2R / Run to Ready is an AI-native end-to-end product delivery operating method**, aiming to convert expanded AI coding capacity into a **correct, integrated, evidence-backed accepted software product**. Fast vertical iteration is R2R's distinctive practical policy, **not the entire definition**.
 
-**Problem:** AI accelerates code production and makes complex ambitions possible, but full serial review of each intermediate change may cost more than implementation. Large amounts of passing micro-tests or PR activity are not the same as a mature usable product.
+## The AI-era bottleneck
 
-**Objective:** Increase *verified end-product delivery* for complex systems without sacrificing the final stability requirement.
+AI generates software artifacts quickly, but production success needs **correct product intent**, **scalable yet integratable implementation**, and **continuous feedback/repair until genuinely usable**. Optimizing just one dimension fails: fast wrong requirements produce the wrong product; lots of independent agent output can lack integration; repeated broad review consumes iteration throughput; finishing tasks does not establish READY.
 
-**Approach:** strong whole-product direction; long but steerable runs; **synchronous lightweight Review after meaningful batches**, depth proportional to risk (no automatic full deep gate); acceptable imperfect intermediate shapes; repeated structural convergence and final real-product verification.
+## Three connected capabilities, one goal
 
-## The distinction
-- **Spec-driven development:** clarifies expected behavior and tasks. R2R consumes those inputs; it governs pace, validation timing and final convergence. Compatible, not a replacement.
-- **Agent loops:** automate repetition. R2R includes architectural confidence, human steering, high-risk boundaries and a product-level exit.
-- **Automated PR reviewers:** review diffs. R2R decides which reviews are useful, what must block dependent work and what can safely be deferred.
-- **Continuous integration:** detects breakage. R2R allows an intentionally non-release-ready intermediate product without concealing failing probes or sacrificing real-data safety.
+| Capability | Adopted foundation | R2R's purpose |
+| --- | --- | --- |
+| **Correct goal / Spec** | Existing SDD/Spec Kit and project architecture/contracts/acceptance | Ensure the work targets the real desired product |
+| **Horizontal execution / parallel agents** | Existing available multi-agent tools plus stable module boundaries | Multiply independently owned work without uncontrolled conflict |
+| **Vertical execution / iterative RUN** | R2R's long useful batches, frequent developer STEER, risk-focused Review, grouped findings/fixes | Preserve high iteration velocity across time, maintain context, integrate and correct course |
 
-## Current product, not speculative product
-A concise method, copyable prompts, templates, an honest worked example and a research plan. **No mandatory CLI, hosted web app, model connector, database or local executor.**
+**Outcome:** repeated integration / structural HARDEN / actual negative and product checks → evidence-backed READY.
 
-Optional automation is a later research decision, only if repeated evidence shows an essential unmet need.
+### Differentiation and prior art
 
-**Open source:** the source repository is Public, but licensing/rights and a tagged GitHub Release are still unresolved. Do not claim a public open-source release or implied permission to reuse without a license.
+R2R does **not** invent specification, parallel coding, iterative feedback, review, or convergence. Spec Kit itself performs `implement` and `converge`; available agent runtimes can spawn workers. R2R provides **a complete practical composition and developer-led execution policy** across those mature capabilities. Its notably emphasized problem is **longitudinal iteration economics**; the project name describes the *overall destination*, not only that one solution.
+
+### Delivery form
+
+A portable Skill + prompts + optional project-root `R2R.md` referencing existing Specs; no required SDD replacement or multi-agent orchestrator. Parallel execution is conditional on actual agents and safe ownership; a single coding agent can implement the full operating loop more slowly.
+
+**Evidence limits:** [v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) is publicly released under [MIT](../../LICENSE) with successful package/CLI installation checks. No controlled performance advantage or complete real-agent outcome is claimed. Improvements on the current HARDEN PR are not automatically included in the tagged release.
+
+[Three-practice integration](compatibility.md) · [Current method](../method/r2r.md) · [Spec Kit official documentation](https://github.github.com/spec-kit/) · [OpenAI parallel agent guidance](https://developers.openai.com/api/docs/guides/agents-api/multi-agent)

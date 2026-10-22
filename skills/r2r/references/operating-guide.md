@@ -2,6 +2,12 @@
 
 The parent [SKILL.md](../SKILL.md) handles the default path. Load this reference when the agent needs help with a long campaign, risky dependencies or a structured finish. Everything here ships inside the copied Skill directory.
 
+## The Run-to-Ready outcome
+
+R2R is the **end-to-end AI product delivery discipline**, not the name for iteration speed alone: **correct intent (Spec)** + **safe horizontal throughput (optional parallel agents)** + **fast vertical iteration (developer STEER, scoped Review, finding triage, fix batches)** + **actual integrated HARDEN** → evidence-backed READY. It *reuses* mature Spec/parallel infrastructure instead of implementing those systems itself.
+
+A good Start establishes the target and integration plan; a good Continue may combine parallel outputs, repair important findings and keep moving; a good Harden checks real user outcomes. No compulsory orchestration server.
+
 ## Start
 
 Ask or infer from the actual project: real user promise, existing specs, architecture/data authority, biggest unknowns, long-term scope, readiness criteria and developer authorization. Read Git and preserve current work. Use [the starter asset](../assets/R2R.md) to create a root `R2R.md` **only if useful for multi-session work**. Do not make duplicate spec, roadmap, evidence and governance hierarchies.
@@ -13,9 +19,19 @@ After writing the plan, start the first safe authorized implementation campaign,
 1. Read actual working tree / branch/HEAD, PR status if available, project instructions and `R2R.md`.
 2. Compare the checkpoint's previous SHA with Git; if changed, inspect diff and reconcile, don't reset or overwrite it.
 3. Identify the smallest set of critical blocked dependencies; isolate ordinary missing evidence and low-risk work.
-4. RUN meaningful product progress; **synchronous short self-review** after the batch; fix critical affected paths.
+4. RUN meaningful product progress; **synchronous short self-review** after the batch; fix critical functionality/security/data-integrity findings by severity, recheck affected paths if appropriate, queue ordinary P2/P3 and proceed without a full re-review cycle.
 5. Preserve a concise checkpoint with exact changed files/commit, PASS/FAIL/NOT_RUN scope, risks and next action.
 6. Resume more work while the actual session/authorization permits. A conversation ending does not create a future task.
+
+## Findings / main-agent responsibility
+
+- **Code, functional, security and data-integrity issues:** prioritize by severity and real dependency; resolve high-impact issues before related work; rerun a **focused** quick check if needed.
+- **Ordinary P2/P3:** group into a visible queue and repair in batches; do not interrupt every new slice. Record owner/affected scope and target batch.
+- **Document/evidence wording only:** correct without repeat independent Review unless acceptance, authorization, safety or audit traceability would be misrepresented.
+- **Main Codex or other executor:** triage important findings, delegate safe independent fixes only to actually available workers, verify material repairs in scope, **then resume RUN**. Never put a change back through a full Review carousel just because it was fixed.
+- **Developer:** frequently steers priority, review effort and design; keep a concise decision/next action visible.
+
+**Spec and parallel composition:** reuse canonical Spec/plan/tasks artifacts; do not replace them with R2R.md. When architecture is distinctly layered and module ownership is clear, multiple agents can build independent slices in parallel. R2R shapes the sequence of integrations, focused reviews and product convergence; a one-agent synchronous Review default does not forbid parallel implementations.
 
 ## STEER
 

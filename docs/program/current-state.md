@@ -1,4 +1,6 @@
-# R2R current state — first Release published
+# R2R release snapshot — first Release published
+
+**Current RUN/HARDEN work:** [root R2R.md](../../R2R.md) and the live GitHub PR/HEAD take precedence over this historical release snapshot.
 
 **Snapshot:** 2026-10-22. **Source of truth:** live GitHub repository, main branch, Release page and CI run records.
 

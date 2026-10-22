@@ -1,6 +1,6 @@
 # Full R2R development program — flexible long-horizon roadmap
 
-**Goal:** a simple, adopted and evidence-tested method for AI-assisted high-throughput construction of complex *ultimately reliable* products.
+**Goal:** a simple, usable AI coding **rapid-iteration layer** compatible with Spec/SDD and optional parallel multi-agent implementations, supporting frequent developer steering, smart Finding batching and ultimately reliable integrated products.
 
 **Productization direction (Owner, 2026-10-22):** prioritize a **complete usable end-user form** before spending cycles on complex experiments. The product is a portable no-server Skill + copy/paste Prompt + optional one-file R2R.md project state; users say Start / Continue / Harden, with STEER anytime. W5 empirical validation remains important but is **not** a prerequisite to delivering a coherent candidate package or documenting usage.
 

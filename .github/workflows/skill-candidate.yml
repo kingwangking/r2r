@@ -7,8 +7,20 @@ on:
       - "scripts/skill_release.py"
       - "tests/test_skill_release.py"
       - ".github/workflows/skill-candidate.yml"
-      - "quickstart/install.md"
+      - "quickstart/**"
+      - "README.md"
+      - "R2R.md"
+      - "CHANGELOG.md"
+      - "LICENSE"
+      - "docs/zh/README.md"
       - "docs/product/distribution.md"
+      - "docs/product/landing.html"
+      - "scripts/check_landing.py"
+      - "tests/test_landing.py"
+      - ".github/workflows/pages.yml"
+      - "docs/product/pages.md"
+      - "scripts/check_docs.py"
+      - "tests/test_docs.py"
   push:
     branches: [main]
     paths:
@@ -16,6 +28,17 @@ on:
       - "scripts/skill_release.py"
       - "tests/test_skill_release.py"
       - ".github/workflows/skill-candidate.yml"
+      - "README.md"
+      - "quickstart/**"
+      - "R2R.md"
+      - "CHANGELOG.md"
+      - "LICENSE"
+      - "docs/zh/README.md"
+      - "scripts/check_docs.py"
+      - "tests/test_docs.py"
+      - "docs/product/landing.html"
+      - "scripts/check_landing.py"
+      - "tests/test_landing.py"
   workflow_dispatch:
 
 permissions:
@@ -35,6 +58,8 @@ jobs:
         run: |
           python -m unittest discover -s tests -v
           python scripts/skill_release.py
+          python scripts/check_docs.py
+          python scripts/check_landing.py
       - name: Official GitHub CLI Skill specification check (dry-run only)
         env:
           GH_TOKEN: ${{ github.token }}
@@ -83,6 +108,63 @@ jobs:
           assert "name: r2r" in text, "wrong installed Skill"
           print("REMOTE_SKILL_INSTALL_PASS: pinned GitHub source copied with full assets")
           PY
+      - name: Render animated landing in headless Chrome
+        run: |
+          set -e
+          mkdir -p dist
+          CHROME="$(command -v google-chrome || command -v chromium || true)"
+          if [ -z "$CHROME" ]; then
+            echo "No Chrome binary found; real browser screenshot NOT_RUN" >&2
+            exit 1
+          fi
+          timeout 40s "$CHROME" --headless=new --disable-dev-shm-usage --disable-gpu --no-sandbox             --window-size=1440,1100 --screenshot="$PWD/dist/r2r-landing-desktop.png"             "file://$PWD/docs/product/landing.html" > /tmp/r2r-chrome.log 2>&1
+          timeout 40s "$CHROME" --headless=new --disable-dev-shm-usage --disable-gpu --no-sandbox             --window-size=420,900 --screenshot="$PWD/dist/r2r-landing-mobile.png"             "file://$PWD/docs/product/landing.html" >> /tmp/r2r-chrome.log 2>&1
+          test -s dist/r2r-landing-desktop.png
+          test -s dist/r2r-landing-mobile.png
+          timeout 40s "$CHROME" --headless=new --disable-dev-shm-usage --disable-gpu --no-sandbox             --virtual-time-budget=23000 --dump-dom "file://$PWD/docs/product/landing.html"             > /tmp/r2r-landing-dom.html 2>> /tmp/r2r-chrome.log
+          grep -q 'class="step is-active"' /tmp/r2r-landing-dom.html
+          grep -q 'aria-valuenow="12"' /tmp/r2r-landing-dom.html
+          grep -q 'DELIVERY → READY' /tmp/r2r-landing-dom.html
+          grep -q 'Replay full story' /tmp/r2r-landing-dom.html
+          echo "LANDING_CHROME_PASS: autoplay transitioned from stall through R2R to final READY; desktop/mobile rendered"
+          timeout 45s "$CHROME" --headless=new --disable-dev-shm-usage --disable-gpu --no-sandbox \
+            --window-size=1440,5000 --virtual-time-budget=23000 \
+            --screenshot="$PWD/dist/r2r-landing-long-desktop.png" \
+            "file://$PWD/docs/product/landing.html" >> /tmp/r2r-chrome.log 2>&1
+          timeout 45s "$CHROME" --headless=new --disable-dev-shm-usage --disable-gpu --no-sandbox \
+            --window-size=420,6500 --virtual-time-budget=23000 \
+            --screenshot="$PWD/dist/r2r-landing-long-mobile.png" \
+            "file://$PWD/docs/product/landing.html" >> /tmp/r2r-chrome.log 2>&1
+          test -s dist/r2r-landing-long-desktop.png
+          test -s dist/r2r-landing-long-mobile.png
+      - name: Upload standalone landing previews
+        uses: actions/upload-artifact@v4
+        with:
+          name: r2r-landing-screenshots
+          path: |
+            dist/r2r-landing-desktop.png
+            dist/r2r-landing-mobile.png
+            dist/r2r-landing-long-desktop.png
+            dist/r2r-landing-long-mobile.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Prepare GitHub Pages preview package (no public deploy)
+        run: |
+          set -eu
+          mkdir -p dist/pages
+          cp docs/product/landing.html dist/pages/index.html
+          touch dist/pages/.nojekyll
+          test -s dist/pages/index.html
+      - name: Upload Pages preview source artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: r2r-pages-static-preview
+          path: |
+            dist/pages/index.html
+            dist/pages/.nojekyll
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
       - name: Package candidate (no tag and no Release)
         run: |
           python scripts/skill_release.py --pack dist/r2r-skill.zip

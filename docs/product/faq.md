@@ -6,8 +6,23 @@ No. R2R avoids treating **every intermediate change as a release candidate**. De
 ### Does R2R require multiple agents or asynchronous reviewers?
 No. Its current default is **RUN a meaningful batch → synchronous lightweight self-review → continue**. Only material risks trigger deeper source-grounded verification. A separate independent reviewer can be used sequentially when genuinely available; a same-agent self-check must never be advertised as independent.
 
-### Does R2R replace Spec-driven development?
-No. Specs clarify what to build. R2R governs the long production/feedback/quality-convergence process after and alongside a spec.
+### Is R2R just an iteration-acceleration technique?
+No. **R2R is Run to Ready:** an overall, developer-steered way to reach the right, integrated and accepted product. It brings together correct Spec direction, optional parallel multi-agent width, fast vertical iteration and repeated HARDEN. **Vertical iteration is its distinctive operating emphasis**, not its whole mission.
+
+### Why make this an R2R framework if Spec/parallel/iteration already exist?
+The need is to **organize these mature capabilities around the final product outcome**. More coding capacity does not guarantee correct intent, smooth integration, appropriate review economics or readiness. R2R proposes an integrated operating policy and adoption Skill, not a new invention of SDD or concurrency. Empirical superiority remains unproven.
+
+### Does R2R replace Spec-driven development or Spec Kit?
+No. Specs and Spec Kit remain the authoritative sources for requirements, tasks, contracts and acceptance—and Spec Kit includes implementation and convergence. R2R focuses on **successive rapid iterations, developer interventions, Finding routing and final product HARDEN** alongside the existing Spec workflow. [Compatibility](compatibility.md).
+
+### Is horizontal multi-agent parallelism a mandatory part of R2R?
+No. It is one useful capability where the host and module boundaries permit; R2R can be run with one agent. The three-capability model represents an **integrated delivery approach**, not a prerequisite to install all three systems.
+
+### Is R2R opposed to many agents working in parallel?
+No. Parallel development is a horizontal speed multiplier when architecture has clear module/layer boundaries. R2R controls the iteration/integration feedback loop and works with one executor or many available agents. It does not create or schedule those agents.
+
+### Does each fixed issue require another independent Review?
+No. Important code, security and data-integrity findings are fixed according to severity, with a **focused quick recheck if warranted**. Ordinary nonblocking P2/P3 go into a grouped repair queue. Pure documentation/evidence wording is corrected without repeated independent Review unless acceptance, security authorization or traceability is affected. The main Codex/executor collects Findings, coordinates scoped fixes and **moves to the next safe Slice**.
 
 ### Are long plans mandatory?
 A complete high-level product roadmap is central, and long-horizon execution is a major supported use. The developer may shorten a run or revise the plan whenever new information arrives.

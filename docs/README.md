@@ -3,6 +3,10 @@
 **Current truth:** [program/current-state.md](program/current-state.md)
 
 **For actual users — read only these**
+- [Interactive R2R explainer (self-contained HTML)](product/landing.html)
+- [GitHub Pages hosting workflow and activation](product/pages.md)
+- [Published R2R v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0)
+- [R2R's own project-level control file](../R2R.md)
 - [Start / Continue / Harden (Chinese)](../quickstart/use.md)
 - [Install portable Skill or copy Prompt](../quickstart/install.md)
 - [Complete fictional teaching conversation](../examples/complete-usage.md)
@@ -12,7 +16,9 @@
 - [中文介绍与启动](zh/README.md)
 - [Web + GitHub 纯网页端执行](../quickstart/web-github.md)
 - [Review 深度与执行长度的动态判断](../quickstart/decision-guide.md)
-- [Purpose and audience](product/positioning.md)
+- [Run-to-Ready product definition and audience](product/positioning.md)
+- [Spec + parallel multi-agent + R2R compatibility](product/compatibility.md)
+- [GitHub About/Topics discoverability text](product/discoverability.md)
 - [R2R in one page](method/r2r.md)
 - [Developer steering](method/steering.md)
 - [Risk, review and final convergence](method/quality.md)
@@ -43,7 +49,7 @@
 
 **Release and distribution**
 - [v0.1.0 candidate evidence and release checklist](product/release-candidate-v0.1.0.md)
-- [Unreleased change log](../CHANGELOG.md)
+- [Version history and changes](../CHANGELOG.md)
 - [How R2R becomes a tagged GitHub Release and installable Skill](product/distribution.md)
 
 **Engineering program**
