@@ -78,6 +78,6 @@ my-product/
 
 Deep methodology, research, comparisons, examples and the [internal R2R development program](docs/program/roadmap.md) are optional reading, not installation requirements.
 
-**Versioned distribution:** [GitHub Releases](https://github.com/kingwangking/r2r/releases). The first version is `v0.1.0`; inspect the actual Releases page to confirm it has been published before using a pinned installation command.
+**Latest published version:** [v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) (MIT), with a downloadable Skill-only ZIP and SHA-256 file. A real GitHub Release exists.
 
 **License:** [MIT](LICENSE), including the distributable Skill directory. This is an instruction-based product: package verification can pass without proving that a particular AI host follows every R2R instruction.

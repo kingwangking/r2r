@@ -2,7 +2,7 @@
 
 **Decision:** Use GitHub-native Skill publishing/installing instead of developing a custom installer or requiring users to browse a GitHub directory. Source repository is the development/workspace; a **tagged GitHub Release** is the supported versioned distribution artifact.
 
-**First-release preparation:** the repository is Public and the owner approved MIT licensing, merging and publishing `v0.1.0` on 2026-10-22. The one-time publishing workflow runs only after a merge commit explicitly marked `[publish-r2r-v0.1.0]`. To determine whether the Release actually exists, inspect [GitHub Releases](https://github.com/kingwangking/r2r/releases); approval or this document alone is not proof of publication.
+**First release:** the owner approved MIT licensing, merging and `v0.1.0` publication. [GitHub Release v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) is live, with tag pinned to `1f7bdd09e2f304d4dd03f6575114ebc73a5e413a` and Skill-only ZIP/SHA-256 assets. The publish job succeeded through release/asset creation; its last exact-byte installer assertion failed because the installer adds metadata. A separate post-release smoke check addresses this, without moving the immutable tag.
 
 ## Three distinct concepts
 

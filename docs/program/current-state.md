@@ -1,45 +1,32 @@
-# R2R release candidate — current truth
+# R2R current state — first Release published
 
-**Snapshot:** 2026-10-22. GitHub is authoritative; this document records known source commits and must not be treated as the future final HEAD.
+**Snapshot:** 2026-10-22. **Source of truth:** live GitHub repository, main branch, Release page and CI run records.
 
-## Repository and owner controls
+## Published product
 
-- Repo: `kingwangking/r2r`, **Public**. No open-source LICENSE in the tracked branch; public source visibility is not a grant of reuse rights.
-- Base: `main` bootstrap. [PR #1](https://github.com/kingwangking/r2r/pull/1) on `feat/r2r-method-foundation-v0` remains **Draft / Open / Unmerged** at the last inspection.
-- Current development direction: **full usable, versioned R2R Skill product**, not more abstract process research or a new local multi-agent platform.
-- Review mode: synchronous lightweight same-agent self-review after meaningful implementation batches; high-risk paths get deeper checks when appropriate.
+- Repository `kingwangking/r2r` is **Public** and licensed under **MIT** in both root `LICENSE` and portable `skills/r2r/LICENSE`.
+- [PR #1](https://github.com/kingwangking/r2r/pull/1) was approved and merged.
+- [**GitHub Release v0.1.0**](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) is published, not a Draft/preview-only announcement; tag pins merge commit `1f7bdd09e2f304d4dd03f6575114ebc73a5e413a`.
+- Release includes `r2r-skill-v0.1.0.zip` plus its `sha256` checksum as actual GitHub assets.
+- End-user Skill behavior: **Start → Continue → Harden** with dynamic STEER; root `R2R.md` in the target project; synchronous lightweight self-review, not compulsory local multi-agent orchestration.
 
-## Actual product deliverables
+## Actual release pipeline and issue
 
-- Self-contained `skills/r2r/`: `SKILL.md`, `assets/R2R.md`, `references/operating-guide.md`.
-- START / CONTINUE / HARDEN with STEER ANYTIME; long-range plan, single target-project state file, risk-directed reviews, repeated final product convergence.
-- GitHub Release-first distribution plan, install/usage documentation, proposed `v0.1.0` notes; **no GitHub Release or version tag created**.
-- Stdlib-only Skill source checker and deterministic ZIP/SHA-256 packager; isolated positive/negative tests.
-- Read-only CI candidate job with official `gh skill publish --dry-run`, local and pinned remote GitHub CLI installer smoke checks, Artifact upload.
+- [Release workflow run #39737475626](https://github.com/kingwangking/r2r/actions/runs/39737475626) created the tag, Release and downloadable files successfully.
+- **One final CI assertion FAIL:** `gh skill install ... --pin v0.1.0` itself reported successful installation, but test compared installed `SKILL.md` bytes to source. Installer adds provenance/install metadata, so byte equality was a mistaken requirement.
+- Follow-up code corrects comparison to check installed Skill semantics/name and byte equality of unmodified assets/LICENSE. A separate post-release workflow verifies actual pinned-version installation and asset checksum; its result must be checked before claiming post-release smoke PASS.
+- Candidate pipeline had earlier run successful source/unit/dry-run/local/remote SHA-pinned checks.
 
-## Executed evidence
+## Scope / remaining verification
 
-| Source / run | Actual scope | Observation |
-| --- | --- | --- |
-| [39734487738](https://github.com/kingwangking/r2r/actions/runs/39734487738) @ `7fecbed1` | Unit/source checks, deterministic ZIP+checksum upload | PASS |
-| [39734623413](https://github.com/kingwangking/r2r/actions/runs/39734623413) @ `972cbd53` | Official GitHub CLI `gh skill publish --dry-run` | PASS |
-| [39735594895](https://github.com/kingwangking/r2r/actions/runs/39735594895) @ `7746c07a` | `gh skill install --from-local` to temp directory, asset contents match source | PASS |
-| [39735750731](https://github.com/kingwangking/r2r/actions/runs/39735750731) @ `8a4946e7` | `gh skill install` from GitHub pinned PR source SHA, copied Skill assets match | PASS |
+- **Real GitHub publication complete:** source, tag, MIT and assets are present.
+- **NOT_RUN:** an actual Codex/Claude host invocation that demonstrably follows R2R; empirical efficiency comparison or production project HARDEN results.
+- Do not rewrite or move `v0.1.0` because of a CI test bug; use a post-release follow-up test and future patch release only if the published content has an actual defect.
 
-These are real CI processes in isolated runners. They **do not** mean any Codex/Claude Code assistant followed the Skill, that its full user experience works, or that R2R improves complex-project throughput.
+## Next
 
-## Remaining decisions / incomplete evidence
+1. Obtain post-release smoke CI outcome, and correct any legitimate installation mismatch.
+2. Improve installation onboarding if a real host reveals friction.
+3. Evaluate R2R in a practical project when useful; do not use exhaustive comparative trials as a prerequisite to the already published Skill.
 
-- **OWNER decision:** choose and approve open-source license, verify publication rights/name.
-- **OWNER decision:** approve merge/source ref and initial Release tag/version (e.g. proposed `v0.1.0`). No merge, tag or Release has been performed.
-- **NOT_RUN:** real host command activation, correct usage behavior and end-product studies; explicitly deferred beyond basic package candidacy.
-- **NOT DONE:** publish or attach a permanent GitHub Release artifact; CI artifacts have finite retention.
-
-## Next after owner release authorization
-
-1. Approve rights/license, review the proposed version and source/PR merge.
-2. Re-run `gh skill publish --dry-run` on the approved final source if materially changed.
-3. Publish a tagged GitHub Release using the supported `gh skill publish --tag` path, optionally attach a standalone Skill ZIP + checksum.
-4. Confirm real post-release installation/host behavior and correct any practical problems.
-
-**Never silently promote PR/CI PASS to host behavior PASS or release READY.**
+This document is a snapshot, and does not imply hidden execution when no authorized agent session is running.

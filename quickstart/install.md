@@ -2,7 +2,7 @@
 
 R2R is a **versioned Agent Skill**, not a separate process or executable server. The standard distribution target is **GitHub Releases with a semver tag** and direct installation from the GitHub repository. The portable source lives at [`skills/r2r/`](../skills/r2r/SKILL.md).
 
-**Versioning:** install from [a published Release](https://github.com/kingwangking/r2r/releases) for stable, reproducible behavior. `v0.1.0` is the authorized first-version target; check that the tag exists before using it. The project uses the [MIT license](../LICENSE).
+**Versioning:** [v0.1.0 is published](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) and points to main commit `1f7bdd09e2f304d4dd03f6575114ebc73a5e413a`. Use `r2r@v0.1.0` or `--pin v0.1.0` for reproducible installation. The project uses [MIT](../LICENSE).
 
 ## Recommended: one-command install (after release)
 

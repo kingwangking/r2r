@@ -29,10 +29,10 @@ No R2R native CLI, IDE, multi-Agent backend, scheduler, hosted API, unattended c
 - [x] Python source checks, five unit tests and candidate ZIP + SHA-256: [Actions run #39734487738](https://github.com/kingwangking/r2r/actions/runs/39734487738), SUCCESS on `7fecbed11aa037d594d755e457f225664653c192`.
 - [x] Official GitHub CLI `gh skill publish --dry-run`: [Actions run #39734623413](https://github.com/kingwangking/r2r/actions/runs/39734623413), SUCCESS on `972cbd536b3fd5cd3659f11ab2882e43badcfeb6`.
 - [x] Owner authorized MIT and v0.1.0 publication. Full independent legal/name clearance is not asserted.
-- [ ] Confirm exact merge/main source SHA and immutable version tag in actual GitHub history.
+- [x] PR #1 merged into main at `1f7bdd09e2f304d4dd03f6575114ebc73a5e413a`; Git tag `v0.1.0` points to the same SHA.
 - [x] **GitHub CLI local installer** completed in isolated CI directory and preserved Skill/template/reference: [run #39735594895](https://github.com/kingwangking/r2r/actions/runs/39735594895) — SUCCESS on `7746c07a686dae74a2fd73ab52ca9f16837c2538`.
 - [x] **Remote pinned-SHA Skill install** from GitHub repository completed in isolated CI directory and preserved all Skill assets: [run #39735750731](https://github.com/kingwangking/r2r/actions/runs/39735750731) — SUCCESS on `8a4946e74c1b2f48ed56cc0f9c18d8dad6d209c2`.
 - [ ] **Actual agent-host activation/behavior** in Codex, Claude Code or other coding agent — NOT_RUN. Installing via CLI to a temporary CI directory does not establish prompt-trigger reliability.
-- [ ] Confirm actual GitHub Release publication with tag and download assets; link the post-merge CI result.
+- [x] [GitHub Release v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) published with `r2r-skill-v0.1.0.zip` and `r2r-skill-v0.1.0.zip.sha256`.
 
-These checkboxes are **source/package/CLI installation readiness only**, not a host behavior or release sign-off. Controlled efficiency experiments can follow an early, honestly labeled release; unsafe external changes or unsupported claims cannot.
+**Post-release finding:** publication succeeded, but [release CI run 39737475626](https://github.com/kingwangking/r2r/actions/runs/39737475626) marked the final installer step FAIL because it incorrectly expected the installed `SKILL.md` to match source bytes. GitHub CLI successfully installed the tagged Skill, while adding installation metadata. Follow-up smoke check corrects this assertion. This is *not* proof of real Codex/Claude activation. Controlled efficiency experiments can follow an early, honestly labeled release; unsafe external changes or unsupported claims cannot.

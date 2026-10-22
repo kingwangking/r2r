@@ -1,0 +1,64 @@
+name: R2R v0.1.0 post-release smoke
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/postrelease-v0.1.0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Read project source
+        uses: actions/checkout@v4
+      - name: Verify immutable tag and GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          test "$(gh api repos/kingwangking/r2r/git/ref/tags/v0.1.0 --jq .object.sha)" = '1f7bdd09e2f304d4dd03f6575114ebc73a5e413a'
+          test "$(gh release view v0.1.0 --json tagName -q .tagName)" = v0.1.0
+      - name: Download assets and verify ZIP SHA-256
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/release"
+          gh release download v0.1.0 -D "$RUNNER_TEMP/release" -p 'r2r-skill-v0.1.0.zip*'
+          cd "$RUNNER_TEMP/release"
+          sha256sum -c r2r-skill-v0.1.0.zip.sha256
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          file = Path("r2r-skill-v0.1.0.zip")
+          with zipfile.ZipFile(file) as z:
+              names = set(z.namelist())
+              for p in ("r2r/SKILL.md", "r2r/LICENSE", "r2r/assets/R2R.md", "r2r/references/operating-guide.md"):
+                  assert p in names, p
+              assert "name: r2r" in z.read("r2r/SKILL.md").decode("utf-8")
+          print("RELEASE_ASSET_PASS")
+          PY
+      - name: Install immutable v0.1.0 using GitHub CLI
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh skill install kingwangking/r2r r2r --pin v0.1.0 --dir "$RUNNER_TEMP/released-r2r"
+          python - "$RUNNER_TEMP/released-r2r" <<'PY'
+          from pathlib import Path
+          import sys
+          hits = list(Path(sys.argv[1]).rglob("SKILL.md"))
+          assert len(hits) == 1, hits
+          installed = hits[0].parent
+          text = hits[0].read_text(encoding="utf-8")
+          assert "name: r2r" in text and "Start / initialize" in text, "Skill instructions absent"
+          # Installed SKILL.md can differ: gh skill install injects install metadata.
+          for file in ("LICENSE", "assets/R2R.md", "references/operating-guide.md"):
+              assert (installed / file).read_bytes() == (Path("skills/r2r") / file).read_bytes(), file
+          print("TAGGED_RELEASE_SKILL_INSTALL_PASS")
+          PY

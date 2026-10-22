@@ -65,8 +65,15 @@ jobs:
           skills = list(root.rglob("SKILL.md"))
           assert len(skills) == 1, skills
           installed = skills[0].parent
-          for item in ("SKILL.md", "LICENSE", "assets/R2R.md", "references/operating-guide.md"):
+          # gh skill install injects install/source metadata into SKILL.md.
+          # Content equivalence is not expected for that one file.
+          for item in ("LICENSE", "assets/R2R.md", "references/operating-guide.md"):
               assert (installed / item).read_bytes() == (Path("skills/r2r") / item).read_bytes(), item
+          actual = skills[0].read_text(encoding="utf-8")
+          original = Path("skills/r2r/SKILL.md").read_text(encoding="utf-8")
+          assert "name: r2r" in actual
+          assert "Start / initialize" in actual
+          assert "Start / initialize" in original
           print("TAGGED_RELEASE_SKILL_INSTALL_PASS")
           PY
       - name: Print final Release URL and evidence
