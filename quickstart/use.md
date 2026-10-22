@@ -4,6 +4,16 @@
 
 开发者无需掌握几十个命令，也不必先部署 Agent 调度服务器。**开始、继续、收敛** 是三个主要操作；你随时能插入问题、调整执行范围。
 
+## 发布版怎么获取？
+
+正式版本计划采用 **GitHub Releases + GitHub CLI 原生 Skill 安装**，不要求手动复制目录：
+
+```bash
+gh skill install kingwangking/r2r r2r --agent codex --scope user
+```
+
+**当前仓库仍为 Private，且还没有 Release；以上为正式发布后的使用方式，尚未实测安装成功。** 已获授权访问仓库的开发者仍可复制整个 Skill 目录或直接使用 Prompt。详见 [发行说明](../docs/product/distribution.md)。
+
 ## 1. 选择入口
 
 - **最方便：直接复制下面的提示词**。适用于能访问项目的 ChatGPT、Codex、Claude Code 等。

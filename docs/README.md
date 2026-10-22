@@ -41,6 +41,9 @@
 - [Review economics](method/review-economics.md)
 - [Current adjacent approaches](research/landscape-and-differences.md)
 
+**Release and distribution**
+- [How R2R becomes a tagged GitHub Release and installable Skill](product/distribution.md)
+
 **Engineering program**
 - [Real-case evaluation protocol](research/evaluation-protocol.md)
 - [Frequently asked questions](product/faq.md)
