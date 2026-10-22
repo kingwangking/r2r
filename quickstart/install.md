@@ -1,70 +1,57 @@
-# Install R2R — Release → skill installer → Start / Continue / Harden
+# 安装 R2R — 已发布的 Agent Skill
 
-R2R is a **versioned Agent Skill**, not a separate process or executable server. The standard distribution target is **GitHub Releases with a semver tag** and direct installation from the GitHub repository. The portable source lives at [`skills/r2r/`](../skills/r2r/SKILL.md).
+**正式稳定版本：[v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0)**。源代码采用 [MIT 许可证](../LICENSE)。安装它不需要 R2R 专属服务器、数据库、守护进程或多 Agent 运行架构。
 
-**Versioning:** [v0.1.0 is published](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) and points to main commit `1f7bdd09e2f304d4dd03f6575114ebc73a5e413a`. Use `r2r@v0.1.0` or `--pin v0.1.0` for reproducible installation. The project uses [MIT](../LICENSE).
+## 推荐：GitHub CLI 直接安装
 
-## Recommended: one-command install (after release)
-
-GitHub CLI's [native Skill installer](https://cli.github.com/manual/gh_skill_install) discovers `skills/r2r/SKILL.md`; when no version is specified it prefers the latest tagged release and otherwise uses the default branch HEAD.
+需要一版**支持 `gh skill` 子命令**的 GitHub CLI（该功能当前属于预览功能）。下面的 `v0.1.0` 是真正存在的版本：
 
 ```bash
-# Install R2R for Codex, available to the current user
-gh skill install kingwangking/r2r r2r --agent codex --scope user
+# Codex：当前用户范围，固定发布版本
+gh skill install kingwangking/r2r r2r --pin v0.1.0 --agent codex --scope user
 
-# Install R2R into the current project's Claude Code scope
-gh skill install kingwangking/r2r r2r --agent claude-code --scope project
+# Claude Code：当前项目范围
+gh skill install kingwangking/r2r r2r --pin v0.1.0 --agent claude-code --scope project
 
-# Pin to one published release/tag for reproducibility
-gh skill install kingwangking/r2r r2r@v0.1.0 --agent codex --scope user
-
-# Preview without installing
-gh skill preview kingwangking/r2r r2r
+# 安装前预览
+gh skill preview kingwangking/r2r r2r@v0.1.0
 ```
 
-The example `v0.1.0` is **a proposed future version, not an existing R2R tag**. Use an actually published version when available. The `gh skill` commands are currently a [GitHub CLI preview](https://cli.github.com/manual/gh_skill), so users need a CLI build that supports them.
+固定版本便于复现；省略 `--pin` 时可能安装最新版本。具体安装路径由 GitHub CLI 与宿主管理，项目级与用户级安装并不相同。若 `gh skill` 不存在，先升级到支持该功能的 GitHub CLI，或使用下面的手动方式。
 
-**Alternative:** the open [skills installer](https://github.com/vercel-labs/skills) can install directly from GitHub:
+## 不使用 GitHub CLI
 
-```bash
-npx skills add kingwangking/r2r --skill r2r
-```
+可以下载 [Release ZIP](https://github.com/kingwangking/r2r/releases/download/v0.1.0/r2r-skill-v0.1.0.zip)（对应 [SHA-256](https://github.com/kingwangking/r2r/releases/download/v0.1.0/r2r-skill-v0.1.0.zip.sha256)），解压后将**整个 `r2r/` 目录**放进宿主的技能目录：
 
-This installer may use the repo source rather than a specific GitHub Release; check its behavior if you need a pinned version. Install/upgrade mechanisms are separate from the underlying `SKILL.md` standard.
-
-**Updates:** for GitHub CLI installs, see `gh skill update`; pinned installs will not update automatically unless explicitly unpinned. The release is a stable ref while ongoing `main` development can continue.
-
-## Download a GitHub Release (manual fallback)
-
-After release, open [R2R Releases](https://github.com/kingwangking/r2r/releases), select a version and download either:
-- A dedicated `r2r-skill-vX.Y.Z.zip` asset containing only `r2r/SKILL.md`, `r2r/assets/`, `r2r/references/` **if the maintainers attached such an asset**.
-- Or GitHub's automatic source archive; locate `skills/r2r/` inside it.
-
-Copy the whole `r2r` folder into the host's skills directory, preserving paths. The package's reference files live alongside `SKILL.md`, so copying only that file loses useful content.
-
-| Agent | Project-local installation | User-global location |
+| 宿主 | 项目范围 | 用户范围 |
 | --- | --- | --- |
-| Codex | `<project>/.agents/skills/r2r/` | Managed by host installer; may use `~/.codex/skills` or `~/.agents/skills` depending on CLI/host version |
+| Codex | `<project>/.agents/skills/r2r/` | 按 Codex 所使用的用户级 Skill 目录 |
 | Claude Code | `<project>/.claude/skills/r2r/` | `~/.claude/skills/r2r/` |
-| Other Skill hosts | See the host's Agent Skills documentation | See host support |
 
-## No installation: use as a prompt
+安装目录需要有 `SKILL.md`、`LICENSE`、`assets/R2R.md` 和 `references/operating-guide.md`。不要只复制单独的 `SKILL.md`。安装后按宿主的正常规则刷新或重新打开项目，并明确要求 Agent 使用 R2R。
 
-Copy the **Start R2R** prompt from [README](../README.md) into an authorized chat. It can build/update a project-root `R2R.md` and implement only when that assistant has actual repository tools. It cannot start an invisible background coding process.
+也可以尝试第三方 [skills installer](https://github.com/vercel-labs/skills)：`npx skills add kingwangking/r2r --skill r2r`。它的版本选择/安装行为可能与 GitHub CLI 不同；需要严格固定版本时优先使用 Tag 安装。
 
-## Actual operation after installation
+## 完全不安装
 
-1. **Start R2R on this project** — read the real code/spec, establish a complete long-horizon program in root `R2R.md`, and start a safe meaningful RUN.
-2. **Continue R2R** — compare `R2R.md` with live Git, continue safe work with synchronous lightweight self-review.
-3. **Harden with R2R** — repeatedly integrate, restructure and verify whole-product readiness.
-4. **STEER anytime** — change scope, run length and review depth.
+直接复制 [README 中的提示词](../README.md) 给有权限访问代码仓库的 AI 编码助手。R2R 的方法不依赖 Skill 安装机制；没有代码或 Git 工具的普通聊天无法凭此执行软件更改。
 
-These are natural-language triggers, not native CLI commands implemented by the Skill. [中文使用说明](use.md).
+## 安装后怎么使用？
 
-## Publisher's release workflow
+在你的软件**项目目录**打开 Codex/Claude Code 等 Agent，然后说：
 
-See [distribution plan](../docs/product/distribution.md). GitHub CLI provides `gh skill publish --dry-run` to validate and `gh skill publish --tag vX.Y.Z` to create a release **after authorization**. The official `gh skill publish --dry-run` and candidate ZIP/sha256 packaging **passed in GitHub Actions** at [run #39734623413](https://github.com/kingwangking/r2r/actions/runs/39734623413), along with Python source/unit checks. Further successful CI checks:
-- [Run #39735594895](https://github.com/kingwangking/r2r/actions/runs/39735594895) installed `r2r` from its **local repository** using `gh skill install --from-local` into a runner temp directory and confirmed asset integrity.
-- [Run #39735750731](https://github.com/kingwangking/r2r/actions/runs/39735750731) installed `r2r` from **GitHub at the exact PR head SHA** using `gh skill install --pin`, and confirmed the copied template/reference content.
+```text
+Start R2R on this project. Read actual source, create or update R2R.md,
+plan the whole product and begin the first authorized safe RUN.
+```
 
-Those were pre-release smoke runs. **v0.1.0 is now published under MIT**, and [post-release smoke #39737882456](https://github.com/kingwangking/r2r/actions/runs/39737882456) passed asset checksum and tagged CLI installation. **Real Codex/Claude agent activation remains NOT_RUN.**
+后来只需说 **Continue R2R**，需要进行全面整合时说 **Harden with R2R**。你可以随时 STEER。
+
+[中文完整操作指南](use.md) · [目标项目 R2R.md 模板](../skills/r2r/assets/R2R.md)
+
+## 哪些部分确实检查过？
+
+- GitHub 的 [v0.1.0 发布后 Smoke](https://github.com/kingwangking/r2r/actions/runs/39737882456) 检查了 Tag、Release ZIP、SHA-256，以及通过 GitHub CLI 安装指定版本后的 Skill 文件完整性。
+- **尚未实测：** Codex/Claude Code 在真实项目中遵循 Start、Continue、Harden 指令的完整行为。这与安装成功是两种不同的证据。
+
+源码版本和 Release 使用不同的引用。`main` 的后续修改不会自动变成 `v0.1.0`，也不会修改已发布 ZIP。
