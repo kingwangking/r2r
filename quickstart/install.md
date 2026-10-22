@@ -1,49 +1,66 @@
-# Install R2R (or just copy one prompt)
+# Install R2R — Release → skill installer → Start / Continue / Harden
 
-R2R's actual product is **instructions plus a small, optional project-state template**. There is no executable package, dedicated CLI, service, subscription or required model.
+R2R is a **versioned Agent Skill**, not a separate process or executable server. The standard distribution target is **GitHub Releases with a semver tag** and direct installation from the GitHub repository. The portable source lives at [`skills/r2r/`](../skills/r2r/SKILL.md).
 
-## Path A — No installation (any conversational agent)
+**Current status:** R2R is **Private, Draft, unreleased**. The commands below show **how users will install after authorized publication**. They have NOT been executed against a public R2R release.
 
-1. Open [README](../README.md) or [the Chinese guide](use.md).
-2. Copy the **Start R2R** prompt into a chat with authorized access to your project.
-3. The agent should create/update your project's `R2R.md`, then implement the first authorized batch.
-4. Later use **Continue R2R** or **Harden this product with R2R**.
+## Recommended: one-command install (after release)
 
-This path works only to the extent your assistant can actually read/write code or Git. A chat without repository tools can help plan and maintain text, **not** claim that it built/tested software.
+GitHub CLI's [native Skill installer](https://cli.github.com/manual/gh_skill_install) discovers `skills/r2r/SKILL.md`; when no version is specified it prefers the latest tagged release and otherwise uses the default branch HEAD.
 
-## Path B — Install the portable Agent Skill
+```bash
+# Install R2R for Codex, available to the current user
+gh skill install kingwangking/r2r r2r --agent codex --scope user
 
-Copy the **entire** [`skills/r2r`](../skills/r2r/SKILL.md) directory, preserving `SKILL.md`, `assets/` and `references/`, to the destination for the specific agent.
+# Install R2R into the current project's Claude Code scope
+gh skill install kingwangking/r2r r2r --agent claude-code --scope project
 
-| Agent | Project-local destination | Personal destination |
+# Pin to one published release/tag for reproducibility
+gh skill install kingwangking/r2r r2r@v0.1.0 --agent codex --scope user
+
+# Preview without installing
+gh skill preview kingwangking/r2r r2r
+```
+
+The example `v0.1.0` is **a proposed future version, not an existing R2R tag**. Use an actually published version when available. The `gh skill` commands are currently a [GitHub CLI preview](https://cli.github.com/manual/gh_skill), so users need a CLI build that supports them.
+
+**Alternative:** the open [skills installer](https://github.com/vercel-labs/skills) can install directly from GitHub:
+
+```bash
+npx skills add kingwangking/r2r --skill r2r
+```
+
+This installer may use the repo source rather than a specific GitHub Release; check its behavior if you need a pinned version. Install/upgrade mechanisms are separate from the underlying `SKILL.md` standard.
+
+**Updates:** for GitHub CLI installs, see `gh skill update`; pinned installs will not update automatically unless explicitly unpinned. The release is a stable ref while ongoing `main` development can continue.
+
+## Download a GitHub Release (manual fallback)
+
+After release, open [R2R Releases](https://github.com/kingwangking/r2r/releases), select a version and download either:
+- A dedicated `r2r-skill-vX.Y.Z.zip` asset containing only `r2r/SKILL.md`, `r2r/assets/`, `r2r/references/` **if the maintainers attached such an asset**.
+- Or GitHub's automatic source archive; locate `skills/r2r/` inside it.
+
+Copy the whole `r2r` folder into the host's skills directory, preserving paths. The package's reference files live alongside `SKILL.md`, so copying only that file loses useful content.
+
+| Agent | Project-local installation | User-global location |
 | --- | --- | --- |
-| OpenAI Codex | `<your-project>/.agents/skills/r2r/` | `~/.codex/skills/r2r/` |
-| Claude Code | `<your-project>/.claude/skills/r2r/` | `~/.claude/skills/r2r/` |
-| Other Agent Skills hosts | Host-specific skill folder | Host-specific skill folder |
+| Codex | `<project>/.agents/skills/r2r/` | Managed by host installer; may use `~/.codex/skills` or `~/.agents/skills` depending on CLI/host version |
+| Claude Code | `<project>/.claude/skills/r2r/` | `~/.claude/skills/r2r/` |
+| Other Skill hosts | See the host's Agent Skills documentation | See host support |
 
-**Expected file at destination:** e.g. `<your-project>/.agents/skills/r2r/SKILL.md`, with `assets/R2R.md` and `references/operating-guide.md` beside it. **Do not copy only `SKILL.md`** if you want its referenced template.
+## No installation: use as a prompt
 
-If your existing agent does not discover the skill immediately, follow that host's documented refresh/reload process and explicitly ask it to use the r2r skill. Agent capabilities and permission prompts are host-specific.
+Copy the **Start R2R** prompt from [README](../README.md) into an authorized chat. It can build/update a project-root `R2R.md` and implement only when that assistant has actual repository tools. It cannot start an invisible background coding process.
 
-**Current source repository is private.** A different user cannot install it via a public GitHub link until the maintainer authorizes public release. Until then, only someone granted access can clone or download the source.
+## Actual operation after installation
 
-## Path C — Project instructions without native skills
+1. **Start R2R on this project** — read the real code/spec, establish a complete long-horizon program in root `R2R.md`, and start a safe meaningful RUN.
+2. **Continue R2R** — compare `R2R.md` with live Git, continue safe work with synchronous lightweight self-review.
+3. **Harden with R2R** — repeatedly integrate, restructure and verify whole-product readiness.
+4. **STEER anytime** — change scope, run length and review depth.
 
-Copy the [three-mode instructions](../skills/r2r/SKILL.md) or the [small start prompt](../README.md) into the project's existing agent instructions, preserving unrelated project governance. R2R is designed to **complement** specs and project AGENTS.md, not overwrite them.
+These are natural-language triggers, not native CLI commands implemented by the Skill. [中文使用说明](use.md).
 
-## Next actions
+## Publisher's release workflow
 
-- Start: `Start R2R on this project. Read the real repository, create R2R.md and begin the first safe campaign.`
-- Continue: `Continue R2R from the actual repo HEAD and R2R.md. Don't replan from scratch.`
-- Harden: `Harden this product with R2R until the agreed readiness tests are evidenced; report missing checks honestly.`
-
-See [the complete usage guide](use.md).
-
-## Sources for host layout (verify in your host before copying)
-
-- [OpenAI Codex examples and project-local skills](https://developers.openai.com/blog/skills-agents-sdk)
-- [OpenAI Codex skills](https://github.com/openai/codex/blob/main/codex-rs/skills/src/assets/samples/skill-creator/SKILL.md)
-- [Claude Code Skills documentation](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
-- [Agent Skills specification](https://agentskills.io/specification)
-
-**Packaging status:** source format/path documentation has been checked against published documentation. **No actual installation, host execution or external Skill validator has been run**; do not promote this to installation PASS.
+See [distribution plan](../docs/product/distribution.md). GitHub CLI provides `gh skill publish --dry-run` to validate and `gh skill publish --tag vX.Y.Z` to create a release **after authorization**. The public/tagged version, licensing and full installation proof have not been completed yet.

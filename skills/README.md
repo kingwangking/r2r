@@ -11,7 +11,7 @@ r2r/
 
 Everything linked from the Skill stays **inside the same copied folder**, so it does not depend on the original source repository being checked out.
 
-[Installation guide](../quickstart/install.md) covers Codex project-local `.agents/skills/r2r`, Claude Code project-local `.claude/skills/r2r`, and global/prompt-only alternatives.
+[Installation guide](../quickstart/install.md) uses **GitHub Releases/Tags + `gh skill install`** as the proposed official distribution, with `npx skills add` and manual folder copy as alternatives. [Release workflow](../docs/product/distribution.md). The current repository is still unreleased and Private.
 
 ## User-facing behavior
 

@@ -56,7 +56,7 @@ The roadmap is deliberately complete and long; execution horizons remain dynamic
 ## Usable product package — near-term priority before complex validation
 - U1 One README entry leading to the **three natural-language actions**.
 - U2 Fully self-contained `skills/r2r/` folder with an internal `assets/R2R.md` and internal reference; no links outside the copied Skill.
-- U3 Clear Codex/Claude Code/manual installation routes, no invented public registry installer.
+- U3 **Release-first distribution**: use GitHub CLI's existing `gh skill publish --dry-run` / `gh skill publish --tag` pipeline and `gh skill install`, with `npx skills add` / manual copy as fallbacks. No bespoke install CLI.
 - U4 First-use, resume, developer steering and HARDEN example, with real-vs-hypothetical labels.
 - U5 One durable target-project `R2R.md` rather than many mandatory governance documents.
 - U6 Candidate usability/source check; deeper controlled verification remains future W5, public release requires W6 owner decisions.
@@ -67,7 +67,7 @@ The roadmap is deliberately complete and long; execution horizons remain dynamic
 - W6.2 check name conflicts / repo/package availability.
 - W6.3 choose license and audit all third-party/owner-source rights.
 - W6.4 contributions, issue templates, governance, versioning.
-- W6.5 maintainer-authorized public release and community feedback.
+- W6.5 maintainer-authorized **tagged GitHub Release** (and optional Skill-only zip), confirm one-command install/update then seek community feedback.
 **Exit:** no public visibility/license change without explicit owner instruction.
 
 ## W7 — optional automation (only if justified)

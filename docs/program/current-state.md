@@ -37,6 +37,7 @@ These are **author-side documentation consistency checks only**. They are not ho
 - Actual Codex/Claude Code Skill installation and host execution: **NOT_RUN**.
 - External beginner onboarding, rigorous empirical throughput comparison, real software GUI/end-to-end/restart/security verification: **NOT_RUN**.
 - Rights/licensing/name audit for open source, publication, public visibility and official release: **NOT_AUTHORIZED / NOT_DONE**.
+- GitHub releases inventory inspected on 2026-10-22: **0 releases found**. Official distribution target defined as `gh skill publish --dry-run` → (Owner approves license/rights/visibility/version) → `gh skill publish --tag vX.Y.Z` → `gh skill install`; no publish was performed. See [distribution plan](../product/distribution.md).
 - No dedicated R2R CLI, daemon, background scheduler, hosted platform or installer exists, and none is required for this portable initial product.
 
 ## Next practical priorities (not a new research bureaucracy)
@@ -44,6 +45,6 @@ These are **author-side documentation consistency checks only**. They are not ho
 1. Refine end-user usability and correct any real instruction/host-path issues surfaced when the owner tries the Skill in an existing coding agent.
 2. Ensure `skills/r2r/` stays portable and `R2R.md` stays minimal as the method evolves.
 3. When explicitly chosen, run field studies and W5/W8 deeper verification; **do not let complex tests displace shipping a usable package now**.
-4. For public open-source release, request owner's explicit decisions on license, rights, visibility and scope; do not auto-merge or publish.
+4. For public open-source release, request owner's explicit decisions on license, rights, visibility, final tag and scope; do not auto-merge or publish. Run the existing `gh skill publish --dry-run` validation before any authorized Release and pin install to actual published tag.
 
 **Resume:** read current branch/PR HEAD first, then this file and AGENTS.md. Start the next valuable authorized work; no work is presumed to have occurred while the web conversation was inactive.

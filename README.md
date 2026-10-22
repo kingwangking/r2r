@@ -25,7 +25,15 @@ I may steer at any time. Never claim unrun tests passed, bypass security/rights
 boundaries or publish/merge without permission. Save actual state before stopping.
 ```
 
-**With an Agent Skill:** copy the self-contained [`skills/r2r/`](skills/r2r/SKILL.md) folder into your agent's skill location. See [Codex/Claude Code installation paths](quickstart/install.md).
+**Install the released Skill (after public publication):** GitHub CLI can install directly from a tagged R2R repository release, and tracks updates:
+
+```bash
+gh skill install kingwangking/r2r r2r --agent codex --scope user
+# Alternative cross-agent installer:
+npx skills add kingwangking/r2r --skill r2r
+```
+
+**These commands are publication targets, not an installation claim for this private/unreleased repository.** Authorized repository collaborators can still copy the self-contained [`skills/r2r/`](skills/r2r/SKILL.md) folder or use a [prompt-only route](quickstart/install.md). The distributable release is a **versioned GitHub Release/Tag** over this source; a dedicated ZIP containing only the Skill folder is optional. See [distribution and release process](docs/product/distribution.md).
 
 ## Then use three natural-language actions
 
@@ -69,5 +77,7 @@ my-product/
 4. [Portable Skill](skills/r2r/SKILL.md) and [single project-state template](skills/r2r/assets/R2R.md)
 
 Deep methodology, research, comparisons, examples and the [internal R2R development program](docs/program/roadmap.md) are optional reading, not installation requirements.
+
+**Release status:** [No GitHub Releases have been published yet](https://github.com/kingwangking/r2r/releases). GitHub Skill publish dry-run, license/rights, tagged release and real installation are pending owner authorization. Source code and a Draft PR are not equivalent to a distributed product.
 
 **Project status:** this repository is **Private** and its method/Skill package is an *unreleased candidate*; no open-source license, public distribution approval, verified throughput benefit, background execution service or external host installation is claimed.
