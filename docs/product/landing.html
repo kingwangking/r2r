@@ -153,7 +153,10 @@
     }
     @media (max-width: 600px) {
       .navlinks a:not(.navpill) { display: none; }
-      .hero-inner { padding: 72px 0 60px; }
+      .hero-inner { padding: 53px 0 42px; }
+      .hero h1 { margin: 19px 0 19px; }
+      .hero .actions { margin-top: 25px; }
+      .hero-foot { margin-top: 25px; }
       .section { padding: 68px 0; }
       .shell { width: min(1160px, calc(100% - 28px)); }
       .board-head { padding: 15px; }
@@ -208,7 +211,7 @@
           <span class="simulation-label">Illustration · not a timed benchmark</span>
         </div>
         <div class="board-body">
-          <p class="board-intro">A fast coding agent can still be trapped in a slow delivery loop. Explore two <strong>hypothetical</strong> workflows to see where the real bottleneck sits.</p>
+          <p class="board-intro">A fast coding agent can get trapped in a slow delivery loop. Watch this <strong>illustrative</strong> story unfold: first the bottleneck, then the R2R response, ending at READY. Choose either tab to explore a specific part.</p>
           <div class="segmented" role="group" aria-label="Choose workflow to animate">
             <button id="watch-stalled" class="bad" type="button" aria-pressed="true">✕ Watch the stall</button>
             <button id="watch-r2r" class="good" type="button" aria-pressed="false">✓ Watch Run to Ready</button>
@@ -230,7 +233,7 @@
               <button class="small-control" id="toggle-play" type="button" aria-label="Pause animation">Ⅱ Pause</button>
               <button class="small-control" id="restart" type="button" aria-label="Restart animation">↺ Replay</button>
             </div>
-            <div id="progress" class="progress" data-mode="stalled" role="progressbar" aria-label="Illustrative sequence progress" aria-valuemin="0" aria-valuemax="6" aria-valuenow="1"><span id="progress-fill"></span></div>
+            <div id="progress" class="progress" data-mode="stalled" role="progressbar" aria-label="Illustrative sequence progress" aria-valuemin="0" aria-valuemax="12" aria-valuenow="1"><span id="progress-fill"></span></div>
           </div>
           <p class="disclaimer">This is a conceptual illustration of failure modes and a proposed operating response. It does not represent measured results, a real project's test output or guaranteed R2R performance.</p>
         </div>
@@ -386,25 +389,49 @@
         narrative.textContent = scenarios[mode].notes[position];
         tag.textContent = scenarios[mode].tag;
         tag.dataset.kind = mode;
-        counter.textContent = "STEP " + (position + 1) + " / 6";
-        bar.style.width = ((position + 1) / 6 * 100) + "%";
+        const storyStep = position + (mode === "r2r" ? 7 : 1);
+        const reachedReady = mode === "r2r" && position === 5 && !playing;
+        counter.textContent = "STORY " + storyStep + " / 12";
+        bar.style.width = (storyStep / 12 * 100) + "%";
         progress.dataset.mode = mode;
-        progress.setAttribute("aria-valuenow", String(position + 1));
-        play.textContent = playing ? "Ⅱ Pause" : "▶ Play";
-        play.setAttribute("aria-label", playing ? "Pause animation" : "Play animation");
+        progress.setAttribute("aria-valuenow", String(storyStep));
+        narrative.setAttribute("aria-live", playing ? "off" : "polite");
+        play.textContent = reachedReady ? "↺ Replay full story" : playing ? "Ⅱ Pause" : "▶ Play";
+        play.setAttribute("aria-label", reachedReady ? "Replay both workflows" : playing ? "Pause animation" : "Play animation");
       }
       function stopClock() { if (timer !== null) { window.clearInterval(timer); timer = null; } }
+      function advance() {
+        if (position < 5) {
+          position += 1;
+        } else if (mode === "stalled") {
+          // First show why the old loop stalls; then deliver the R2R response.
+          mode = "r2r";
+          position = 0;
+        } else {
+          // Leave the story visibly finished at READY, rather than looping forever.
+          playing = false;
+          stopClock();
+        }
+        paint();
+      }
       function schedule() {
         stopClock();
-        if (playing) timer = window.setInterval(() => { position = (position + 1) % 6; paint(); }, 1850);
+        if (playing) timer = window.setInterval(advance, 1650);
       }
       function switchTo(next) {
-        mode = next; position = 0; paint(); schedule();
+        mode = next; position = 0; playing = !reduced; paint(); schedule();
       }
       buttons.stalled.addEventListener("click", () => switchTo("stalled"));
       buttons.r2r.addEventListener("click", () => switchTo("r2r"));
-      play.addEventListener("click", () => { playing = !playing; paint(); schedule(); });
-      restart.addEventListener("click", () => { position = 0; paint(); schedule(); });
+      play.addEventListener("click", () => {
+        if (!playing && mode === "r2r" && position === 5) {
+          mode = "stalled"; position = 0;
+        }
+        playing = !playing; paint(); schedule();
+      });
+      restart.addEventListener("click", () => {
+        mode = "stalled"; position = 0; playing = !reduced; paint(); schedule();
+      });
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) stopClock(); else schedule();
       });
