@@ -1,6 +1,6 @@
 # Contributing
 
-The repo is currently **private**, with public license and publication subject to maintainer approval. This file defines intended future contribution practice, not evidence that the project is already publicly open source.
+The repository is **Public**, but no open-source LICENSE has been approved or tagged Release published. Public visibility is not a blanket reuse permission. These contribution guidelines anticipate a future maintainer-authorized release.
 
 Please propose improvements with **problem → observable evidence → minimal change → checks performed → limitations**. Useful inputs include practical cases, counterexamples, clearer onboarding and reproducible comparisons of intermediate-review costs versus final-product acceptance.
 
