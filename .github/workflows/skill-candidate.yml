@@ -7,8 +7,15 @@ on:
       - "scripts/skill_release.py"
       - "tests/test_skill_release.py"
       - ".github/workflows/skill-candidate.yml"
-      - "quickstart/install.md"
+      - "quickstart/**"
+      - "README.md"
+      - "R2R.md"
+      - "CHANGELOG.md"
+      - "LICENSE"
+      - "docs/zh/README.md"
       - "docs/product/distribution.md"
+      - "scripts/check_docs.py"
+      - "tests/test_docs.py"
   push:
     branches: [main]
     paths:
@@ -16,6 +23,14 @@ on:
       - "scripts/skill_release.py"
       - "tests/test_skill_release.py"
       - ".github/workflows/skill-candidate.yml"
+      - "README.md"
+      - "quickstart/**"
+      - "R2R.md"
+      - "CHANGELOG.md"
+      - "LICENSE"
+      - "docs/zh/README.md"
+      - "scripts/check_docs.py"
+      - "tests/test_docs.py"
   workflow_dispatch:
 
 permissions:
@@ -35,6 +50,7 @@ jobs:
         run: |
           python -m unittest discover -s tests -v
           python scripts/skill_release.py
+          python scripts/check_docs.py
       - name: Official GitHub CLI Skill specification check (dry-run only)
         env:
           GH_TOKEN: ${{ github.token }}
