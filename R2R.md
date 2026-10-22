@@ -4,7 +4,7 @@
 
 ## PLAN：项目终点
 
-**交付物：** 易安装、易理解、可恢复、在现有 AI 编码 Agent 中可直接使用的 R2R Skill。开发者只需要 Start → Continue → Harden，随时 STEER。可移植 Skill 和发行源保持单一事实来源。
+**交付物：** 易安装、易理解、可恢复、在现有 AI 编码 Agent 中可直接使用的 R2R **快速迭代** Skill；可叠加既有 Spec/SDD 与多 Agent 并行，而不是替代它们。开发者只需要 Start → Continue → Harden，随时 STEER。可移植 Skill 和发行源保持单一事实来源。
 
 **现有权威资料：** [README](README.md)、[方法定义](docs/method/r2r.md)、[项目整体路线](docs/program/roadmap.md)、[最新发布版本](https://github.com/kingwangking/r2r/releases/latest)、[源码状态](docs/program/current-state.md)。不要在本文件里复写完整路线图。
 
@@ -20,7 +20,8 @@
 - **当前工作分支：** `hardening/post-v0.1.0-usability`（历史名称；恢复时请重新读取 Git）。
 - **Review：** 每个有意义的批次同步轻量自检；重大风险需深入验证；不把自检称为独立 Review。
 - **真实验证：** [CI Run #39739514168](https://github.com/kingwangking/r2r/actions/runs/39739514168) **SUCCESS**：12 个源码/负例测试、文档一致性检查、官方 Skill 发布前检查、本地/远程指定 SHA 安装、ZIP/校验文件构建。仅证明这批检查范围。
-- **下一批：** 对真实 Codex 或 Claude Code 做一个小规模 Start → Continue → Harden 交互试用，观察指令遵循与 R2R.md 的实际生成；未经真实执行标记 NOT_RUN。根据使用问题修订后再决定下一次版本发布。
+- **Owner STEER：** 功能/安全/数据完整性 Finding 按风险及时修复并按需针对性快审；普通 P2/P3 批次集中修复；纯措辞不反复独立 Review（除验收/授权/追溯风险）。主 Codex 收集重要 Finding、安排修复并持续下一 Slice。R2R 聚焦纵向迭代，兼容 Spec 与多 Agent 分层并行。
+- **下一批：** 验证核心 Skill/README 一致性及 CI，申请设置 GitHub About/Topics；以后再在真实 Codex 或 Claude 做 Start → Continue → Harden 试用（NOT_RUN）。
 
 ## HARDEN：本阶段验收
 

@@ -1,6 +1,6 @@
 # R2R 中文使用指南
 
-**安装一次，之后让已有编码 Agent 持续完成产品开发。** R2R 不是单独的软件运行器，而是一套可直接执行的开发指令。
+**安装一次，之后让已有编码 Agent 持续完成产品开发。** R2R 不是单独的软件运行器，而是**Spec + 可选多 Agent 并行之上的快速迭代方法**：Spec 负责需求/架构/验收，模块职责分明时并行 Agent 负责横向执行，R2R 负责纵向持续迭代、开发者实时 STEER、Finding 分级处理、批次修复和最后 HARDEN。
 
 [正式 v0.1.0 Release](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) · [安装方法](install.md) · [完整教学示例](../examples/complete-usage.md)
 
@@ -33,7 +33,7 @@ gh skill install kingwangking/r2r r2r --pin v0.1.0 --agent codex --scope user
 ```text
 继续 R2R。先读取 Git 的真实 HEAD、工作区和 R2R.md，
 修正过期记录，按长期路线继续下一批有价值的功能开发。
-同步轻量 Review、修复严重问题，记录一般问题后继续。
+同步轻量 Review；代码功能、安全与数据完整性问题按严重程度及时修复，必要时做受影响路径的快审；一般 P2/P3 记入集中修复队列；纯文档措辞除影响验收、安全授权或追溯外不反复独立 Review。修复后直接继续下一个安全 Slice，不重新开启完整 Review 循环。
 ```
 
 R2R 不强制“每五个任务正式 Review 一次”；每个有意义的批次做一次短自检。涉及权限、凭据、真实数据和不可逆副作用时，必须在影响发生前做必要的深入检查。

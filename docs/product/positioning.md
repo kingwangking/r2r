@@ -1,22 +1,23 @@
-# R2R product positioning
+# R2R product positioning — the fast iteration layer for AI coding
 
-**User:** a developer directing AI agents to build multi-module software beyond toy demos.
+**Audience:** developers using Codex, Claude Code or comparable coding agents, with or without existing Spec-driven development and multiple concurrent workers.
 
-**Problem:** AI accelerates code production and makes complex ambitions possible, but full serial review of each intermediate change may cost more than implementation. Large amounts of passing micro-tests or PR activity are not the same as a mature usable product.
+**Problem:** AI coding accelerates implementation, yet serial Review → fix → full Review loops, ordinary P2/P3 interruptions, lost human direction and incomplete integration can consume the gains before a real product becomes usable.
 
-**Objective:** Increase *verified end-product delivery* for complex systems without sacrificing the final stability requirement.
+**R2R's job:** make *successive development iterations* flow faster, with a complete but revisable destination, frequent **developer STEER**, short synchronous Review, severity-based Finding triage, **batched ordinary repairs**, continuous RUN and repeated real-product HARDEN.
 
-**Approach:** strong whole-product direction; long but steerable runs; **synchronous lightweight Review after meaningful batches**, depth proportional to risk (no automatic full deep gate); acceptable imperfect intermediate shapes; repeated structural convergence and final real-product verification.
+## Three complementary dimensions
 
-## The distinction
-- **Spec-driven development:** clarifies expected behavior and tasks. R2R consumes those inputs; it governs pace, validation timing and final convergence. Compatible, not a replacement.
-- **Agent loops:** automate repetition. R2R includes architectural confidence, human steering, high-risk boundaries and a product-level exit.
-- **Automated PR reviewers:** review diffs. R2R decides which reviews are useful, what must block dependent work and what can safely be deferred.
-- **Continuous integration:** detects breakage. R2R allows an intentionally non-release-ready intermediate product without concealing failing probes or sacrificing real-data safety.
+| Dimension | Focus | R2R's relationship |
+| --- | --- | --- |
+| **Spec / SDD / Spec Kit** | Requirements, architecture, contracts, tasks and accepted outcomes; its own implement/converge operations | Keep original specifications authoritative; R2R extends the practical iteration and decision cadence |
+| **Parallel multi-agent implementation** | Horizontal execution capacity across distinctly owned layers/modules | Use available parallel workers on genuinely separable tasks; let the main Codex integrate results |
+| **R2R** | Longitudinal pace of slice-to-slice progress, human steering, risk-scoped Review and final HARDEN | Continue work after meaningful findings; do not restart a comprehensive Review merely because a fix landed |
 
-## Current product, not speculative product
-A concise method, copyable prompts, templates, an honest worked example and a research plan. **No mandatory CLI, hosted web app, model connector, database or local executor.**
+R2R is compatible with **one or many agents**. It does not run a scheduler, create subagents or replace spec tools. Clear layered architecture and agreed interface ownership are especially helpful for concurrency. An integrated outcome must still be verified when appropriate.
 
-Optional automation is a later research decision, only if repeated evidence shows an essential unmet need.
+**A developer is highly engaged:** product/architecture decisions, changing priorities, review depth and execution length are regularly steered. R2R is not “set it and forget it”.
 
-**Open source:** [v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0) is publicly released under [MIT](../../LICENSE). Do not claim external agent-host validation or measured throughput advantages based solely on publication.
+[Compatibility guide](compatibility.md) · [Review/Finding economics](../method/review-economics.md) · [v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0)
+
+**Release and evidence:** MIT source and a published `v0.1.0` Skill exist. The improved positioning/routing in this branch is **unreleased**; agent-host behavior and measured iteration speedups remain unverified.

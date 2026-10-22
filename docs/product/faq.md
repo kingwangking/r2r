@@ -6,8 +6,14 @@ No. R2R avoids treating **every intermediate change as a release candidate**. De
 ### Does R2R require multiple agents or asynchronous reviewers?
 No. Its current default is **RUN a meaningful batch → synchronous lightweight self-review → continue**. Only material risks trigger deeper source-grounded verification. A separate independent reviewer can be used sequentially when genuinely available; a same-agent self-check must never be advertised as independent.
 
-### Does R2R replace Spec-driven development?
-No. Specs clarify what to build. R2R governs the long production/feedback/quality-convergence process after and alongside a spec.
+### Does R2R replace Spec-driven development or Spec Kit?
+No. Specs and Spec Kit remain the authoritative sources for requirements, tasks, contracts and acceptance—and Spec Kit includes implementation and convergence. R2R focuses on **successive rapid iterations, developer interventions, Finding routing and final product HARDEN** alongside the existing Spec workflow. [Compatibility](compatibility.md).
+
+### Is R2R opposed to many agents working in parallel?
+No. Parallel development is a horizontal speed multiplier when architecture has clear module/layer boundaries. R2R controls the iteration/integration feedback loop and works with one executor or many available agents. It does not create or schedule those agents.
+
+### Does each fixed issue require another independent Review?
+No. Important code, security and data-integrity findings are fixed according to severity, with a **focused quick recheck if warranted**. Ordinary nonblocking P2/P3 go into a grouped repair queue. Pure documentation/evidence wording is corrected without repeated independent Review unless acceptance, security authorization or traceability is affected. The main Codex/executor collects Findings, coordinates scoped fixes and **moves to the next safe Slice**.
 
 ### Are long plans mandatory?
 A complete high-level product roadmap is central, and long-horizon execution is a major supported use. The developer may shorten a run or revise the plan whenever new information arrives.

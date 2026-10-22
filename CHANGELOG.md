@@ -4,6 +4,8 @@ R2R publishes versioned Agent Skills using GitHub Releases. Consult [the actual 
 
 ## Unreleased — post-v0.1.0 HARDEN (in Draft PR #2)
 
+- Clarify R2R as rapid iteration **complementing Spec and parallel agents**; refresh searchable README, product positioning and recommended GitHub Topics.
+- Add Finding triage: severity-based functional/security/data repair, grouped P2/P3, and no reflexive repeat independent Review of wording-only fixes; primary executor resumes the next Slice.
 - Correct published-version installation/Chinese onboarding and contributor/Skill status after the first Release.
 - Add root `R2R.md` so R2R itself follows its Start / Continue / Harden practice without duplicating existing plans.
 - Add documentation-state and internal Markdown-link regression checks with isolated positive/negative unit tests.
