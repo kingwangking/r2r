@@ -16,7 +16,7 @@
 
 - **正式已发布：** `v0.1.0`，Tag 固定在 `1f7bdd09e2f304d4dd03f6575114ebc73a5e413a`。MIT。
 - **真实检查：** [发布后安装/校验 PASS](https://github.com/kingwangking/r2r/actions/runs/39737882456)；真实 Codex / Claude Code 交互执行 **NOT_RUN**。
-- **当前阶段：** 发布后 HARDEN。第一轮已修复 README、中文使用指南、安装页及 Skill/贡献/定位等旧状态；新建 [Draft PR #2](https://github.com/kingwangking/r2r/pull/2)，维持已发布的 v0.1.0 不变。
+- **当前阶段：** 发布后 HARDEN。已改造用户 README 与发布说明，更新整体 Run-to-Ready 定义；[Draft PR #2](https://github.com/kingwangking/r2r/pull/2) 新增以痛点共鸣开场的 README 和可交互的单文件 HTML 动画介绍页；v0.1.0 Tag 保持不变。
 - **当前工作分支：** `hardening/post-v0.1.0-usability`（历史名称；恢复时请重新读取 Git）。
 - **Review：** 每个有意义的批次同步轻量自检；重大风险需深入验证；不把自检称为独立 Review。
 - **真实验证：** [CI Run #39739514168](https://github.com/kingwangking/r2r/actions/runs/39739514168) **SUCCESS**：12 个源码/负例测试、文档一致性检查、官方 Skill 发布前检查、本地/远程指定 SHA 安装、ZIP/校验文件构建。仅证明这批检查范围。
@@ -25,7 +25,8 @@
 - **真实 CI：** [Run #39745403270](https://github.com/kingwangking/r2r/actions/runs/39745403270) PASS：12 个测试、文档链接与发行状态检查、官方 Skill dry-run、本地/远程安装检查和打包。此结果只覆盖该次源代码版本；下一次修订后重新检查。
 - **GitHub Topics/Description：** [已拟定可复制的元数据](docs/product/discoverability.md)，**尚未应用到仓库 About**（当前 GitHub 接口不提供该项修改操作）。
 - **Owner STEER（定义调整）：** R2R 的总目标是 Run to Ready，组合成熟 Spec 正确性、可选多 Agent 横向并发和 R2R 纵向高效迭代，闭环到真实 HARDEN/READY；不是只把纵向提速当作项目定义。
-- **下一批：** 核对 README/Skill/方法定义统一性与 CI，通过后保持 Draft PR；GitHub About 描述/Topics 待应用，真实 Codex/Claude 完整项目验证仍 NOT_RUN。
+- **演示与 CI：** [Actions #39755809412](https://github.com/kingwangking/r2r/actions/runs/39755809412) PASS：HTML 结构与 JS 检查、Chrome 实际渲染与桌面/手机截图、官方 Skill dry-run、安装检查和候选包构建。预览截图在 `r2r-landing-screenshots` Artifact，尚未部署 GitHub Pages。
+- **下一批：** 阅读实际截图反馈并优化演示页；合并后调整预览地址为稳定公共链接（如启用 GitHub Pages）；GitHub About/Topics 待设置，真实 Codex/Claude 完整项目验证仍 NOT_RUN。
 
 ## HARDEN：本阶段验收
 

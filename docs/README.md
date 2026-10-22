@@ -3,6 +3,7 @@
 **Current truth:** [program/current-state.md](program/current-state.md)
 
 **For actual users — read only these**
+- [Interactive R2R explainer (self-contained HTML)](product/landing.html)
 - [Published R2R v0.1.0](https://github.com/kingwangking/r2r/releases/tag/v0.1.0)
 - [R2R's own project-level control file](../R2R.md)
 - [Start / Continue / Harden (Chinese)](../quickstart/use.md)

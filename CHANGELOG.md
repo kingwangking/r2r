@@ -4,6 +4,9 @@ R2R publishes versioned Agent Skills using GitHub Releases. Consult [the actual 
 
 ## Unreleased — post-v0.1.0 HARDEN (in Draft PR #2)
 
+- Rewrite README around the AI software delivery pain, a relatable illustrative review stall, and a plausible Spec + parallelism + rapid-iteration solution.
+- Add self-contained animated HTML explainer with interactive stalled/R2R paths, keyboard-accessible controls, reduced-motion support and an install CTA; add HTML/JS checks and actual headless Chrome desktop/mobile screenshots to CI.
+
 - Elevate the definition to **Run to Ready, an AI-native end-to-end product delivery goal**, composing mature Spec/SDD (correctness), optional parallel multi-agent execution (horizontal capacity), and human-steered fast iteration (vertical throughput), with integrated HARDEN to evidence-backed READY. Vertical iteration remains the distinctive policy, not the whole definition.
 - Refresh README, Chinese onboarding, positioning, compatibility/FAQ and GitHub metadata suggestions to reflect one goal/three capabilities.
 - Add Finding triage: severity-based functional/security/data repair, grouped P2/P3, and no reflexive repeat independent Review of wording-only fixes; primary executor resumes the next Slice.
