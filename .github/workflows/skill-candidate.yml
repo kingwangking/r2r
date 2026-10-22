@@ -41,6 +41,28 @@ jobs:
         run: |
           gh --version
           gh skill publish --dry-run
+      - name: Local Skill installer smoke (no agent execution)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh skill install . r2r --from-local --dir "$RUNNER_TEMP/r2r-installed"
+          python - "$RUNNER_TEMP/r2r-installed" <<'PY'
+          from pathlib import Path
+          import sys
+          root = Path(sys.argv[1])
+          hits = list(root.rglob("SKILL.md"))
+          assert len(hits) == 1, f"expected one installed Skill, got: {hits}"
+          installed = hits[0].parent
+          source = Path("skills/r2r")
+          assert installed.name == "r2r", installed
+          for relative in ("assets/R2R.md", "references/operating-guide.md"):
+              assert (installed / relative).is_file(), f"missing installed file: {relative}"
+              assert (installed / relative).read_bytes() == (source / relative).read_bytes(), relative
+          text = (installed / "SKILL.md").read_text(encoding="utf-8")
+          assert "name: r2r" in text, "installed Skill frontmatter has unexpected name"
+          assert "Start / initialize" in text, "installed Skill body appears incomplete"
+          print("LOCAL_SKILL_INSTALL_PASS: installer copied Skill, state template and guide")
+          PY
       - name: Package candidate (no tag and no Release)
         run: |
           python scripts/skill_release.py --pack dist/r2r-skill.zip
